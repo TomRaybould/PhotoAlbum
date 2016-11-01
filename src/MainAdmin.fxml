@@ -10,8 +10,9 @@
       <Text layoutX="176.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Main Admin Window" />
       <ListView layoutX="129.0" layoutY="82.0" prefHeight="200.0" prefWidth="235.0" />
       <Text layoutX="161.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ListView of all current users" />
-      <Button layoutX="129.0" layoutY="301.0" mnemonicParsing="false" text="Add User" />
-      <Button layoutX="272.0" layoutY="301.0" mnemonicParsing="false" text="Delete User" />
-      <Button layoutX="213.0" layoutY="341.0" mnemonicParsing="false" text="Log Out" />
+      <Button layoutX="385.0" layoutY="82.0" mnemonicParsing="false" text="Add User" />
+      <Button layoutX="385.0" layoutY="137.0" mnemonicParsing="false" text="Delete User" />
+      <Button layoutX="128.0" layoutY="347.0" mnemonicParsing="false" text="Log Out" />
+      <Button layoutX="289.0" layoutY="347.0" mnemonicParsing="false" text="Safe Quit" />
    </children>
 </AnchorPane>
