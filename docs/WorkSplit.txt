@@ -1,0 +1,19 @@
+Work Split
+
+Mike Tomkowich:
+Login page
+Admin Page
+Add Tag
+Add a Tag
+Remove Tag
+Search Results
+
+Tom Raybould:
+User Album
+Photo in Album
+Move Photo
+Copy Photo
+Slideshow
+Display Picture
+
+Work is still completely undecided but this is the start. Once we have more of an idea about the backend code we will most likely change this accordingly
