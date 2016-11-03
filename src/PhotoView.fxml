@@ -76,6 +76,7 @@
             <Button layoutX="29.0" layoutY="229.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="123.0" text="Add/Edit Caption" />
             <Button layoutX="29.0" layoutY="266.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="Add Tag" />
             <Button layoutX="29.0" layoutY="303.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="Remove Tag" />
+            <Button layoutX="36.0" layoutY="340.0" mnemonicParsing="false" text="Edit Tag Types" />
          </children>
       </AnchorPane>
    </children>

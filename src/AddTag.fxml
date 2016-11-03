@@ -17,5 +17,6 @@
       <ComboBox layoutX="62.0" layoutY="64.0" prefWidth="150.0" promptText="Tag Type" />
       <TextField layoutX="265.0" layoutY="64.0" promptText="tag field" />
       <Button layoutX="265.0" layoutY="120.0" mnemonicParsing="false" text="Add Tag" />
+      <Button layoutX="62.0" layoutY="120.0" mnemonicParsing="false" text="Create new tag type" />
    </children>
 </AnchorPane>
