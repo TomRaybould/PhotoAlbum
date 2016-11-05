@@ -1,4 +1,4 @@
-package Controller;
+package application;
 
 import Model.Users;
 import javafx.event.ActionEvent;

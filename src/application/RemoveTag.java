@@ -1,4 +1,4 @@
-package Controller;
+package application;
 
 
 import javafx.application.Application;
@@ -6,20 +6,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 
-public class SearchResults extends Application {
+public class RemoveTag extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		System.out.println("poop");
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/view/SearchResults.fxml"));
+		loader.setLocation(getClass().getResource("/view/RemoveTag.fxml"));
 		
-		GridPane root = (GridPane)loader.load();
+		AnchorPane root = (AnchorPane)loader.load();
 		
-		SearchResultsController SearchResultsController =loader.getController();
+		RemoveTagController RemoveTagController=loader.getController();
 		//loginController.start(primaryStage);
 		
 		Scene scene = new Scene(root);

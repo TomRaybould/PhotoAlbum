@@ -1,4 +1,4 @@
-package Controller;
+package application;
 
 
 import javafx.application.Application;
@@ -6,19 +6,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 
-public class AddTag extends Application {
+public class SearchResults extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		System.out.println("poop");
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/view/AddTag.fxml"));
+		loader.setLocation(getClass().getResource("/view/SearchResults.fxml"));
 		
-		AnchorPane root = (AnchorPane)loader.load();
+		GridPane root = (GridPane)loader.load();
 		
-		AddTagController AddTagController=loader.getController();
+		SearchResultsController SearchResultsController =loader.getController();
 		//loginController.start(primaryStage);
 		
 		Scene scene = new Scene(root);
