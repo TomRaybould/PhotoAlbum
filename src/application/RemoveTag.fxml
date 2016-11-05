@@ -16,10 +16,10 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <ComboBox layoutX="24.0" layoutY="82.0" prefWidth="150.0" promptText="Tag Type" />
+      <ComboBox layoutX="24.0" onAction = "#handle" layoutY="82.0" prefWidth="150.0" promptText="Tag Type" />
       <Text layoutX="24.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a Tag Type" />
       <MediaView fitHeight="200.0" fitWidth="200.0" layoutX="234.0" layoutY="54.0" />
-      <Button layoutX="24.0" layoutY="221.0" mnemonicParsing="false" text="Remove Selected Tag/s" />
-      <TextField layoutX="204.0" layoutY="69.0" prefHeight="220.0" prefWidth="247.0" text="List view of tags of the selected type" />
+      <Button layoutX="24.0" onAction = "#handle" layoutY="221.0" mnemonicParsing="false" text="Remove Selected Tag/s" />
+      <TextField layoutX="204.0" onAction = "#handle" layoutY="69.0" prefHeight="220.0" prefWidth="247.0" text="List view of tags of the selected type" />
    </children>
 </AnchorPane>
