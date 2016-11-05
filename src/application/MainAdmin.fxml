@@ -5,14 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="492.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="492.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainAdminController">
    <children>
       <Text layoutX="176.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Main Admin Window" />
       <ListView layoutX="129.0" layoutY="82.0" prefHeight="200.0" prefWidth="235.0" />
       <Text layoutX="161.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ListView of all current users" />
-      <Button layoutX="385.0" onAction = "#handle"  layoutY="82.0" mnemonicParsing="false" text="Add User" />
-      <Button layoutX="385.0" onAction = "#handle" layoutY="137.0" mnemonicParsing="false" text="Delete User" />
-      <Button layoutX="128.0" onAction = "#handle" layoutY="347.0" mnemonicParsing="false" text="Log Out" />
-      <Button layoutX="289.0" onAction = "#handle" layoutY="347.0" mnemonicParsing="false" text="Safe Quit" />
+      <Button fx:id="addUser" layoutX="385.0" layoutY="82.0" mnemonicParsing="false" onAction="#handle" text="Add User" />
+      <Button fx:id="deleteUser" layoutX="385.0" layoutY="137.0" mnemonicParsing="false" onAction="#handle" text="Delete User" />
+      <Button fx:id="logOut" layoutX="128.0" layoutY="347.0" mnemonicParsing="false" onAction="#handle" text="Log Out" />
+      <Button fx:id="safeQuit" layoutX="289.0" layoutY="347.0" mnemonicParsing="false" onAction="#handle" text="Safe Quit" />
    </children>
 </AnchorPane>

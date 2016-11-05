@@ -9,17 +9,20 @@ import javafx.scene.control.TextField;
 public class RemoveTagController {
 
     @FXML
-    private ComboBox<?> tagTypeDropDown;
+    private ComboBox<?> tagTypeDD;
 
     @FXML
-    private Button removeSelected;
+    private Button removeTags;
 
     @FXML
-    private TextField listViewOfTags;
+    private TextField lVOfTags;
+
+    @FXML
     public void handle(ActionEvent e){
     	Button b = (Button)e.getSource();
-    	if(b == removeSelected){
-    		System.out.println("Remove Selected");
+    	if(b == removeTags){
+    		System.out.println("remove Tag");
     	}
     }
+
 }

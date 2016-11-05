@@ -38,7 +38,7 @@ public class SearchResultsController {
     
     public void handle(ActionEvent e){
     	Button b = (Button)e.getSource();
-    	if(b == displayPicture){
+    	if(b == addTag){
     		System.out.println("add Tag");
     	}
     	else if(b == slideShow){
@@ -65,8 +65,8 @@ public class SearchResultsController {
     		System.out.println("add edit caption");
     		
     	}
-    	else if(b == addTag){
-    		System.out.println("add tag");
+    	else if(b == displayPicture){
+    		System.out.println("display Picture");
     		
     	}
     	else if(b == removeTag){
