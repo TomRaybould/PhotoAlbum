@@ -1,4 +1,4 @@
-package application;
+package Controller;
 
 
 import javafx.application.Application;
@@ -9,20 +9,20 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 
-public class MainAdmin extends Application {
+public class AddTag extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		System.out.println("poop");
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/application/MainAdmin.fxml"));
+		loader.setLocation(getClass().getResource("/view/AddTag.fxml"));
 		
 		AnchorPane root = (AnchorPane)loader.load();
 		
-		MainAdminController MainAdminController=loader.getController();
+		AddTagController AddTagController=loader.getController();
 		//loginController.start(primaryStage);
 		
 		Scene scene = new Scene(root);
-		primaryStage.setTitle("MainAdmin");
+		primaryStage.setTitle("Login Page");
 		primaryStage.setScene(scene);
 		System.out.println("poop");
 		primaryStage.show();

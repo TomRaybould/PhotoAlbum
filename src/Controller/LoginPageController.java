@@ -1,5 +1,6 @@
-package application;
+package Controller;
 
+import Model.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

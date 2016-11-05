@@ -1,4 +1,4 @@
-package application;
+package Controller;
 
 
 import javafx.application.Application;
@@ -14,7 +14,7 @@ public class RemoveTag extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		System.out.println("poop");
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/application/RemoveTag.fxml"));
+		loader.setLocation(getClass().getResource("/view/RemoveTag.fxml"));
 		
 		AnchorPane root = (AnchorPane)loader.load();
 		

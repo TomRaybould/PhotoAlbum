@@ -1,4 +1,4 @@
-package application;
+package Model;
 
 import java.util.ArrayList;
 
@@ -15,11 +15,11 @@ public class Users {
 		admin = false;
 	}
 	
-	static void addUser(Users u){
+	public static void addUser(Users u){
 		allUsers.add(u);
 	}
 	
-	static void deleteUser(Users u){
+	public static void deleteUser(Users u){
 		
 		for(Users a : allUsers){
 			if(a.equals(u)){
@@ -28,7 +28,7 @@ public class Users {
 		}
 	}
 	
-	static boolean checkIfInSystem(Users u){
+	public static boolean checkIfInSystem(Users u){
 		for(Users a : allUsers){
 			if(a.equals(u)){
 				return true;
@@ -37,7 +37,7 @@ public class Users {
 		return false;
 	}
 	
-	void setAdmin(){
+	public void setAdmin(){
 		this.admin = true;
 	}
 	

@@ -1,4 +1,4 @@
-package application;
+package Controller;
 
 
 import javafx.application.Application;
@@ -15,7 +15,7 @@ public class SearchResults extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		System.out.println("poop");
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/application/SearchResults.fxml"));
+		loader.setLocation(getClass().getResource("/view/SearchResults.fxml"));
 		
 		GridPane root = (GridPane)loader.load();
 		
