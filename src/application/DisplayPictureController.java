@@ -25,7 +25,7 @@ public class DisplayPictureController {
 
     @FXML
     private ImageView image;
-    /*
+    
     public void start(Stage mainStage) throws MalformedURLException{
     	//Image View
     	System.out.println("here");
@@ -54,7 +54,7 @@ public class DisplayPictureController {
     			String thumbURL = file.toURI().toURL().toString();
         		Image imgLoad = new Image(thumbURL);
         		//pass image to ImageView
-        		imgThumb.setImage(imgLoad);
+        		image.setImage(imgLoad);
         		mainStage.show();
     		}
     						
@@ -68,7 +68,7 @@ public class DisplayPictureController {
     		imgMain.setImage(imgLoad2);
     			
    }
-   */
+   
     public void handle(ActionEvent e) throws IOException{ 
     	Button b = (Button)e.getSource();
  

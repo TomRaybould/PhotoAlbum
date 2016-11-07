@@ -1,10 +1,11 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Album {
-	String name;
-	ArrayList<Photo> photosInAlbum = new ArrayList<Photo>();
+public class Album implements Serializable{
+	private String name;
+	private ArrayList<Photo> photosInAlbum = new ArrayList<Photo>();
 	// an album will mainly consist of a list of photos
 	// it can also have a list of tags, but unclear whether or not that would be necessary
 	

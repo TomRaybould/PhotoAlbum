@@ -92,7 +92,7 @@ public class LoginPageController {
     		System.out.println("Log in button was pressed for user");
     		name = username.getText();
     		passwordInput = password.getText();
-    		u = new User(name, passwordInput, null, null);
+    		u = new User(name, passwordInput);
     		boolean exists = User.checkIfInSystem(u);
     		if(exists){
     			System.out.println("User is in system " + name +passwordInput);
@@ -106,7 +106,7 @@ public class LoginPageController {
     		System.out.println("Button was pressed for admin");
     		name = username.getText();
     		passwordInput = password.getText();
-    		u = new User(name, passwordInput, null, null);
+    		u = new User(name, passwordInput);
     		boolean exists = User.checkIfInSystem(u);
     		if(exists){
     			System.out.println("User is in system");
@@ -120,7 +120,7 @@ public class LoginPageController {
     		System.out.println("Button was pressed for new Admin");
     		name = username.getText();
     		passwordInput = password.getText();
-    		u = new User(name, passwordInput, null, null);
+    		u = new User(name, passwordInput);
     		User.addUser(u);
     		username.setText("new Admin");
     	}
@@ -128,7 +128,7 @@ public class LoginPageController {
     		System.out.println("Button was pressed for new User");
     		name = username.getText();
     		passwordInput = password.getText();
-    		u = new User(name, passwordInput, null, null);
+    		u = new User(name, passwordInput);
     		User.addUser(u);
     		User.write(u);
     		username.setText("new User");

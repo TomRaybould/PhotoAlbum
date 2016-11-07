@@ -6,11 +6,13 @@ import java.io.*;
 public class User implements Serializable{
 	public static final String storeDir = "dat";
 	public static final String storeFile = "Users.dat";
-	String userName;
-	String password;
-	ArrayList<Album> albumList = new ArrayList<Album>();
-	ArrayList<Tag> tags = new ArrayList<Tag>();
 	static ArrayList<User> allUsers = new ArrayList<User>();
+	
+	private String userName;
+	private String password;
+	private ArrayList<Album> albumList = new ArrayList<Album>();
+	private ArrayList<String> tagTypes = new ArrayList<String>();
+	
 	// This class will be a user
 	// The user should be made of a name/password combo
 	// a list of all of its albums
@@ -19,11 +21,9 @@ public class User implements Serializable{
 	// Tag will also be its own class
 	// basic serializtion code was also put into this class as a basic sample outline from class
 	// user should also be able to search, but that may be its own class
-	public User(String userName, String password, ArrayList<Album> albumList, ArrayList<Tag> tags){
+	public User(String userName, String password){
 		this.userName = userName;
 		this.password = password;
-		this.albumList = albumList;
-		this.tags = tags;
 	}
 	
 	public static void write(User u) throws IOException{

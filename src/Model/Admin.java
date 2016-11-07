@@ -1,17 +1,17 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Admin {
-	String name;
-	String password;
-	ArrayList<User> listOfUsers = new ArrayList<User>();
+public class Admin implements Serializable{
+	private String name;
+	private String password;
+	private ArrayList<User> listOfUsers = User.allUsers;
 	//this class should be able to add and delete users
 	// not much else to this class
-	public Admin(String name, String password, ArrayList<User> listOfUsers){
+	public Admin(String name, String password){
 		this.name = name;
 		this.password = password;
-		this.listOfUsers = listOfUsers;
 	}
 
 	public String getName() {
@@ -33,21 +33,19 @@ public class Admin {
 	public ArrayList<User> getListOfUsers() {
 		return listOfUsers;
 	}
-
-	public void setListOfUsers(ArrayList<User> listOfUsers) {
-		this.listOfUsers = listOfUsers;
-	}
 	
-	private void create(User u){
+	private void createUser(User u){
 		listOfUsers.add(u);
 	}
 	
-	private void delete(User u){
+	private void deleteUser(User u){
 		for(User a : this.listOfUsers){
 			if(a.equals(u)){
 				this.listOfUsers.remove(a);
 			}
 		}
 	}
+	
+	
 
 }

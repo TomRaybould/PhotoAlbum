@@ -26,11 +26,10 @@ public class DisplayPicture extends Application {
 		AnchorPane root = (AnchorPane)loader.load();
 		
 		DisplayPictureController DisplayController=loader.getController();
-	//	DisplayController.start(primaryStage);
+		DisplayController.start(primaryStage);
 		Scene scene = new Scene(root);
 	//shows image to start	
-		ImageView image = new ImageView(new Image(getClass().getResourceAsStream("/pics/snow.jpg")));
-		root.getChildren().add(image);
+
 		
 		
 		primaryStage.setTitle("Login Page");
