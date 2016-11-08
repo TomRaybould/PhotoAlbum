@@ -34,16 +34,38 @@ public class UserAlbumViewController {
 	private Button searchDate;
 	@FXML
 	private TableView tableView;
-
+	
+	public Stage currentStage;
 	
 	public void start(Stage mainStage){
-		
+		currentStage=mainStage;
 	}
 	
-
-	
-	
-	public void handle(ActionEvent event) {
+	public void handle(ActionEvent e) {
+		Button b= (Button)e.getSource();
+		
+		if(b == makeNewAlbum){
+			
+		}
+		else if(b == deleteAlbum){
+			
+		}
+		else if(b == renameAlbum){
+		
+		}
+		else if(b == logOut){
+			
+		}
+		else if(b == safeQuit){
+			
+		}
+		else if(b == searchTag){
+			
+		}
+		else if(b == searchDate){
+			
+		}
+		
 		
 	}
 }

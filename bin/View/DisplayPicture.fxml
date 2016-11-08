@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="591.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.DisplayPictureController">
+   <children>
+      <Text layoutX="266.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Display " />
+      <Text fx:id="caption" layoutX="35.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caption" />
+      <Text fx:id="date" layoutX="35.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+      <ImageView fx:id="image" fitHeight="444.0" fitWidth="486.0" layoutX="48.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

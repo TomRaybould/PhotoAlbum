@@ -20,7 +20,7 @@ public class LoginPageController {
 	private PasswordField passwordField;
 	@FXML
 	private Button loginButton;
-	
+
 	private Stage currentStage;
 	
 	public void start(Stage mainStage){
@@ -43,7 +43,8 @@ public class LoginPageController {
 				Scene scene = new Scene(root);
 				currentStage.setScene(scene);
 			}
-			else{
+			else{//normal user
+				
 				String userName = userNameField.getText().toString();
 				String pass = passwordField.getText().toString();
 				System.out.println("*"+userName+"*"+pass+"*");
@@ -52,6 +53,7 @@ public class LoginPageController {
 				//if(User.isInSystem(u)==true){
 				//	User.setCurrentUser(User.searchUser(userName, pass));
 				//}
+				//load user main page
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(getClass().getResource("/view/UserAlbumView.fxml"));
 			
