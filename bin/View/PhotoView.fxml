@@ -43,17 +43,17 @@
             <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" text="Display Picture">
+            <Button fx:id="displayPicture" mnemonicParsing="false" onAction="#handle" text="Display Picture">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="12.0" prefWidth="86.0" text="Slide Show" GridPane.rowIndex="2">
+            <Button fx:id="slideShow" mnemonicParsing="false" onAction="#handle" prefHeight="12.0" prefWidth="86.0" text="Slide Show" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Back to My Albums" GridPane.columnIndex="2">
+            <Button fx:id="backToMain" mnemonicParsing="false" onAction="#handle" text="Back to My Albums" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -69,14 +69,14 @@
       <TextArea prefHeight="251.0" prefWidth="609.0" text="&#10;&#10;&#10;&#10;&#10;&#10;&#10;                   Photo Thumbnails will be here&#10;&#10;&#10;&#10;&#10;&#10;&#10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
          <children>
-            <Button layoutX="29.0" layoutY="17.0" mnemonicParsing="false" text="Add Photo" />
-            <Button layoutX="29.0" layoutY="54.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="110.0" text="Remove Photo" />
-            <Button layoutX="29.0" layoutY="91.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="92.0" text="Move Photo" />
-            <Button layoutX="29.0" layoutY="128.0" mnemonicParsing="false" prefWidth="90.0" text="Copy Photo" />
-            <Button layoutX="29.0" layoutY="229.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="123.0" text="Add/Edit Caption" />
-            <Button layoutX="29.0" layoutY="266.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="Add Tag" />
-            <Button layoutX="29.0" layoutY="303.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="Remove Tag" />
-            <Button layoutX="36.0" layoutY="340.0" mnemonicParsing="false" text="Edit Tag Types" />
+            <Button fx:id="addPhoto" layoutX="29.0" layoutY="17.0" mnemonicParsing="false" onAction="#handle" text="Add Photo" />
+            <Button fx:id="removePhoto" layoutX="29.0" layoutY="54.0" mnemonicParsing="false" onAction="#handle" prefHeight="27.0" prefWidth="110.0" text="Remove Photo" />
+            <Button fx:id="movePhoto" layoutX="29.0" layoutY="91.0" mnemonicParsing="false" onAction="#handle" prefHeight="14.0" prefWidth="92.0" text="Move Photo" />
+            <Button fx:id="copyPhoto" layoutX="29.0" layoutY="128.0" mnemonicParsing="false" onAction="#handle" prefWidth="90.0" text="Copy Photo" />
+            <Button fx:id="addEditCaption" layoutX="29.0" layoutY="229.0" mnemonicParsing="false" onAction="#handle" prefHeight="17.0" prefWidth="123.0" text="Add/Edit Caption" />
+            <Button fx:id="addTag" layoutX="29.0" layoutY="266.0" mnemonicParsing="false" onAction="#handle" prefHeight="27.0" prefWidth="123.0" text="Add Tag" />
+            <Button fx:id="removeTag" layoutX="29.0" layoutY="303.0" mnemonicParsing="false" onAction="#handle" prefHeight="27.0" prefWidth="123.0" text="Remove Tag" />
+            <Button fx:id="editTagTypes" layoutX="36.0" layoutY="340.0" mnemonicParsing="false" onAction="#handle" text="Edit Tag Types" />
          </children>
       </AnchorPane>
    </children>

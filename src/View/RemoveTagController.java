@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class RemoveTagController {
 
@@ -16,6 +17,12 @@ public class RemoveTagController {
 
     @FXML
     private TextField lVOfTags;
+    
+    private Stage currentStage;
+    
+    public void start(Stage mainStage){
+		currentStage = mainStage;
+	}
 
     @FXML
     public void handle(ActionEvent e){

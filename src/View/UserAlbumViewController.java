@@ -1,9 +1,12 @@
 package View;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+
+import java.io.IOException;
 
 import javafx.event.ActionEvent;
 
@@ -12,6 +15,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 
 public class UserAlbumViewController {
 	@FXML
@@ -41,11 +46,20 @@ public class UserAlbumViewController {
 		currentStage=mainStage;
 	}
 	
-	public void handle(ActionEvent e) {
+	public void handle(ActionEvent e) throws IOException {
 		Button b= (Button)e.getSource();
 		
 		if(b == makeNewAlbum){
+			System.out.println("make new album");
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
+		
+			GridPane root = (GridPane)loader.load();
 			
+			PhotoViewController PhotoView=loader.getController();
+			PhotoView.start(currentStage);
+			Scene scene = new Scene(root);
+			currentStage.setScene(scene);
 		}
 		else if(b == deleteAlbum){
 			

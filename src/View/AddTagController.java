@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AddTagController {
 
@@ -19,6 +20,12 @@ public class AddTagController {
 
     @FXML
     private Button createNewTagType;
+    
+    private Stage currentStage;
+    
+    public void start(Stage mainStage){
+		currentStage = mainStage;
+	}
     
     public void handle(ActionEvent e){
     	Button b = (Button)e.getSource();
