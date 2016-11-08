@@ -7,6 +7,7 @@ public class User implements Serializable{
 	public static final String storeDir = "dat";
 	public static final String storeFile = "Users.dat";
 	static ArrayList<User> allUsers = new ArrayList<User>();
+	static private User currentUser;
 	
 	private String userName;
 	private String password;
@@ -51,7 +52,7 @@ public class User implements Serializable{
 		}
 	}
 	
-	public static boolean checkIfInSystem(User u){
+	public static boolean isInSystem(User u){
 		for(User a : allUsers){
 			if(a.equals(u)){
 				return true;
@@ -60,6 +61,15 @@ public class User implements Serializable{
 		return false;
 	}
 	
+	public static User searchUser(String user, String pass){
+		for(User u: allUsers){
+			if (u.userName.equals(user) && u.password.equals(pass)){
+				return u;
+			}
+		}
+		System.out.println("User not in system");
+		return null;
+	}
 	
 	public boolean equals(Object o){
 		if (!(o instanceof User)){
@@ -73,5 +83,13 @@ public class User implements Serializable{
 			return false;
 		}
 		return true;
+	}
+
+	public User getCurrentUser() {
+		return currentUser;
+	}
+
+	public static void setCurrentUser(User currUser) {
+		currentUser = currUser;
 	}
 }

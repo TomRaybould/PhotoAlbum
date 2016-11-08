@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UserAlbumViewController">
    <bottom>
       <GridPane alignment="CENTER" prefHeight="105.0" prefWidth="690.0" BorderPane.alignment="TOP_LEFT">
         <columnConstraints>
@@ -28,27 +28,27 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="135.0" text="Make New Album">
+            <Button fx:id="makeNewAlbum" mnemonicParsing="false" onAction="#handle" prefHeight="27.0" prefWidth="135.0" text="Make New Album">
                <GridPane.margin>
                   <Insets left="50.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Delete Album" textAlignment="CENTER" GridPane.columnIndex="1">
+            <Button fx:id="deleteAlbum" mnemonicParsing="false" onAction="#handle" text="Delete Album" textAlignment="CENTER" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="50.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="BASELINE_CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Rename Album" GridPane.columnIndex="2">
+            <Button fx:id="renameAlbum" alignment="BASELINE_CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Rename Album" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets left="50.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Log Out" GridPane.rowIndex="2">
+            <Button fx:id="logOut" mnemonicParsing="false" text="Log Out" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="10.0" left="50.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Safe Quit" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Button fx:id="safeQuit" mnemonicParsing="false" onAction="#handle" text="Safe Quit" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="50.0" />
                </GridPane.margin>
@@ -92,7 +92,7 @@
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="-or-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search by date" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox prefHeight="28.0" prefWidth="127.0" promptText="tag names" GridPane.columnIndex="2">
+            <ComboBox id="tagNameDropDown" fx:id="tagDropDown" onAction="#handle" prefHeight="28.0" prefWidth="127.0" promptText="tag names" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -105,13 +105,13 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </TextField>
-            <DatePicker GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="Search Tag" GridPane.columnIndex="4">
+            <DatePicker fx:id="dateSelector" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button id="Search" fx:id="searchTag" mnemonicParsing="false" onAction="#handle" text="Search Tag" GridPane.columnIndex="4">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Search Date" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <Button id="SearchDate" fx:id="searchDate" mnemonicParsing="false" onAction="#handle" text="Search Date" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
@@ -126,7 +126,7 @@
       </GridPane>
    </top>
    <center>
-      <TableView minHeight="-Infinity" minWidth="-Infinity" prefHeight="276.0" prefWidth="524.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="276.0" prefWidth="524.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn prefWidth="174.0" text="Album Name" />
           <TableColumn maxWidth="100.0" minWidth="100.0" prefWidth="200.0" text="# Of Photos" />

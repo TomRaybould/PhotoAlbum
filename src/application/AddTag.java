@@ -1,6 +1,7 @@
 package application;
 
 
+import View.AddTagController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,7 +20,7 @@ public class AddTag extends Application {
 		AnchorPane root = (AnchorPane)loader.load();
 		
 		AddTagController AddTagController=loader.getController();
-		//loginController.start(primaryStage);
+		//AddTagController.start(primaryStage);
 		
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("Login Page");

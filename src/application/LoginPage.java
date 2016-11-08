@@ -1,25 +1,17 @@
 package application;
 
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
+import View.LoginPageController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 
 public class LoginPage extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		System.out.println("poop");
+		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/view/LoginPage.fxml"));
 		
@@ -28,14 +20,9 @@ public class LoginPage extends Application {
 		LoginPageController loginController=loader.getController();
 		loginController.start(primaryStage);
 		Scene scene = new Scene(root);
-	//shows image to start	
-	//	ImageView image = new ImageView(new Image(getClass().getResourceAsStream("/pics/snow.jpg")));
-	//	root.getChildren().add(image);
-		
-		
+	
 		primaryStage.setTitle("Login Page");
 		primaryStage.setScene(scene);
-		System.out.println("poop");
 		
 		primaryStage.show();
 	}
@@ -43,4 +30,5 @@ public class LoginPage extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
 }

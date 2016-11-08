@@ -1,6 +1,7 @@
 package application;
 
 
+import View.RemoveTagController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
