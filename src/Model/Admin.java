@@ -34,18 +34,6 @@ public class Admin implements Serializable{
 		return listOfUsers;
 	}
 	
-	private void createUser(User u){
-		listOfUsers.add(u);
-	}
-	
-	private void deleteUser(User u){
-		for(User a : this.listOfUsers){
-			if(a.equals(u)){
-				this.listOfUsers.remove(a);
-			}
-		}
-	}
-	
 	
 
 }

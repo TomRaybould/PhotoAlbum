@@ -6,7 +6,7 @@ import java.io.*;
 public class User implements Serializable{
 	public static final String storeDir = "dat";
 	public static final String storeFile = "Users.dat";
-	static ArrayList<User> allUsers = new ArrayList<User>();
+	public static ArrayList<User> allUsers = new ArrayList<User>();
 	static private User currentUser;
 	
 	private String userName;
@@ -83,6 +83,11 @@ public class User implements Serializable{
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", password=" + password + "]";
 	}
 
 	public User getCurrentUser() {

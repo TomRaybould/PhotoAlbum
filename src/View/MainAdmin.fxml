@@ -2,17 +2,20 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="492.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainAdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainAdminController">
    <children>
       <Text layoutX="176.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Main Admin Window" />
-      <ListView layoutX="129.0" layoutY="82.0" prefHeight="200.0" prefWidth="235.0" />
-      <Text layoutX="161.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ListView of all current users" />
-      <Button fx:id="addUser" layoutX="385.0" layoutY="82.0" mnemonicParsing="false" onAction="#handle" text="Add User" />
-      <Button fx:id="deleteUser" layoutX="385.0" layoutY="137.0" mnemonicParsing="false" onAction="#handle" text="Delete User" />
-      <Button fx:id="logOut" layoutX="128.0" layoutY="347.0" mnemonicParsing="false" onAction="#handle" text="Log Out" />
-      <Button fx:id="safeQuit" layoutX="289.0" layoutY="347.0" mnemonicParsing="false" onAction="#handle" text="Safe Quit" />
+      <ListView layoutX="238.0" layoutY="70.0" prefHeight="293.0" prefWidth="260.0" />
+      <Text layoutX="283.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ListView of all current users" />
+      <Button fx:id="addUser" layoutX="20.0" layoutY="82.0" mnemonicParsing="false" onAction="#handle" text="Add User" />
+      <Button fx:id="deleteUser" layoutX="20.0" layoutY="221.0" mnemonicParsing="false" onAction="#handle" text="Delete User" />
+      <Button fx:id="logOut" layoutX="238.0" layoutY="386.0" mnemonicParsing="false" onAction="#handle" text="Log Out" />
+      <Button fx:id="safeQuit" layoutX="423.0" layoutY="386.0" mnemonicParsing="false" onAction="#handle" text="Safe Quit" />
+      <TextField fx:id="username" layoutX="13.0" layoutY="126.0" onAction="#handle" promptText="UserName" />
+      <TextField fx:id="password" layoutX="13.0" layoutY="165.0" promptText="Password" />
    </children>
 </AnchorPane>
