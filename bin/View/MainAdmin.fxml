@@ -9,7 +9,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainAdminController">
    <children>
       <Text layoutX="176.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Main Admin Window" />
-      <ListView layoutX="238.0" layoutY="70.0" prefHeight="293.0" prefWidth="260.0" />
+      <ListView fx:id="userList" layoutX="238.0" layoutY="70.0" prefHeight="293.0" prefWidth="260.0" />
       <Text layoutX="283.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ListView of all current users" />
       <Button fx:id="addUser" layoutX="20.0" layoutY="82.0" mnemonicParsing="false" onAction="#handle" text="Add User" />
       <Button fx:id="deleteUser" layoutX="20.0" layoutY="221.0" mnemonicParsing="false" onAction="#handle" text="Delete User" />

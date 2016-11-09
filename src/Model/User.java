@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.io.*;
 
 public class User implements Serializable{
-	public static final String storeDir = "dat";
-	public static final String storeFile = "Users.dat";
-	public static ArrayList<User> allUsers = new ArrayList<User>();
-	static private User currentUser;
+	private static final String storeDir = "dat";
+	private static final String storeFile = "Users.dat";
+	private static ArrayList<User> allUsers = new ArrayList<User>();
+	private static User currentUser;
 	
 	private String userName;
 	private String password;
@@ -27,6 +27,10 @@ public class User implements Serializable{
 		this.password = password;
 	}
 	
+	public static ArrayList<User> getUsers(){
+		return allUsers;
+	}
+	
 	public static void write(User u) throws IOException{
 		ObjectOutputStream oos = new ObjectOutputStream (
 				new FileOutputStream(storeDir +File.separator +storeFile));
@@ -43,10 +47,10 @@ public class User implements Serializable{
 		allUsers.add(u);
 	}
 	
-	public static void deleteUser(User u){
+	public static void deleteUser(String userName){
 		
 		for(User a : allUsers){
-			if(a.equals(u)){
+			if(a.userName.equals(userName)){
 				allUsers.remove(a);
 			}
 		}
@@ -97,4 +101,9 @@ public class User implements Serializable{
 	public static void setCurrentUser(User currUser) {
 		currentUser = currUser;
 	}
+
+	public String getUserName() {
+		return userName;
+	}
+
 }

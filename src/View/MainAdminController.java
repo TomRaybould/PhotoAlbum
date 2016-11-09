@@ -2,11 +2,14 @@
 package View;
 
 import javafx.event.ActionEvent;
+import javafx.collections.FXCollections; 
+import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -34,12 +37,40 @@ public class MainAdminController {
 
     @FXML
     private TextField password;
+    
+    @FXML
+    private ListView<String> userList;
 
     private Stage currentStage;
+    
+    private ObservableList<String> obslist;
+    
+    private String selectedUser;
 	
+    
 	public void start(Stage mainStage){
+		this.update();
 		currentStage = mainStage;
+		
+		userList
+        .getSelectionModel()
+        .selectedItemProperty()
+        .addListener(
+        (obs , oldVal, newVal) -> 
+        	{this.selectedUser = userList.getSelectionModel().getSelectedItem();
+        	System.out.println(selectedUser);});
 	}
+	
+	public void update(){
+		obslist=FXCollections.observableArrayList();
+		
+		for(User u : User.getUsers()){
+			obslist.add(u.getUserName());
+		}
+		
+		userList.setItems(obslist);
+	}
+	
     
     public void handle(ActionEvent e) throws IOException{
     	Button b = (Button)e.getSource();
@@ -49,19 +80,17 @@ public class MainAdminController {
     		String pass = password.getText();
     		User u = new User(name, pass);
     		User.addUser(u);
-    		for(User K: User.allUsers){
+    		for(User K: User.getUsers()){
     			System.out.println(K);
     		}
+    		this.update();
+
     	}
     	else if(b == deleteUser){
-    		System.out.println("deleteUser");
-    		String name = username.getText();
-    		String pass = password.getText();
-    		User u = new User(name, pass);
-    		User.deleteUser(u);
-    		for(User K: User.allUsers){
-    			System.out.println(K);
-    		}	
+    		System.out.println(selectedUser);
+    		obslist.remove(selectedUser);
+    		//User.deleteUser(selectedUser);
+    		
     	}
 		else if(b == logOut){
 			System.out.println("log out");
@@ -77,5 +106,10 @@ public class MainAdminController {
 			System.out.println("safe quit");
 		}
     }
+
+	public TextField getUsername() {
+		return username;
+	}
+
 }
 
