@@ -27,10 +27,10 @@ public class User implements Serializable{
 		this.password = password;
 	}
 	
-	public static ArrayList<User> getUsers(){
+	public static ArrayList<User> getAllUsers(){
 		return allUsers;
 	}
-	
+/*	
 	public static void write(User u) throws IOException{
 		ObjectOutputStream oos = new ObjectOutputStream (
 				new FileOutputStream(storeDir +File.separator +storeFile));
@@ -43,17 +43,20 @@ public class User implements Serializable{
 	           User u = (User)ois.readObject();
 	           return u;
 	        }
+	       */
 	public static void addUser(User u){
 		allUsers.add(u);
 	}
 	
 	public static void deleteUser(String userName){
-		
+		User u=null;
 		for(User a : allUsers){
 			if(a.userName.equals(userName)){
-				allUsers.remove(a);
+				System.out.println("detele");
+				u=a;
 			}
 		}
+		allUsers.remove(u);
 	}
 	
 	public static boolean isInSystem(User u){

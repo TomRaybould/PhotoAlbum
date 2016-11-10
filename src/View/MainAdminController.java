@@ -57,15 +57,18 @@ public class MainAdminController {
         .selectedItemProperty()
         .addListener(
         (obs , oldVal, newVal) -> 
-        	{this.selectedUser = userList.getSelectionModel().getSelectedItem();
-        	System.out.println(selectedUser);});
+        	{this.selectedUser = userList.getSelectionModel().getSelectedItem();});
 	}
 	
 	public void update(){
-		obslist=FXCollections.observableArrayList();
+		obslist = FXCollections.observableArrayList();
 		
-		for(User u : User.getUsers()){
-			obslist.add(u.getUserName());
+		for(User u : User.getAllUsers()){
+			String s = new String(u.getUserName());
+			if(s==u.getUserName()){
+				System.out.println("not working");
+			}
+			obslist.add(s);
 		}
 		
 		userList.setItems(obslist);
@@ -80,7 +83,7 @@ public class MainAdminController {
     		String pass = password.getText();
     		User u = new User(name, pass);
     		User.addUser(u);
-    		for(User K: User.getUsers()){
+    		for(User K: User.getAllUsers()){
     			System.out.println(K);
     		}
     		this.update();
@@ -88,8 +91,8 @@ public class MainAdminController {
     	}
     	else if(b == deleteUser){
     		System.out.println(selectedUser);
-    		obslist.remove(selectedUser);
-    		//User.deleteUser(selectedUser);
+    		User.deleteUser(selectedUser);
+    		this.update();
     		
     	}
 		else if(b == logOut){

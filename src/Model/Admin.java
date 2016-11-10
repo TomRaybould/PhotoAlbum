@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Admin implements Serializable{
 	private String name;
 	private String password;
-	private ArrayList<User> listOfUsers = User.getUsers();
+	private ArrayList<User> listOfUsers = User.getAllUsers();
 	//this class should be able to add and delete users
 	// not much else to this class
 	public Admin(String name, String password){
