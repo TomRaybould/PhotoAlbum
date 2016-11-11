@@ -1,5 +1,11 @@
 package View;
 
+import java.util.ArrayList;
+
+import Model.Album;
+import Model.Photo;
+import Model.Tag;
+import Model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,16 +41,30 @@ public class AddTagController {
     @FXML
     private Text currentTagType;
     
+    private Album a;
+    
+    private User u;
+    
+    private Photo p;
+    
+    private Tag t;
+    
     private ObservableList<String> myComboBoxData = FXCollections.observableArrayList();
     
     private Stage currentStage;
     
     public void start(Stage mainStage){
 		currentStage = mainStage;
-		myComboBoxData.add(new String("option1"));
-		myComboBoxData.add(new String("option2"));
-		myComboBoxData.add(new String("option3"));
-		myComboBoxData.add(new String("option4"));
+		u = User.getCurrentUser();
+		System.out.println("Current user in Photo view " + u);
+		a = Album.getCurrentAlbum();
+		System.out.println("Current Album in Photo view is: " + a);
+		p = Photo.getCurrentPhoto();
+		System.out.println("Current Photo in add tag is: " + p);
+		myComboBoxData.add(new String("Location"));
+		myComboBoxData.add(new String("Weather"));
+		myComboBoxData.add(new String("Food"));
+		myComboBoxData.add(new String("Other"));
 		tagDropDown.setItems(myComboBoxData);
 			currentStage.show();
 	}
@@ -59,6 +79,15 @@ public class AddTagController {
     	Button b = (Button)e.getSource();
     	if(b == addTag){
     		System.out.println("add Tag");
+    		String tagType = currentTagType.getText();
+    		String tag = tagText.getText();
+    		p = Photo.getCurrentPhoto();
+    		t = new Tag(tagType, tag);
+    		p.addTag(t);
+    		ArrayList<Tag> photoTags = p.getTags();
+    		for(Tag tag1: photoTags){
+    			System.out.println(tag1);
+    		}
     	}
     	else if(b == addTypeToList){
     		System.out.println("Create new tag type");

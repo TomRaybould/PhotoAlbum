@@ -24,7 +24,7 @@ import javafx.stage.Stage;
 
 public class addPhotoController {
 
-    @FXML
+	@FXML
     private ImageView image;
 
     @FXML
@@ -32,6 +32,9 @@ public class addPhotoController {
 
     @FXML
     private Button cancel;
+
+    @FXML
+    private Button tagThisPhoto;
     
     private Stage currentStage;
     
@@ -41,8 +44,13 @@ public class addPhotoController {
     
     private Album a;
     
+    private Photo p;
+    
+    private boolean setATag;
+    
     public void start(Stage mainStage) throws MalformedURLException{
 		currentStage = mainStage;
+		setATag = false;
 		u = User.getCurrentUser();
 		System.out.println("Current user in Photo view " + u);
 		a = Album.getCurrentAlbum();
@@ -82,21 +90,38 @@ public class addPhotoController {
     void handle(ActionEvent e) throws IOException {
     	Button b= (Button)e.getSource();
     	if(b == addPhoto){
-    		System.out.println("Enter Photo ID for now");
-    		String date = IO.readString();
-    		Photo photo = new Photo(date, null, URL);
-    		a.addPhotoToAlbum(photo);
-    		a.iterate();
-    		System.out.println("make new album");
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
-		
-			GridPane root = (GridPane)loader.load();
-			
-			PhotoViewController PhotoView=loader.getController();
-			PhotoView.start(currentStage);
-			Scene scene = new Scene(root);
-			currentStage.setScene(scene);
+    		if(setATag = false){
+    			System.out.println("Enter Photo ID for now");
+        		String date = IO.readString();
+        		Photo photo = new Photo(date, URL);
+        		a.addPhotoToAlbum(photo);
+        		Photo.setCurrentPhoto(photo);
+        		a.iterate();
+        		System.out.println("make new album");
+    			FXMLLoader loader = new FXMLLoader();
+    			loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
+    		
+    			GridPane root = (GridPane)loader.load();
+    			
+    			PhotoViewController PhotoView=loader.getController();
+    			PhotoView.start(currentStage);
+    			Scene scene = new Scene(root);
+    			currentStage.setScene(scene);
+    		}
+    		else{
+    			System.out.println("make new album");
+    			FXMLLoader loader = new FXMLLoader();
+    			loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
+    		
+    			GridPane root = (GridPane)loader.load();
+    			
+    			PhotoViewController PhotoView=loader.getController();
+    			PhotoView.start(currentStage);
+    			Scene scene = new Scene(root);
+    			currentStage.setScene(scene);
+    			
+    		}
+    		
 			
 		}
 		else if(b == cancel){
@@ -108,6 +133,26 @@ public class addPhotoController {
 			
 			PhotoViewController PhotoView=loader.getController();
 			PhotoView.start(currentStage);
+			Scene scene = new Scene(root);
+			currentStage.setScene(scene);
+			
+		}
+		else if(b == tagThisPhoto){
+			System.out.println("Enter Photo ID for now");
+    		String date = IO.readString();
+    		Photo photo = new Photo(date, URL);
+    		a.addPhotoToAlbum(photo);
+    		Photo.setCurrentPhoto(photo);
+    		a.iterate();
+    		setATag = true;
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/addTag.fxml"));
+			
+			AnchorPane root = (AnchorPane)loader.load();
+			
+			AddTagController addTag=loader.getController();
+			addTag.start(currentStage);
 			Scene scene = new Scene(root);
 			currentStage.setScene(scene);
 			

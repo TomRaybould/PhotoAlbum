@@ -31,5 +31,11 @@ public class Tag implements Serializable{
 	public void setValue(String value) {
 		this.value = value;
 	}
+
+	@Override
+	public String toString() {
+		return "Tag [type=" + type + ", value=" + value + "]";
+	}
+	
 	
 }

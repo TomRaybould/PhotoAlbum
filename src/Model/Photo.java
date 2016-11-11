@@ -6,12 +6,14 @@ import java.util.ArrayList;
 public class Photo implements Serializable{
 	private String date;
 	private String src;
-	private ArrayList<Tag> tags = new ArrayList<Tag>();
+	private ArrayList<Tag> tags;
+	private static Photo currentPhoto;
 	
-	public Photo(String date, ArrayList<Tag> tags, String src){
+	public Photo(String date, String src){
 		this.date = date;
-		this.tags = tags;
+		this.tags = new ArrayList<Tag>();
 		this.src = src;
+		
 	}
 
 	public String getDate() {
@@ -29,7 +31,16 @@ public class Photo implements Serializable{
 	public String getSrc() {
 		return src;
 	}
+	public void addTag(Tag t){
+		tags.add(t);
+	}
+	public static void setCurrentPhoto(Photo p) {
+		currentPhoto = p;
+	}
 
+	public static Photo getCurrentPhoto() {
+		return currentPhoto;
+	}
 	@Override
 	public String toString() {
 		return "Photo [date=" + date + ", src=" + src + ", tags=" + tags + "]";
