@@ -91,13 +91,17 @@ public class User implements Serializable{
 		}
 		return true;
 	}
+	
+	public void addAlbum(Album album){
+		this.albumList.add(album); 
+	}
 
 	@Override
 	public String toString() {
 		return "User [userName=" + userName + ", password=" + password + "]";
 	}
 
-	public User getCurrentUser() {
+	public static User getCurrentUser() {
 		return currentUser;
 	}
 

@@ -57,15 +57,6 @@ public class DisplayPictureController {
         		image.setImage(imgLoad);
         		mainStage.show();
     		}
-    						
-    		
-    		
-    		
-    		
-    		
-    		String imgURL = images.get(imgPosition).toURI().toURL().toString();
-    		Image imgLoad2 = new Image(imgURL, 500, 300, true, true, true);
-    		imgMain.setImage(imgLoad2);
     			
    }
    

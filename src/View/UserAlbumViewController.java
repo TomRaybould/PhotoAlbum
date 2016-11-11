@@ -7,7 +7,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import Model.Album;
+import Model.Photo;
+import Model.User;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.ComboBox;
@@ -42,8 +46,12 @@ public class UserAlbumViewController {
 	
 	public Stage currentStage;
 	
+	private User u;
+	
 	public void start(Stage mainStage){
 		currentStage=mainStage;
+		u = User.getCurrentUser();
+		System.out.println("Current user in User album view" + u);
 	}
 	
 	public void handle(ActionEvent e) throws IOException {
@@ -51,9 +59,11 @@ public class UserAlbumViewController {
 		
 		if(b == makeNewAlbum){
 			System.out.println("make new album");
+			Album A = new Album("RandomNameForNow");
+			Album.setCurrentAlbum(A);
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
-		
+			
 			GridPane root = (GridPane)loader.load();
 			
 			PhotoViewController PhotoView=loader.getController();

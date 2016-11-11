@@ -2,6 +2,8 @@ package View;
 
 import java.io.IOException;
 
+import Model.Album;
+import Model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,8 +50,16 @@ public class PhotoViewController {
     
     private Stage currentStage;
     
+    private User u;
+    
+    private Album a;
+    
     public void start(Stage mainStage){
 		currentStage = mainStage;
+		u = User.getCurrentUser();
+		System.out.println("Current user in Photo view " + u);
+		a = Album.getCurrentAlbum();
+		System.out.println("Current Album in Photo view is: " + a);
 	}
 
     @FXML
@@ -95,6 +105,16 @@ public class PhotoViewController {
 		
 		}
 		else if(b == addPhoto){
+			System.out.println("User main");
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/addPhoto.fxml"));
+		
+			AnchorPane root = (AnchorPane)loader.load();
+			
+			addPhotoController addPhoto =loader.getController();
+			addPhoto.start(currentStage);
+			Scene scene = new Scene(root);
+			currentStage.setScene(scene);
 			
 		}
 		else if(b == removePhoto){

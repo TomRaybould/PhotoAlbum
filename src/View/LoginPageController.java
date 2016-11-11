@@ -48,12 +48,13 @@ public class LoginPageController {
 				String userName = userNameField.getText().toString();
 				String pass = passwordField.getText().toString();
 				System.out.println("*"+userName+"*"+pass+"*");
-				//User u= new User(userName,pass);
+				User u= new User(userName,pass);
 				
-				//if(User.isInSystem(u)==true){
-				//	User.setCurrentUser(User.searchUser(userName, pass));
-				//}
+				if(User.isInSystem(u)==true){
+					User.setCurrentUser(User.searchUser(userName, pass));
+				}
 				//load user main page
+			
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(getClass().getResource("/view/UserAlbumView.fxml"));
 			

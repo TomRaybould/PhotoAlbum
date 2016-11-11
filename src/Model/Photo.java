@@ -8,9 +8,10 @@ public class Photo implements Serializable{
 	private String src;
 	private ArrayList<Tag> tags = new ArrayList<Tag>();
 	
-	public Photo(String date, ArrayList<Tag> tags){
+	public Photo(String date, ArrayList<Tag> tags, String src){
 		this.date = date;
 		this.tags = tags;
+		this.src = src;
 	}
 
 	public String getDate() {
@@ -28,5 +29,11 @@ public class Photo implements Serializable{
 	public String getSrc() {
 		return src;
 	}
+
+	@Override
+	public String toString() {
+		return "Photo [date=" + date + ", src=" + src + ", tags=" + tags + "]";
+	}
+	
 	
 }
