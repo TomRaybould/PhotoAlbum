@@ -46,43 +46,45 @@ public class addPhotoController {
     
     private Photo p;
     
-    private boolean setATag;
+    private boolean setATag = false;
     
     public void start(Stage mainStage) throws MalformedURLException{
 		currentStage = mainStage;
-		setATag = false;
-		u = User.getCurrentUser();
-		System.out.println("Current user in Photo view " + u);
-		a = Album.getCurrentAlbum();
-		System.out.println("Current Album in Photo view is: " + a);
-    	int imgTotal;
-    	int imgPosition = 0;
-    	ImageView imgMain = new ImageView();
-		ImageView imgThumb = new ImageView();
-		imgThumb.setFitHeight(100);
-		imgThumb.setFitWidth(200);
-		// List of Images
-		System.out.println("here");
-		List<File> images = new ArrayList<File>();
-		//File chooser
-		final FileChooser fileChooser = new FileChooser();
-    		File file = fileChooser.showOpenDialog(mainStage);
-    		if(file.isFile() &&
-    				(file.getName().contains(".jpg") || file.getName().contains(".png") || file.getName().contains(".hmp") ||
-    						file.getName().contains(".gif"))){
-    			System.out.println("In file success");
-    			images.add(file);
-    			imgTotal = images.size();
-    			
-    			if(imgTotal > 1){
-    				imgPosition++;
-    			}
-    			URL = file.toURI().toURL().toString();
-        		Image imgLoad = new Image(URL);
-        		//pass image to ImageView
-        		image.setImage(imgLoad);
-        		
-    		}
+		if(setATag == false){
+			u = User.getCurrentUser();
+			System.out.println("Current user in Photo view " + u);
+			a = Album.getCurrentAlbum();
+			System.out.println("Current Album in Photo view is: " + a);
+	    	int imgTotal;
+	    	int imgPosition = 0;
+	    	ImageView imgMain = new ImageView();
+			ImageView imgThumb = new ImageView();
+			imgThumb.setFitHeight(100);
+			imgThumb.setFitWidth(200);
+			// List of Images
+			System.out.println("here");
+			List<File> images = new ArrayList<File>();
+			//File chooser
+			final FileChooser fileChooser = new FileChooser();
+	    		File file = fileChooser.showOpenDialog(mainStage);
+	    		if(file.isFile() &&
+	    				(file.getName().contains(".jpg") || file.getName().contains(".png") || file.getName().contains(".hmp") ||
+	    						file.getName().contains(".gif"))){
+	    			System.out.println("In file success");
+	    			images.add(file);
+	    			imgTotal = images.size();
+	    			
+	    			if(imgTotal > 1){
+	    				imgPosition++;
+	    			}
+	    			URL = file.toURI().toURL().toString();
+	        		Image imgLoad = new Image(URL);
+	        		//pass image to ImageView
+	        		image.setImage(imgLoad);
+	        		
+	    		}
+		}
+		
     			
 	}
 
