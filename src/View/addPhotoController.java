@@ -87,7 +87,6 @@ public class addPhotoController {
 	        		//pass image to ImageView
 	        		image.setImage(imgLoad);
 	        		
-	        		
 	    		}
 		}
 		
@@ -98,37 +97,16 @@ public class addPhotoController {
     void handle(ActionEvent e) throws IOException {
     	Button b= (Button)e.getSource();
     	if(b == addPhoto){
-    		if(setATag = false){	
+   
         		String date = "dummy date";
         		Photo photo = new Photo(date, URL);
         		currAlbum.addPhotoToAlbum(photo);
         		Photo.setCurrentPhoto(photo);
         		currAlbum.iterate();
+        		photo.setCaption(captionText.getText());
+        		photo.setImg(new Image(URL));
         		System.out.println("make new album");
-    			FXMLLoader loader = new FXMLLoader();
-    			loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
-    		
-    			GridPane root = (GridPane)loader.load();
-    			
-    			PhotoViewController PhotoView=loader.getController();
-    			PhotoView.start(currentStage);
-    			Scene scene = new Scene(root);
-    			currentStage.setScene(scene);
-    		}
-    		else{
-    			System.out.println("make new album");
-    			FXMLLoader loader = new FXMLLoader();
-    			loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
-    		
-    			AnchorPane root = (AnchorPane)loader.load();
-    			
-    			PhotoViewController PhotoView=loader.getController();
-    			PhotoView.start(currentStage);
-    			Scene scene = new Scene(root);
-    			currentStage.setScene(scene);
-    			
-    		}
-    		
+    			currentStage.close();
 			
 		}
 		else if(b == cancel){

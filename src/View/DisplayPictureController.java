@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Model.Photo;
 import Model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,6 +56,7 @@ public class DisplayPictureController {
         		Image imgLoad = new Image(thumbURL);
         		//pass image to ImageView
         		image.setImage(imgLoad);
+        		Photo photo = new Photo("dummy date",thumbURL);
         		mainStage.show();
     		}
     			

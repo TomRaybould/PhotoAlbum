@@ -58,7 +58,7 @@ public class UserAlbumViewController {
 	private User currUser;
 	
 	public void start(Stage mainStage){
-		currentStage=mainStage;
+		currentStage = mainStage;
 		currUser = User.getCurrentUser();
 		userTitle.setText(currUser.getUserName()+"'s Albums"); 
 		System.out.println("Current user in User album view" + currUser);

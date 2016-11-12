@@ -3,9 +3,13 @@ package Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javafx.scene.image.Image;
+
 public class Photo implements Serializable{
 	private String date;
+	private String caption;
 	private String src;
+	private Image img;
 	private ArrayList<Tag> tags;
 	private static Photo currentPhoto;
 	
@@ -13,8 +17,10 @@ public class Photo implements Serializable{
 		this.date = date;
 		this.tags = new ArrayList<Tag>();
 		this.src = src;
+		this.img= new Image(src);
 		
 	}
+
 
 	public String getDate() {
 		return date;
@@ -44,6 +50,19 @@ public class Photo implements Serializable{
 	@Override
 	public String toString() {
 		return "Photo [date=" + date + ", src=" + src + ", tags=" + tags + "]";
+	}
+	public String getCaption() {
+		return caption;
+	}
+
+	public void setCaption(String caption) {
+		this.caption = caption;
+	}
+	public Image getImg() {
+		return img;
+	}
+	public void setImg(Image img) {
+		this.img = img;
 	}
 	
 	

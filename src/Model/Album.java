@@ -3,12 +3,26 @@ package Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javafx.scene.image.Image;
+
 public class Album implements Serializable{
 	private String name;
 	private ArrayList<Photo> photosInAlbum = new ArrayList<Photo>();
 	private static Album currentAlbum;
 	// an album will mainly consist of a list of photos
 	// it can also have a list of tags, but unclear whether or not that would be necessary
+	
+	public Photo searchByImage(Image img){
+		for(Photo p : photosInAlbum){
+			if(p.getImg()==(img)){
+				System.out.println("truefdsafjkldsa");
+			}
+		}
+		return null;
+	}
+	public void removePhotoFromAlbum(Photo p){
+		photosInAlbum.remove(p);
+	}
 	
 	public Album(String name ){
 		this.name = name;
