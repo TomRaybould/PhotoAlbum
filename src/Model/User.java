@@ -59,9 +59,9 @@ public class User implements Serializable{
 		allUsers.remove(u);
 	}
 	
-	public static boolean isInSystem(User u){
+	public static boolean isInSystem(String userName){
 		for(User a : allUsers){
-			if(a.equals(u)){
+			if(a.userName.equalsIgnoreCase(userName)){
 				return true;
 			}
 		}
@@ -70,7 +70,7 @@ public class User implements Serializable{
 	
 	public static User searchUser(String user, String pass){
 		for(User u: allUsers){
-			if (u.userName.equals(user) && u.password.equals(pass)){
+			if (u.userName.equalsIgnoreCase(user) && u.password.equals(pass)){
 				return u;
 			}
 		}

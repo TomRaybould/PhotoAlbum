@@ -8,9 +8,11 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -79,12 +81,18 @@ public class MainAdminController {
     	Button b = (Button)e.getSource();
     	if(b == addUser){
     		System.out.println("addUser");
-    		String name = username.getText();
-    		String pass = password.getText();
-    		User u = new User(name, pass);
-    		User.addUser(u);
-    		for(User K: User.getAllUsers()){
+    		String name = username.getText().toString();
+    		String pass = password.getText().toString();
+    		
+    		if(User.isInSystem(name)){
+    			makeAlertInfo("Invalid User Name","","This user name is already taken");
+    		}
+    		else{
+    			User u = new User(name, pass);
+    			User.addUser(u);
+    			for(User K: User.getAllUsers()){
     			System.out.println(K);
+    			}
     		}
     		this.update();
 
@@ -93,7 +101,6 @@ public class MainAdminController {
     		System.out.println(selectedUser);
     		User.deleteUser(selectedUser);
     		this.update();
-    		
     	}
 		else if(b == logOut){
 			System.out.println("log out");
@@ -112,6 +119,16 @@ public class MainAdminController {
 
 	public TextField getUsername() {
 		return username;
+	}
+	
+	private void makeAlertInfo(String errorTitle, String errorHeader, String errorContent) {    
+    	
+		   Alert alert = new Alert(AlertType.INFORMATION);
+		   alert.initOwner(null);
+		   alert.setTitle(errorTitle);
+		   alert.setHeaderText(errorHeader);
+		   alert.setContentText(errorContent);
+		   alert.showAndWait();
 	}
 
 }

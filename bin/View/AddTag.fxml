@@ -7,20 +7,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="373.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddTagController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddTagController">
    <children>
       <Text layoutX="32.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add a Tag">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <ComboBox fx:id="tagDropDown" layoutX="42.0" layoutY="91.0" prefWidth="150.0" onAction = "#handleComboBoxAction" promptText="Tag Type" />
-      <TextField fx:id="tagText" layoutX="246.0" layoutY="91.0" promptText="Enter tag field here" />
-      <Button fx:id="addTag" layoutX="343.0" layoutY="134.0" mnemonicParsing="false" onAction="#handle" text="Add Tag" />
-      <Button fx:id="addTypeToList" layoutX="45.0" layoutY="309.0" mnemonicParsing="false" onAction="#handle" text="Add type to List" />
-      <Text layoutX="43.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use an existing tag type" />
-      <Text fx:id="newTagType" layoutX="31.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a New Tag Type" />
-      <TextField fx:id="newTagTypeText" layoutX="31.0" layoutY="266.0" prefHeight="27.0" prefWidth="185.0" promptText="Enter New Tag Type Here" />
-      <Text fx:id="currentTagType" layoutX="284.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Tag Type" />
+      <ComboBox fx:id="tagDropDown" layoutX="42.0" layoutY="78.0" onAction="#handleComboBoxAction" prefWidth="150.0" promptText="Tag Type" />
+      <TextField fx:id="tagText" layoutX="246.0" layoutY="78.0" promptText="Enter tag field here" />
+      <Button fx:id="addTag" layoutX="246.0" layoutY="126.0" mnemonicParsing="false" onAction="#handle" text="Add Tag" />
+      <Button fx:id="addTypeToList" layoutX="153.0" layoutY="220.0" mnemonicParsing="false" onAction="#handle" text="Create New Tag Type" />
+      <Text fx:id="currentTagType" layoutX="246.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Tag Type" />
    </children>
 </AnchorPane>

@@ -11,10 +11,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class PhotoViewController {
-
+	@FXML
+	private Text photoTitle;
+	
     @FXML
     private Button displayPicture;
 
@@ -50,21 +54,25 @@ public class PhotoViewController {
     
     private Stage currentStage;
     
-    private User u;
+    private User currUser;
     
-    private Album a;
+    private Album currAlbum;
     
     public void start(Stage mainStage){
 		currentStage = mainStage;
-		u = User.getCurrentUser();
-		System.out.println("Current user in Photo view " + u);
-		a = Album.getCurrentAlbum();
-		System.out.println("Current Album in Photo view is: " + a);
+		currUser = User.getCurrentUser();
+		System.out.println("Current user in Photo view " + currUser);
+		currAlbum = Album.getCurrentAlbum();
+		System.out.println("Current Album in Photo view is: " + currAlbum);
+		
+		photoTitle.setText("Photos in Ablum: "+ currAlbum.getName());
+		
 	}
 
     @FXML
     public void handle(ActionEvent e) throws IOException {
     	Button b= (Button)e.getSource();
+    	
     	if(b == displayPicture){
     		System.out.println("DisplayPicture");
 			FXMLLoader loader = new FXMLLoader();
@@ -74,8 +82,13 @@ public class PhotoViewController {
 			
 			DisplayPictureController DisplayPicture=loader.getController();
 			DisplayPicture.start(currentStage);
+			
 			Scene scene = new Scene(root);
-			currentStage.setScene(scene);
+			Stage newStage =new Stage();
+			newStage.initModality(Modality.APPLICATION_MODAL);
+			newStage.setScene(scene);
+			newStage.centerOnScreen();
+			newStage.showAndWait();
 			
 		}
 		else if(b == slideShow){
@@ -112,9 +125,12 @@ public class PhotoViewController {
 			AnchorPane root = (AnchorPane)loader.load();
 			
 			addPhotoController addPhoto =loader.getController();
-			addPhoto.start(currentStage);
 			Scene scene = new Scene(root);
-			currentStage.setScene(scene);
+			Stage newStage =new Stage();
+			addPhoto.start(newStage);
+			newStage.initModality(Modality.APPLICATION_MODAL);
+			newStage.setScene(scene);
+			newStage.showAndWait();
 			
 		}
 		else if(b == removePhoto){

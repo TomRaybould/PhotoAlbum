@@ -15,11 +15,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class addPhotoController {
@@ -36,25 +38,28 @@ public class addPhotoController {
     @FXML
     private Button tagThisPhoto;
     
+    @FXML
+    private TextField captionText;
+    
     private Stage currentStage;
     
     private String URL;
     
-    private User u;
+    private User currUser;
     
-    private Album a;
+    private static Album currAlbum;
     
-    private Photo p;
+    private static Photo currPhoto;
     
     private boolean setATag = false;
     
     public void start(Stage mainStage) throws MalformedURLException{
 		currentStage = mainStage;
 		if(setATag == false){
-			u = User.getCurrentUser();
-			System.out.println("Current user in Photo view " + u);
-			a = Album.getCurrentAlbum();
-			System.out.println("Current Album in Photo view is: " + a);
+			currUser = User.getCurrentUser();
+			System.out.println("Current user in Photo view " + currUser);
+			currAlbum = Album.getCurrentAlbum();
+			System.out.println("Current Album in Photo view is: " + currAlbum);
 	    	int imgTotal;
 	    	int imgPosition = 0;
 	    	ImageView imgMain = new ImageView();
@@ -82,6 +87,7 @@ public class addPhotoController {
 	        		//pass image to ImageView
 	        		image.setImage(imgLoad);
 	        		
+	        		
 	    		}
 		}
 		
@@ -92,13 +98,12 @@ public class addPhotoController {
     void handle(ActionEvent e) throws IOException {
     	Button b= (Button)e.getSource();
     	if(b == addPhoto){
-    		if(setATag = false){
-    			System.out.println("Enter Photo ID for now");
-        		String date = IO.readString();
+    		if(setATag = false){	
+        		String date = "dummy date";
         		Photo photo = new Photo(date, URL);
-        		a.addPhotoToAlbum(photo);
+        		currAlbum.addPhotoToAlbum(photo);
         		Photo.setCurrentPhoto(photo);
-        		a.iterate();
+        		currAlbum.iterate();
         		System.out.println("make new album");
     			FXMLLoader loader = new FXMLLoader();
     			loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
@@ -115,7 +120,7 @@ public class addPhotoController {
     			FXMLLoader loader = new FXMLLoader();
     			loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
     		
-    			GridPane root = (GridPane)loader.load();
+    			AnchorPane root = (AnchorPane)loader.load();
     			
     			PhotoViewController PhotoView=loader.getController();
     			PhotoView.start(currentStage);
@@ -127,36 +132,25 @@ public class addPhotoController {
 			
 		}
 		else if(b == cancel){
-			System.out.println("make new album");
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
-		
-			GridPane root = (GridPane)loader.load();
 			
-			PhotoViewController PhotoView=loader.getController();
-			PhotoView.start(currentStage);
-			Scene scene = new Scene(root);
-			currentStage.setScene(scene);
+			//just close the window because now addPhoto is loaded on top of photoview
+			currentStage.close();
 			
 		}
 		else if(b == tagThisPhoto){
-			System.out.println("Enter Photo ID for now");
-    		String date = IO.readString();
-    		Photo photo = new Photo(date, URL);
-    		a.addPhotoToAlbum(photo);
-    		Photo.setCurrentPhoto(photo);
-    		a.iterate();
-    		setATag = true;
 			
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/addTag.fxml"));
 			
 			AnchorPane root = (AnchorPane)loader.load();
 			
-			AddTagController addTag=loader.getController();
-			addTag.start(currentStage);
+			AddTagController addTag = loader.getController();
+			
 			Scene scene = new Scene(root);
-			currentStage.setScene(scene);
+			Stage newStage =new Stage();
+			newStage.initModality(Modality.APPLICATION_MODAL);
+			newStage.setScene(scene);
+			newStage.showAndWait();
 			
 		}
     }
