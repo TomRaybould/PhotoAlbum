@@ -137,9 +137,31 @@ public class PhotoViewController {
 			
 		}
 		else if(b == movePhoto){
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/View/MovePhoto.fxml"));
+		
+			BorderPane root = (BorderPane)loader.load();
 			
+			MovePhotoController movePhoto =loader.getController();
+			Scene scene = new Scene(root);
+			Stage newStage =new Stage();
+			movePhoto.start(newStage);
+			newStage.initModality(Modality.APPLICATION_MODAL);
+			newStage.setScene(scene);
+			newStage.showAndWait();
 		}
 		else if(b == copyPhoto){
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/View/CopyPhoto.fxml"));
+		
+			BorderPane root = (BorderPane)loader.load();
+			
+			CopyPhotoController copyPhoto =loader.getController();
+			Scene scene = new Scene(root);
+			Stage newStage =new Stage();
+			copyPhoto.start(newStage);
+			newStage.initModality(Modality.APPLICATION_MODAL);
+			newStage.setScene(scene);
 			
 		}
 		else if(b == addEditCaption){
