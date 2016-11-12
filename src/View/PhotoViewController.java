@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import Model.Album;
 import Model.User;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -134,11 +135,11 @@ public class PhotoViewController {
 			
 		}
 		else if(b == removePhoto){
-			
+			//should bring up a comfrimation alert
 		}
 		else if(b == movePhoto){
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/View/MovePhoto.fxml"));
+			loader.setLocation(getClass().getResource("/view/MovePhoto.fxml"));
 		
 			BorderPane root = (BorderPane)loader.load();
 			
@@ -152,7 +153,7 @@ public class PhotoViewController {
 		}
 		else if(b == copyPhoto){
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/View/CopyPhoto.fxml"));
+			loader.setLocation(getClass().getResource("/view/CopyPhoto.fxml"));
 		
 			BorderPane root = (BorderPane)loader.load();
 			
@@ -162,10 +163,11 @@ public class PhotoViewController {
 			copyPhoto.start(newStage);
 			newStage.initModality(Modality.APPLICATION_MODAL);
 			newStage.setScene(scene);
+			newStage.showAndWait();
 			
 		}
 		else if(b == addEditCaption){
-			
+			//should bring up a dialog box
 		}
 		else if(b == addTag){
 			System.out.println("add Tag");
