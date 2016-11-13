@@ -2,6 +2,7 @@ package View;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import Model.Album;
 import Model.Photo;
@@ -16,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -70,13 +72,8 @@ public class PhotoViewController {
     
     private Stage currentStage;
     
-    private User currUser;
-    
-    private Album currAlbum;
-    
     private GridPane selectedPane;
     
-    private Photo selectedPhoto;
     
     private final String STYLE_PRESSED = "-fx-border-color: #039ED3; -fx-faint-border-color: #039ED322;";
     private final String STYLE_NORMAL = "-fx-border-color: transparent; -fx-faint-border-color: transparent;";
@@ -84,13 +81,11 @@ public class PhotoViewController {
     public void start(Stage mainStage){
     	
 		currentStage = mainStage;
-		currUser = User.getCurrentUser();
-		System.out.println("Current user in Photo view " + currUser);
-		currAlbum = Album.getCurrentAlbum();
-		System.out.println("Current Album in Photo view is: " + currAlbum);
+		System.out.println("Current user in Photo view " + User.getCurrentUser());
+		System.out.println("Current Album in Photo view is: " + Album.getCurrentAlbum());
 		
-		photoTitle.setText("Photos in Ablum: "+ currAlbum.getName());
-		
+		photoTitle.setText("Photos in Ablum: "+ Album.getCurrentAlbum().getName());
+		Photo.setCurrentPhoto(null);
 		
 		
 	
@@ -98,7 +93,7 @@ public class PhotoViewController {
     
     public void update(){
     	ArrayList<GridPane> nestedPanes=new ArrayList<GridPane>();
-    	for(Photo photo: currAlbum.getPhotosInAlbum()){
+    	for(Photo photo: Album.getCurrentAlbum().getPhotosInAlbum()){
     		ImageView pic= new ImageView();
     		Image img = new Image(photo.getSrc());
     		pic.setImage(img);
@@ -122,7 +117,8 @@ public class PhotoViewController {
     				if(selectedPane!=null){
     					selectedPane.setStyle(STYLE_NORMAL);   
     				}
-    				selectedPhoto = photo;
+    				
+    				Photo.setCurrentPhoto(photo);
     				nestedPane.setStyle(STYLE_PRESSED);
     				selectedPane = nestedPane;
     				System.out.println("selected");
@@ -223,11 +219,18 @@ public class PhotoViewController {
 		}
 		else if(b == removePhoto){
 			//need an alert
-			currAlbum.removePhotoFromAlbum(selectedPhoto);
+			if(Photo.getCurrentPhoto()!=null){
+			Album.getCurrentAlbum().removePhotoFromAlbum(Photo.getCurrentPhoto());
+			Photo.setCurrentPhoto(null);
 			this.update();
+			}
 			
+			return;
 		}
 		else if(b == movePhoto){
+			if(Photo.getCurrentPhoto()==null){
+				return;
+			}
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/MovePhoto.fxml"));
 		
@@ -242,6 +245,9 @@ public class PhotoViewController {
 			newStage.showAndWait();
 		}
 		else if(b == copyPhoto){
+			if(Photo.getCurrentPhoto()==null){
+				return;
+			}
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/CopyPhoto.fxml"));
 		
@@ -257,9 +263,24 @@ public class PhotoViewController {
 			
 		}
 		else if(b == addEditCaption){
-			//should bring up a dialog box
+			if(Photo.getCurrentPhoto()==null){
+				return;
+			}
+			if(Photo.getCurrentPhoto()!=null){
+				String caption = this.oneLineDialog("Add/Edit Caption", "", "Enter new caption", Photo.getCurrentPhoto().getCaption());
+				if(caption==null){
+					return;
+				}
+				else{
+					Photo.getCurrentPhoto().setCaption(caption);
+					this.update();
+				}
+			}
 		}
 		else if(b == addTag){
+			if(Photo.getCurrentPhoto()==null){
+				return;
+			}
 			System.out.println("add Tag");
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/AddTag.fxml"));
@@ -273,6 +294,9 @@ public class PhotoViewController {
 			
 		}
 		else if(b == removeTag){
+			if(Photo.getCurrentPhoto()==null){
+				return;
+			}
 			System.out.println("Remove Tag");
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/RemoveTag.fxml"));
@@ -291,6 +315,23 @@ public class PhotoViewController {
 
     }//end of handle
     
+    private String oneLineDialog(String title, String header, String content, String hint){
+		
+		TextInputDialog dialog = new TextInputDialog(hint);
+		dialog.setTitle(title);
+		dialog.setHeaderText(header);
+		dialog.setContentText(content);
+		Optional<String> result = dialog.showAndWait();
+		String str = null;
+		try{
+			str = result.get();
+			System.out.println(str);
+		}
+		catch(Exception e ){
+			
+		}
+		return str;
+	}
     
 }//end of class
 
