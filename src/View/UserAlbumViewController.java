@@ -63,6 +63,8 @@ public class UserAlbumViewController {
 	private TableColumn tableEarliestPhoto;
 	@FXML
 	private TableColumn tableDateRange;
+	@FXML
+	private Button openAlbum;
 	
 	public Stage currentStage;
 	
@@ -163,7 +165,24 @@ public class UserAlbumViewController {
 		else if(b == searchDate){
 			
 		}
-	
+		else if(b == openAlbum){
+			if(tableView.getSelectionModel().getSelectedItem()==null){
+				return;
+			}
+			Album album = (Album) tableView.getSelectionModel().getSelectedItem(); 
+			Album.setCurrentAlbum(album);
+			Album.existsToTrue();
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
+		
+			AnchorPane root = (AnchorPane)loader.load();
+		
+			PhotoViewController PhotoView=loader.getController();
+			PhotoView.start(currentStage);
+			Scene scene = new Scene(root);
+			currentStage.setScene(scene);
+			currentStage.centerOnScreen();
+		}
 		
 	}//end of handle
 	

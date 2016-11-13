@@ -12,6 +12,7 @@ public class Album implements Serializable{
 	private int numOfPhotos;
 	private ArrayList<Photo> photosInAlbum = new ArrayList<Photo>();
 	private static Album currentAlbum;
+	private static boolean existingAlbum;
 	// an album will mainly consist of a list of photos
 	// it can also have a list of tags, but unclear whether or not that would be necessary
 	
@@ -63,6 +64,15 @@ public class Album implements Serializable{
 		for(Photo p: list){
 			System.out.print(p);
 		}
+	}
+	public static void existsToTrue(){
+		existingAlbum = true;
+	}
+	public static void existsToFalse(){
+		existingAlbum = false;
+	}
+	public static boolean existState(){
+		return existingAlbum;
 	}
 	@Override
 	public String toString() {

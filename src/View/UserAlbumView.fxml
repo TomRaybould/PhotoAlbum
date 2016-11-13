@@ -15,8 +15,8 @@
    <children>
       <Button fx:id="makeNewAlbum" layoutX="818.0" layoutY="52.0" mnemonicParsing="false" onAction="#handle" prefHeight="27.0" prefWidth="135.0" text="Make New Album" />
       <Button fx:id="deleteAlbum" layoutX="818.0" layoutY="141.0" mnemonicParsing="false" onAction="#handle" text="Delete Album" textAlignment="CENTER" />
-      <Button fx:id="renameAlbum" onAction="#handle" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="818.0" layoutY="95.0" mnemonicParsing="false" text="Rename Album" />
-      <Button fx:id="logOut" onAction="#handle" layoutX="818.0" layoutY="446.0" mnemonicParsing="false" text="Log Out" />
+      <Button fx:id="renameAlbum" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="818.0" layoutY="95.0" mnemonicParsing="false" onAction="#handle" text="Rename Album" />
+      <Button fx:id="logOut" layoutX="818.0" layoutY="446.0" mnemonicParsing="false" onAction="#handle" text="Log Out" />
       <Button fx:id="safeQuit" layoutX="820.0" layoutY="490.0" mnemonicParsing="false" onAction="#handle" text="Safe Quit" />
       <Text fx:id="userTitle" layoutX="40.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User's Albums" wrappingWidth="706.8564453125">
          <font>
@@ -57,5 +57,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Button fx:id="openAlbum" layoutX="818.0" layoutY="190.0" mnemonicParsing="false" onAction="#handle" text="Open Album" />
    </children>
 </AnchorPane>
