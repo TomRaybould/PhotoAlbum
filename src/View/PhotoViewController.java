@@ -82,6 +82,7 @@ public class PhotoViewController {
     	if(Album.existState()){
     		currentStage = mainStage;
     		update();
+    		Album.existsToFalse();
     	}
     	else{
     		currentStage = mainStage;
