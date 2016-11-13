@@ -31,8 +31,20 @@ public class Album implements Serializable{
 	public Album(String name ){
 		this.name = name;
 		this.photosInAlbum = new ArrayList<Photo>();
+		this.numOfPhotos = 0;
 	}
-
+	public int getNumOfPhotos(){
+		return numOfPhotos;
+	}
+	
+	public void addOnePhotoToCount(){
+		this.numOfPhotos = this.numOfPhotos + 1;
+	}
+	
+	public void subtractOnePhotoToCount(){
+		this.numOfPhotos = this.numOfPhotos - 1;
+	}
+	
 	public String getName() {
 		return name;
 	}

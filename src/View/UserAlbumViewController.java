@@ -154,6 +154,16 @@ public class UserAlbumViewController {
 			this.update();
 		}
 		else if(b == logOut){
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/LoginPage.fxml"));
+		
+			AnchorPane root = (AnchorPane)loader.load();
+		
+			LoginPageController LoginPage=loader.getController();
+			LoginPage.start(currentStage);
+			Scene scene = new Scene(root);
+			currentStage.setScene(scene);
+			currentStage.centerOnScreen();
 			
 		}
 		else if(b == safeQuit){

@@ -82,6 +82,9 @@ public class addPhotoController {
 	        		String date = "dummy date";
 	        		Photo photo = new Photo(date, URL);
 	        		Photo.setCurrentPhoto(photo);
+	        		Album a = Album.getCurrentAlbum();
+	        		a.addOnePhotoToCount();
+	        		System.out.println("Photo count for album is: " + a.getNumOfPhotos());
 	        		
 	    		}
 		}
