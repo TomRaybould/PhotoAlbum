@@ -79,7 +79,7 @@ public class PhotoViewController {
     private Photo selectedPhoto;
     
     private final String STYLE_PRESSED = "-fx-border-color: #039ED3; -fx-faint-border-color: #039ED322;";
-    private final String STYLE_NORMAL = "-fx-border-color: #0000000; -fx-faint-border-color: #0000000;";
+    private final String STYLE_NORMAL = "-fx-border-color: transparent; -fx-faint-border-color: transparent;";
     
     public void start(Stage mainStage){
     	
@@ -115,6 +115,7 @@ public class PhotoViewController {
     		
     		nestedPane.setVgap(25);
     		nestedPane.setHgap(15);
+    		nestedPane.setStyle(STYLE_NORMAL);
     		
     		nestedPane.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
     			public void handle(MouseEvent m){
