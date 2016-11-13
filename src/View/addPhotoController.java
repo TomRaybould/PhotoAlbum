@@ -45,21 +45,13 @@ public class addPhotoController {
     
     private String URL;
     
-    private User currUser;
-    
-    private static Album currAlbum;
-    
-    private static Photo currPhoto;
-    
     private boolean setATag = false;
     
     public void start(Stage mainStage) throws MalformedURLException{
 		currentStage = mainStage;
 		if(setATag == false){
-			currUser = User.getCurrentUser();
-			System.out.println("Current user in Photo view " + currUser);
-			currAlbum = Album.getCurrentAlbum();
-			System.out.println("Current Album in Photo view is: " + currAlbum);
+			System.out.println("Current user in Photo view " + User.getCurrentUser());
+			System.out.println("Current Album in Photo view is: " + Album.getCurrentAlbum());
 	    	int imgTotal;
 	    	int imgPosition = 0;
 	    	ImageView imgMain = new ImageView();
@@ -102,8 +94,7 @@ public class addPhotoController {
     	Button b= (Button)e.getSource();
     	if(b == addPhoto){
 
-        		currAlbum.addPhotoToAlbum(currPhoto);
-        		currAlbum.iterate();
+        		Album.getCurrentAlbum().addPhotoToAlbum(Photo.getCurrentPhoto());
         		Photo.getCurrentPhoto().setCaption(captionText.getText());
         		Photo.getCurrentPhoto().setImg(new Image(URL));
         		System.out.println("make new album");

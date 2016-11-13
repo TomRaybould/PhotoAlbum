@@ -46,26 +46,15 @@ public class AddTagController {
     @FXML
     private Text currentTagType;
     
-    private Album a;
-    
-    private User u;
-    
-    private Photo p;
-    
-    private Tag t;
-    
     private ObservableList<String> myComboBoxData = FXCollections.observableArrayList();
     
     private Stage currentStage;
     
     public void start(Stage mainStage){
 		currentStage = mainStage;
-		u = User.getCurrentUser();
-		System.out.println("Current user in Photo view " + u);
-		a = Album.getCurrentAlbum();
-		System.out.println("Current Album in Photo view is: " + a);
-		p = Photo.getCurrentPhoto();
-		System.out.println("Current Photo in add tag is: " + p);
+		System.out.println("Current user in Photo view " + User.getCurrentUser());
+		System.out.println("Current Album in Photo view is: " + Album.getCurrentAlbum());
+		System.out.println("Current Photo in add tag is: " + Photo.getCurrentPhoto());
 		myComboBoxData.add(new String("Location"));
 		myComboBoxData.add(new String("Weather"));
 		myComboBoxData.add(new String("Food"));
@@ -86,11 +75,11 @@ public class AddTagController {
     		System.out.println("add Tag");
     		String tagType = currentTagType.getText();
     		String tag = tagText.getText();
-    		p = Photo.getCurrentPhoto();
+    		Photo p = Photo.getCurrentPhoto();
     		if (p == null){
     			return;
     		}
-    		t = new Tag(tagType, tag);
+    		Tag t = new Tag(tagType, tag);
     		p.addTag(t);
     		ArrayList<Tag> photoTags = p.getTags();
     		for(Tag tag1: photoTags){
