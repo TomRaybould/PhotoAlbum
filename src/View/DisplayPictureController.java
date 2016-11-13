@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Model.Album;
 import Model.Photo;
 import Model.User;
 import javafx.event.ActionEvent;
@@ -27,38 +28,18 @@ public class DisplayPictureController {
     @FXML
     private ImageView image;
     
+    private Stage currentStage;
+    
     public void start(Stage mainStage) throws MalformedURLException{
-    	//Image View
-    	System.out.println("here");
-    	int imgTotal;
-    	int imgPosition = 0;
-    	ImageView imgMain = new ImageView();
-		ImageView imgThumb = new ImageView();
-		imgThumb.setFitHeight(100);
-		imgThumb.setFitWidth(200);
-		// List of Images
-		System.out.println("here");
-		List<File> images = new ArrayList<File>();
-		//File chooser
-		final FileChooser fileChooser = new FileChooser();
-    		File file = fileChooser.showOpenDialog(mainStage);
-    		if(file.isFile() &&
-    				(file.getName().contains(".jpg") || file.getName().contains(".png") || file.getName().contains(".hmp") ||
-    						file.getName().contains(".gif"))){
-    			System.out.println("In file success");
-    			images.add(file);
-    			imgTotal = images.size();
-    			
-    			if(imgTotal > 1){
-    				imgPosition++;
-    			}
-    			String thumbURL = file.toURI().toURL().toString();
-        		Image imgLoad = new Image(thumbURL);
-        		//pass image to ImageView
-        		image.setImage(imgLoad);
-        		Photo photo = new Photo("dummy date",thumbURL);
-        		mainStage.show();
-    		}
+    	currentStage = mainStage;
+		System.out.println("Current user in Photo view " + User.getCurrentUser());
+		System.out.println("Current Album in Photo view is: " + Album.getCurrentAlbum());
+		System.out.println("Current Photo in add tag is: " + Photo.getCurrentPhoto());
+		Photo p = Photo.getCurrentPhoto();
+		Image anImage = new Image(p.getSrc());
+		image.setImage(anImage);
+		caption.setText(p.getCaption());
+		date.setText(p.getDate());
     			
    }
    
