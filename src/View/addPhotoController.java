@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import Model.Album;
@@ -78,8 +80,11 @@ public class addPhotoController {
 	        		Image imgLoad = new Image(URL);
 	        		//pass image to ImageView
 	        		image.setImage(imgLoad);
-	        		
-	        		String date = "dummy date";
+	        		Calendar cal = Calendar.getInstance();
+	        		Date date1 = new Date(0L);
+	        		cal.set(Calendar.MILLISECOND, 0);
+	        		date1 = cal.getTime();
+	        		String date = date1.toString();
 	        		Photo photo = new Photo(date, URL);
 	        		Photo.setCurrentPhoto(photo);
 	        		Album a = Album.getCurrentAlbum();
