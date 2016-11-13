@@ -15,20 +15,9 @@
    <children>
       <Button fx:id="makeNewAlbum" layoutX="818.0" layoutY="52.0" mnemonicParsing="false" onAction="#handle" prefHeight="27.0" prefWidth="135.0" text="Make New Album" />
       <Button fx:id="deleteAlbum" layoutX="818.0" layoutY="141.0" mnemonicParsing="false" onAction="#handle" text="Delete Album" textAlignment="CENTER" />
-      <Button fx:id="renameAlbum" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="818.0" layoutY="95.0" mnemonicParsing="false" text="Rename Album" />
-      <Button fx:id="logOut" layoutX="818.0" layoutY="446.0" mnemonicParsing="false" text="Log Out" />
+      <Button fx:id="renameAlbum" onAction="#handle" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="818.0" layoutY="95.0" mnemonicParsing="false" text="Rename Album" />
+      <Button fx:id="logOut" onAction="#handle" layoutX="818.0" layoutY="446.0" mnemonicParsing="false" text="Log Out" />
       <Button fx:id="safeQuit" layoutX="820.0" layoutY="490.0" mnemonicParsing="false" onAction="#handle" text="Safe Quit" />
-      <TableView fx:id="tableView" layoutX="35.0" layoutY="52.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="716.0">
-         <columns>
-            <TableColumn prefWidth="174.0" text="Album Name" />
-            <TableColumn maxWidth="100.0" minWidth="100.0" prefWidth="200.0" text="# Of Photos" />
-            <TableColumn maxWidth="150.0" minWidth="150.0" prefWidth="251.0" text="Earliest Photo" />
-            <TableColumn prefWidth="247.0" text="Date Range" />
-         </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
       <Text fx:id="userTitle" layoutX="40.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User's Albums" wrappingWidth="706.8564453125">
          <font>
             <Font size="17.0" />
@@ -57,5 +46,16 @@
       <DatePicker fx:id="dateSelector" layoutX="152.0" layoutY="490.0" />
       <Button id="Search" fx:id="searchTag" layoutX="483.0" layoutY="383.0" mnemonicParsing="false" onAction="#handle" text="Search Tag" />
       <Button id="SearchDate" fx:id="searchDate" layoutX="377.0" layoutY="490.0" mnemonicParsing="false" onAction="#handle" text="Search Date" />
+      <TableView fx:id="tableView" layoutX="44.0" layoutY="45.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="716.0">
+         <columns>
+            <TableColumn fx:id="tableAlbumName" prefWidth="174.0" text="Album Name" />
+            <TableColumn fx:id="tableNumOfPhotos" maxWidth="100.0" minWidth="100.0" prefWidth="200.0" text="# Of Photos" />
+            <TableColumn fx:id="tableEarliestPhoto" maxWidth="150.0" minWidth="150.0" prefWidth="251.0" text="Earliest Photo" />
+            <TableColumn fx:id="tableDateRange" prefWidth="247.0" text="Date Range" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
    </children>
 </AnchorPane>

@@ -8,6 +8,7 @@ public class User implements Serializable{
 	private static final String storeFile = "Users.dat";
 	private static ArrayList<User> allUsers = new ArrayList<User>();
 	private static User currentUser;
+
 	
 	private String userName;
 	private String password;
@@ -95,6 +96,9 @@ public class User implements Serializable{
 	public void addAlbum(Album album){
 		this.albumList.add(album); 
 	}
+	public void removeAlbum(Album album){
+		this.albumList.remove(album); 
+	}
 
 	@Override
 	public String toString() {
@@ -111,6 +115,13 @@ public class User implements Serializable{
 
 	public String getUserName() {
 		return userName;
+	}
+	public ArrayList<Album> getAlbumList() {
+		return albumList;
+	}
+
+	public void setAlbumList(ArrayList<Album> albumList) {
+		this.albumList = albumList;
 	}
 
 }

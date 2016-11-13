@@ -7,6 +7,9 @@ import javafx.scene.image.Image;
 
 public class Album implements Serializable{
 	private String name;
+	private String oldestDate;
+	private String latestDate;
+	private int numOfPhotos;
 	private ArrayList<Photo> photosInAlbum = new ArrayList<Photo>();
 	private static Album currentAlbum;
 	// an album will mainly consist of a list of photos

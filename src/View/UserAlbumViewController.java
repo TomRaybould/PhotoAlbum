@@ -11,20 +11,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
-
 import Model.Album;
 import Model.Photo;
 import Model.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.ComboBox;
 
 import javafx.scene.control.DatePicker;
-
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -52,6 +55,14 @@ public class UserAlbumViewController {
 	private Button searchDate;
 	@FXML
 	private TableView tableView;
+	@FXML
+	private TableColumn tableAlbumName;
+	@FXML
+	private TableColumn tableNumOfPhotos;
+	@FXML
+	private TableColumn tableEarliestPhoto;
+	@FXML
+	private TableColumn tableDateRange;
 	
 	public Stage currentStage;
 	
@@ -62,7 +73,33 @@ public class UserAlbumViewController {
 		currUser = User.getCurrentUser();
 		userTitle.setText(currUser.getUserName()+"'s Albums"); 
 		System.out.println("Current user in User album view" + currUser);
+		this.update();
+		
+		tableView
+        	.getSelectionModel()
+        	.selectedItemProperty()
+        	.addListener(
+        			(obs , oldVal, newVal) -> System.out.println());
 	}
+	
+	public void update(){
+		ObservableList<Album> obslist = FXCollections.observableArrayList();
+		for (Album album: User.getCurrentUser().getAlbumList()){
+			obslist.add(album);
+		}
+		
+		
+		tableAlbumName.setCellValueFactory(new PropertyValueFactory<>("name"));
+		tableNumOfPhotos.setCellValueFactory(new PropertyValueFactory<>("numOfPhotos"));
+		tableEarliestPhoto.setCellValueFactory(new PropertyValueFactory<>("oldestDate"));
+		tableDateRange.setCellValueFactory(new PropertyValueFactory<>("latestDate"));
+		tableView.setItems(obslist);
+		
+		tableView.getColumns().setAll(tableAlbumName,tableNumOfPhotos,tableEarliestPhoto,tableDateRange);
+		
+	}
+	
+
 	
 	public void handle(ActionEvent e) throws IOException {
 		Button b= (Button)e.getSource();
@@ -71,7 +108,7 @@ public class UserAlbumViewController {
 			
 			System.out.println("make new album");
 			//get the name of the album helper method below
-			String newAlbumName = oneLineDialog("Name New Album","","Enter name for new album");
+			String newAlbumName = oneLineDialog("Name New Album","","Enter name for new album","");
 			System.out.println("The name of the new album is: *"+ newAlbumName+"*");
 			
 			if(newAlbumName==null){
@@ -86,6 +123,7 @@ public class UserAlbumViewController {
 			else{	
 				Album newAlbum = new Album(newAlbumName); 
 				Album.setCurrentAlbum(newAlbum);
+				User.getCurrentUser().addAlbum(newAlbum);
 			
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
@@ -100,10 +138,18 @@ public class UserAlbumViewController {
 			}
 		}
 		else if(b == deleteAlbum){
-			
+			Album album = (Album) tableView.getSelectionModel().getSelectedItem(); 
+			User.getCurrentUser().removeAlbum(album);
+			this.update();
 		}
 		else if(b == renameAlbum){
-		
+			if(tableView.getSelectionModel().getSelectedItem()==null){
+				return;
+			}
+			Album album = (Album) tableView.getSelectionModel().getSelectedItem(); 
+			String newAlbumName = oneLineDialog("Rename Album","","Enter new name for album", album.getName());
+			album.setName(newAlbumName);
+			this.update();
 		}
 		else if(b == logOut){
 			
@@ -122,9 +168,9 @@ public class UserAlbumViewController {
 	}//end of handle
 	
 	
-	private String oneLineDialog(String title, String header, String content){
+	private String oneLineDialog(String title, String header, String content, String hint){
 		
-		TextInputDialog dialog = new TextInputDialog("");
+		TextInputDialog dialog = new TextInputDialog(hint);
 		dialog.setTitle(title);
 		dialog.setHeaderText(header);
 		dialog.setContentText(content);
