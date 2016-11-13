@@ -121,7 +121,7 @@ public class PhotoViewController {
     				if(selectedPane!=null){
     					selectedPane.setStyle(STYLE_NORMAL);   
     				}
-    				selectedPhoto= photo;
+    				selectedPhoto = photo;
     				nestedPane.setStyle(STYLE_PRESSED);
     				selectedPane = nestedPane;
     				System.out.println("selected");
@@ -183,7 +183,7 @@ public class PhotoViewController {
 		
 			AnchorPane root = (AnchorPane)loader.load();
 			
-			SlideShowController SlideShow =loader.getController();
+			SlideShowController SlideShow = loader.getController();
 			SlideShow.start(currentStage);
 			Scene scene = new Scene(root);
 			currentStage.setScene(scene);

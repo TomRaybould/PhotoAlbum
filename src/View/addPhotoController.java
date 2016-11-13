@@ -87,6 +87,10 @@ public class addPhotoController {
 	        		//pass image to ImageView
 	        		image.setImage(imgLoad);
 	        		
+	        		String date = "dummy date";
+	        		Photo photo = new Photo(date, URL);
+	        		Photo.setCurrentPhoto(photo);
+	        		
 	    		}
 		}
 		
@@ -97,14 +101,11 @@ public class addPhotoController {
     void handle(ActionEvent e) throws IOException {
     	Button b= (Button)e.getSource();
     	if(b == addPhoto){
-   
-        		String date = "dummy date";
-        		Photo photo = new Photo(date, URL);
-        		currAlbum.addPhotoToAlbum(photo);
-        		Photo.setCurrentPhoto(photo);
+
+        		currAlbum.addPhotoToAlbum(currPhoto);
         		currAlbum.iterate();
-        		photo.setCaption(captionText.getText());
-        		photo.setImg(new Image(URL));
+        		Photo.getCurrentPhoto().setCaption(captionText.getText());
+        		Photo.getCurrentPhoto().setImg(new Image(URL));
         		System.out.println("make new album");
     			currentStage.close();
 			
@@ -125,10 +126,11 @@ public class addPhotoController {
 			AddTagController addTag = loader.getController();
 			
 			Scene scene = new Scene(root);
-			Stage newStage =new Stage();
+			Stage newStage = new Stage();
 			newStage.initModality(Modality.APPLICATION_MODAL);
+			addTag.start(newStage);
 			newStage.setScene(scene);
-			newStage.showAndWait();
+			newStage.centerOnScreen();
 			
 		}
     }

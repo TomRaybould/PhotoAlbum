@@ -87,21 +87,16 @@ public class AddTagController {
     		String tagType = currentTagType.getText();
     		String tag = tagText.getText();
     		p = Photo.getCurrentPhoto();
+    		if (p == null){
+    			return;
+    		}
     		t = new Tag(tagType, tag);
     		p.addTag(t);
     		ArrayList<Tag> photoTags = p.getTags();
     		for(Tag tag1: photoTags){
     			System.out.println(tag1);
     		}
-    		FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
-		
-			GridPane root = (GridPane)loader.load();
-			
-			PhotoViewController PhotoView=loader.getController();
-			PhotoView.start(currentStage);
-			Scene scene = new Scene(root);
-			currentStage.setScene(scene);
+    		currentStage.close();
     	}
     	else if(b == addTypeToList){
     		System.out.println("Create new tag type");
