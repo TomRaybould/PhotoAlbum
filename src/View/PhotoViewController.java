@@ -224,6 +224,8 @@ public class PhotoViewController {
 			//need an alert
 			if(Photo.getCurrentPhoto()!=null){
 			Album.getCurrentAlbum().removePhotoFromAlbum(Photo.getCurrentPhoto());
+			Album.getCurrentAlbum().subtractOnePhotoToCount();
+			System.out.println("Current count is " + Album.getCurrentAlbum().getNumOfPhotos());
 			Photo.setCurrentPhoto(null);
 			this.update();
 			}

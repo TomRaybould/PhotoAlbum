@@ -13,6 +13,7 @@ import java.util.Optional;
 
 import Model.Album;
 import Model.Photo;
+import Model.Tag;
 import Model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +29,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableView.TableViewSelectionModel;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -35,6 +37,8 @@ import javafx.scene.text.Text;
 public class UserAlbumViewController {
 	@FXML
 	private Text userTitle;
+	 @FXML
+	 private TextField tagValue;
 	@FXML
 	private Button makeNewAlbum;
 	@FXML
@@ -46,7 +50,7 @@ public class UserAlbumViewController {
 	@FXML
 	private Button safeQuit;
 	@FXML
-	private ComboBox tagDropDown;
+	private ComboBox<String>  tagDropDown;
 	@FXML
 	private DatePicker dateSelector;
 	@FXML
@@ -70,6 +74,8 @@ public class UserAlbumViewController {
 	
 	private User currUser;
 	
+	private ObservableList<String> myComboBoxData = FXCollections.observableArrayList();
+	
 	public void start(Stage mainStage){
 		currentStage = mainStage;
 		currUser = User.getCurrentUser();
@@ -82,6 +88,12 @@ public class UserAlbumViewController {
         	.selectedItemProperty()
         	.addListener(
         			(obs , oldVal, newVal) -> System.out.println());
+		
+		myComboBoxData.add(new String("Location"));
+		myComboBoxData.add(new String("Weather"));
+		myComboBoxData.add(new String("Food"));
+		myComboBoxData.add(new String("Other"));
+		tagDropDown.setItems(myComboBoxData);
 	}
 	
 	public void update(){
@@ -101,7 +113,10 @@ public class UserAlbumViewController {
 		
 	}
 	
-
+	@FXML
+    private void handleComboBoxAction() {
+      Tag.setCurrentTagType(tagDropDown.getSelectionModel().getSelectedItem());
+    }
 	
 	public void handle(ActionEvent e) throws IOException {
 		Button b= (Button)e.getSource();
@@ -154,6 +169,7 @@ public class UserAlbumViewController {
 			this.update();
 		}
 		else if(b == logOut){
+
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/LoginPage.fxml"));
 		
@@ -170,6 +186,11 @@ public class UserAlbumViewController {
 			
 		}
 		else if(b == searchTag){
+			String tagVal = tagValue.getText();
+			Tag.setCurrentTagValue(tagVal);
+			String tagTyp = Tag.getCurrentTagType();
+			System.out.println(Tag.getCurrentTagType());
+			System.out.println(Tag.getCurrentTagValue());
 			
 		}
 		else if(b == searchDate){
