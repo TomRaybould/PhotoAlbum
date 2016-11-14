@@ -9,7 +9,6 @@ public class Photo implements Serializable{
 	private String date;
 	private String caption;
 	private String src;
-	private Image img;
 	private ArrayList<Tag> tags;
 	private static Photo currentPhoto;
 	
@@ -17,8 +16,6 @@ public class Photo implements Serializable{
 		this.date = date;
 		this.tags = new ArrayList<Tag>();
 		this.src = src;
-		this.img= new Image(src);
-		
 	}
 
 
@@ -58,12 +55,7 @@ public class Photo implements Serializable{
 	public void setCaption(String caption) {
 		this.caption = caption;
 	}
-	public Image getImg() {
-		return img;
-	}
-	public void setImg(Image img) {
-		this.img = img;
-	}
+
 	
 	
 }

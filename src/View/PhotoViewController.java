@@ -79,19 +79,9 @@ public class PhotoViewController {
     private final String STYLE_NORMAL = "-fx-border-color: transparent; -fx-faint-border-color: transparent;";
     
     public void start(Stage mainStage){
-    	if(Album.existState()){
     		currentStage = mainStage;
-    		update();
-    		Album.existsToFalse();
-    	}
-    	else{
-    		currentStage = mainStage;
-    		System.out.println("Current user in Photo view " + User.getCurrentUser());
-    		System.out.println("Current Album in Photo view is: " + Album.getCurrentAlbum());
-    		
-    		photoTitle.setText("Photos in Ablum: "+ Album.getCurrentAlbum().getName());
     		Photo.setCurrentPhoto(null);
-    	}
+    		update();    	
 	}
     
     public void update(){

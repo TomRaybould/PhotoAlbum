@@ -97,6 +97,7 @@ public class UserAlbumViewController {
 	}
 	
 	public void update(){
+		
 		ObservableList<Album> obslist = FXCollections.observableArrayList();
 		for (Album album: User.getCurrentUser().getAlbumList()){
 			obslist.add(album);
@@ -186,21 +187,46 @@ public class UserAlbumViewController {
 			
 		}
 		else if(b == searchTag){
+			ArrayList<Photo> results= new ArrayList();
 			String tagVal = tagValue.getText();
-			Tag.setCurrentTagValue(tagVal);
-			String tagTyp = Tag.getCurrentTagType();
-			System.out.println(Tag.getCurrentTagType());
-			System.out.println(Tag.getCurrentTagValue());
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/SearchResults.fxml"));
+			String tagTyp = tagDropDown.getSelectionModel().getSelectedItem();
+			Tag target= new Tag(tagTyp,tagVal);
+			
+			User u = User.getCurrentUser();
+	    	ArrayList<Album> albums = u.getAlbumList();
+	    	for(Album a: albums){
+	    		ArrayList<Photo> photos = a.getPhotosInAlbum();
+	    		for(Photo p: photos){
+	    			System.out.println(p);
+	    			ArrayList<Tag> tags = p.getTags();
+	    			for(Tag t: tags){
+	    				if(t.equals(target)){
+	    					results.add(p);
+	    				}
+	    				else{
+	    					continue;
+	    				}
+	    			}
+	    		}
+	    	}
+	    	
+	    	if(results.size()<=0){
+	    		//alert
+	    		return;
+	    	}
+	    	else{
+	    
+	    		FXMLLoader loader = new FXMLLoader();
+	    		loader.setLocation(getClass().getResource("/view/SearchResults.fxml"));
 		
-			GridPane root = (GridPane)loader.load();
+	    		GridPane root = (GridPane)loader.load();
 		
-			SearchResultsController SearchResults=loader.getController();
-			SearchResults.start(currentStage);
-			Scene scene = new Scene(root);
-			currentStage.setScene(scene);
-			currentStage.centerOnScreen();
+	    		SearchResultsController SearchResults=loader.getController();
+	    		SearchResults.start(currentStage);
+	    		Scene scene = new Scene(root);
+	    		currentStage.setScene(scene);
+	    		currentStage.centerOnScreen();
+	    	}
 			
 		}
 		else if(b == searchDate){
@@ -212,7 +238,7 @@ public class UserAlbumViewController {
 			}
 			Album album = (Album) tableView.getSelectionModel().getSelectedItem(); 
 			Album.setCurrentAlbum(album);
-			Album.existsToTrue();
+			//Album.existsToTrue();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
 		

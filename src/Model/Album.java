@@ -13,17 +13,18 @@ public class Album implements Serializable{
 	private ArrayList<Photo> photosInAlbum = new ArrayList<Photo>();
 	private static Album currentAlbum;
 	private static boolean existingAlbum;
+	private static ArrayList<Photo> searchResults;
 	// an album will mainly consist of a list of photos
 	// it can also have a list of tags, but unclear whether or not that would be necessary
 	
-	public Photo searchByImage(Image img){
-		for(Photo p : photosInAlbum){
-			if(p.getImg()==(img)){
-				System.out.println("truefdsafjkldsa");
-			}
-		}
-		return null;
+	public static ArrayList<Photo> getSearchResults() {
+		return searchResults;
 	}
+
+	public static void setSearchResults(ArrayList<Photo> searchResults) {
+		Album.searchResults = searchResults;
+	}
+
 	public void removePhotoFromAlbum(Photo p){
 		photosInAlbum.remove(p);
 	}
@@ -77,15 +78,7 @@ public class Album implements Serializable{
 			System.out.print(p);
 		}
 	}
-	public static void existsToTrue(){
-		existingAlbum = true;
-	}
-	public static void existsToFalse(){
-		existingAlbum = false;
-	}
-	public static boolean existState(){
-		return existingAlbum;
-	}
+
 	@Override
 	public String toString() {
 		return "Album [name=" + name + ", photosInAlbum=" + photosInAlbum + "]";

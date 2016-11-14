@@ -50,38 +50,7 @@ public class SearchResultsController {
     public void start(Stage mainStage){
     	
     	currentStage = mainStage;
-    	User u = User.getCurrentUser();
-    	ArrayList<Album> albums = u.getAlbumList();
-    	for(Album a: albums){
-    		ArrayList<Photo> photos = a.getPhotosInAlbum();
-    		for(Photo p: photos){
-    			System.out.println(p);
-    			ArrayList<Tag> tags = p.getTags();
-    			for(Tag t: tags){
-    				String type = t.getType();
-    				String value = t.getValue();
-    				if(type == null && value != null){
-    					if(value.equals(Tag.getCurrentTagValue())){
-    						searchResult.add(p);
-    					}
-    				}
-    				else if(type != null && value == null){
-    					if(type.equals(Tag.getCurrentTagType())){
-    						searchResult.add(p);
-    					}
-    				}
-    				else if(type.equals(Tag.getCurrentTagType()) && value.equals(Tag.getCurrentTagValue())){
-    					searchResult.add(p);
-    				}
-    				
-    			}
-    		}
-    	}
-    	if(searchResult != null){
-    		for(Photo ph: searchResult){
-        		System.out.println(ph);
-        	}
-    	}
+    	
     	
 	}
     public void handle(ActionEvent e){
