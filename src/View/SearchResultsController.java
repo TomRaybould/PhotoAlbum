@@ -60,7 +60,17 @@ public class SearchResultsController {
     			for(Tag t: tags){
     				String type = t.getType();
     				String value = t.getValue();
-    				if(type.equals(Tag.getCurrentTagType()) && value.equals(Tag.getCurrentTagValue())){
+    				if(type == null && value != null){
+    					if(value.equals(Tag.getCurrentTagValue())){
+    						searchResult.add(p);
+    					}
+    				}
+    				else if(type != null && value == null){
+    					if(type.equals(Tag.getCurrentTagType())){
+    						searchResult.add(p);
+    					}
+    				}
+    				else if(type.equals(Tag.getCurrentTagType()) && value.equals(Tag.getCurrentTagValue())){
     					searchResult.add(p);
     				}
     				
