@@ -191,6 +191,16 @@ public class UserAlbumViewController {
 			String tagTyp = Tag.getCurrentTagType();
 			System.out.println(Tag.getCurrentTagType());
 			System.out.println(Tag.getCurrentTagValue());
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/SearchResults.fxml"));
+		
+			GridPane root = (GridPane)loader.load();
+		
+			SearchResultsController SearchResults=loader.getController();
+			SearchResults.start(currentStage);
+			Scene scene = new Scene(root);
+			currentStage.setScene(scene);
+			currentStage.centerOnScreen();
 			
 		}
 		else if(b == searchDate){

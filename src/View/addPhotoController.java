@@ -103,6 +103,7 @@ public class addPhotoController {
     	if(b == addPhoto){
 
         		Album.getCurrentAlbum().addPhotoToAlbum(Photo.getCurrentPhoto());
+        		Album.getCurrentAlbum().iterate();
         		Photo.getCurrentPhoto().setCaption(captionText.getText());
         		Photo.getCurrentPhoto().setImg(new Image(URL));
         		System.out.println("make new album");
