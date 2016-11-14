@@ -113,6 +113,10 @@ public class PhotoViewController {
     		
     		nestedPane.setVgap(25);
     		nestedPane.setHgap(15);
+    		
+    		Insets nestedPadding =  new Insets(10,10,10,10); //top,right,bottom,left
+    		nestedPane.setPadding(nestedPadding);
+    		
     		nestedPane.setStyle(STYLE_NORMAL);
     		
     		nestedPane.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
