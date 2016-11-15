@@ -37,7 +37,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <ComboBox id="tagNameDropDown" fx:id="tagDropDown" layoutX="152.0" layoutY="384.0" prefHeight="28.0" prefWidth="127.0" promptText="Tag Type" />
+      <ComboBox id="tagNameDropDown" fx:id="tagDropDown" layoutX="152.0" layoutY="384.0" prefHeight="28.0" prefWidth="127.0" promptText="Name" />
       <TextField fx:id="tagValue" layoutX="299.0" layoutY="384.0" onAction="#handle" prefHeight="13.0" prefWidth="172.0" promptText="Tag value">
          <opaqueInsets>
             <Insets right="10.0" top="10.0" />
