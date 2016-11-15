@@ -94,14 +94,20 @@ public class PhotoViewController {
     		pic.setFitWidth(200);
     		Text caption=new Text();
     		caption.setWrappingWidth(200);
-    		caption.setText(photo.getCaption());
+    		
+    		if(photo.getCaption() == null || photo.getCaption().equals("")){
+    			caption.setText("Caption:\n"+"N/A");
+    		}
+    		else{
+    			caption.setText("Caption:\n"+photo.getCaption());
+    		}
     		
     		GridPane nestedPane= new GridPane();
     		
     		nestedPane.add(pic, 0, 0);
     		nestedPane.add(caption, 1, 0);
     		
-    		nestedPane.setVgap(25);
+    		nestedPane.setVgap(10);
     		nestedPane.setHgap(15);
     		
     		Insets nestedPadding =  new Insets(10,10,10,10); //top,right,bottom,left
@@ -140,7 +146,7 @@ public class PhotoViewController {
     			col=0;
     		}
     	}
-    	containerPane.setVgap(30);
+    	containerPane.setVgap(20);
     	containerPane.setHgap(30);
     	Insets paddingVals =  new Insets(20,1,1,30); //top,right,bottom,left
 		scrollPane.setPadding(paddingVals);
