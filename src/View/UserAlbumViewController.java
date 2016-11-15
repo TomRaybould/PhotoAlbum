@@ -89,14 +89,17 @@ public class UserAlbumViewController {
         	.addListener(
         			(obs , oldVal, newVal) -> System.out.println());
 		
-		myComboBoxData.add(new String("Location"));
-		myComboBoxData.add(new String("Weather"));
-		myComboBoxData.add(new String("Food"));
-		myComboBoxData.add(new String("Other"));
-		tagDropDown.setItems(myComboBoxData);
 	}
 	
 	public void update(){
+		
+		for(String str: User.getCurrentUser().getTagTypes()){
+			myComboBoxData.add(str);
+		}
+		
+		myComboBoxData.add(new String("All Tags"));
+		
+		tagDropDown.setItems(myComboBoxData);
 		
 		ObservableList<Album> obslist = FXCollections.observableArrayList();
 		for (Album album: User.getCurrentUser().getAlbumList()){
@@ -114,10 +117,6 @@ public class UserAlbumViewController {
 		
 	}
 	
-	@FXML
-    private void handleComboBoxAction() {
-      Tag.setCurrentTagType(tagDropDown.getSelectionModel().getSelectedItem());
-    }
 	
 	public void handle(ActionEvent e) throws IOException {
 		Button b= (Button)e.getSource();
@@ -187,9 +186,11 @@ public class UserAlbumViewController {
 			
 		}
 		else if(b == searchTag){
-			ArrayList<Photo> results= new ArrayList();
+			ArrayList<Photo> results= new ArrayList<Photo>();
+			
 			String tagVal = tagValue.getText();
 			String tagTyp = tagDropDown.getSelectionModel().getSelectedItem();
+			
 			Tag target= new Tag(tagTyp,tagVal);
 			
 			User u = User.getCurrentUser();

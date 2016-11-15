@@ -8,24 +8,19 @@ public class User implements Serializable{
 	private static final String storeFile = "Users.dat";
 	private static ArrayList<User> allUsers = new ArrayList<User>();
 	private static User currentUser;
-
-	
 	private String userName;
 	private String password;
 	private ArrayList<Album> albumList = new ArrayList<Album>();
 	private ArrayList<String> tagTypes = new ArrayList<String>();
 	
-	// This class will be a user
-	// The user should be made of a name/password combo
-	// a list of all of its albums
-	// and a list of all of its tags
-	// album will be it own class that will consist of a list of photos
-	// Tag will also be its own class
-	// basic serializtion code was also put into this class as a basic sample outline from class
-	// user should also be able to search, but that may be its own class
 	public User(String userName, String password){
 		this.userName = userName;
 		this.password = password;
+		//add in default tag types when user is made
+		tagTypes.add("Name");
+		tagTypes.add("Location");
+		tagTypes.add("Food");
+		tagTypes.add("Weather");
 	}
 	
 	public static ArrayList<User> getAllUsers(){
@@ -116,6 +111,7 @@ public class User implements Serializable{
 	public String getUserName() {
 		return userName;
 	}
+	
 	public ArrayList<Album> getAlbumList() {
 		return albumList;
 	}
@@ -123,5 +119,14 @@ public class User implements Serializable{
 	public void setAlbumList(ArrayList<Album> albumList) {
 		this.albumList = albumList;
 	}
+	
+	public ArrayList<String> getTagTypes() {
+		return tagTypes;
+	}
+
+	public void setTagTypes(ArrayList<String> tagTypes) {
+		this.tagTypes = tagTypes;
+	}
+
 
 }

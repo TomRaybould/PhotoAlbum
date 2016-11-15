@@ -62,12 +62,13 @@ public class AddTagController {
 		myComboBoxData.add(new String("Other"));
 		tagDropDown.setItems(myComboBoxData);
 			currentStage.show();
+			update();
+			/*
+			 * make the combo box update from back end like in the userAlbumViewController 
+			 */
 	}
-    
-    @FXML
-    private void handleComboBoxAction() {
-      String tag= tagDropDown.getSelectionModel().getSelectedItem();
-      currentTagType.setText(tag);
+    private void update (){
+    	
     }
     
     public void handle(ActionEvent e) throws IOException{
