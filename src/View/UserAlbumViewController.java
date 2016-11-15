@@ -134,7 +134,7 @@ public class UserAlbumViewController {
 			}
 			
 			if(newAlbumName.equals("")){
-				makeAlertInfo("No Ablum Name","","You must give your new album a name");
+				makeAlertInfo("No Album Name","","You must give your new album a name");
 			}
 			
 			else{	
@@ -198,10 +198,9 @@ public class UserAlbumViewController {
 	    	for(Album a: albums){
 	    		ArrayList<Photo> photos = a.getPhotosInAlbum();
 	    		for(Photo p: photos){
-	    			System.out.println(p);
-	    			ArrayList<Tag> tags = p.getTags();
-	    			for(Tag t: tags){
-	    				if(t.equals(target)){
+	    			for(Tag t: p.getTags()){
+	    				
+	    				if(target.equals(t)){
 	    					results.add(p);
 	    				}
 	    				else{
