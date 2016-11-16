@@ -49,7 +49,7 @@ public class addPhotoController {
     
     private boolean setATag = false;
     
-    public void start(Stage mainStage) throws MalformedURLException{
+    public void start(Stage mainStage) throws IOException{
 		currentStage = mainStage;
 		if(setATag == false){
 			System.out.println("Current user in Photo view " + User.getCurrentUser());
@@ -66,7 +66,11 @@ public class addPhotoController {
 			//File chooser
 			final FileChooser fileChooser = new FileChooser();
 	    		File file = fileChooser.showOpenDialog(mainStage);
-	    		if(file.isFile() &&
+	    		if(file == null){
+    				System.out.println("Bad");
+    				currentStage.close();///not sure why isnt working
+    			}
+	    		else if(file.isFile() &&
 	    				(file.getName().contains(".jpg") || file.getName().contains(".png") || file.getName().contains(".hmp") ||
 	    						file.getName().contains(".gif"))){
 	    			System.out.println("In file success");
@@ -76,6 +80,7 @@ public class addPhotoController {
 	    			if(imgTotal > 1){
 	    				imgPosition++;
 	    			}
+	    			
 	    			URL = file.toURI().toURL().toString();
 	        		Image imgLoad = new Image(URL);
 	        		//pass image to ImageView
