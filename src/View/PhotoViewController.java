@@ -293,6 +293,7 @@ public class PhotoViewController {
 			newStage.initModality(Modality.APPLICATION_MODAL);
 			newStage.setScene(scene);
 			newStage.showAndWait();
+			this.update();
 			
 		}
 		else if(b == addEditCaption){
