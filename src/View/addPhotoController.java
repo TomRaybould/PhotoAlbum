@@ -49,54 +49,15 @@ public class addPhotoController {
     
     private boolean setATag = false;
     
+    private boolean nullPhoto = false;
+    
     public void start(Stage mainStage) throws IOException{
 		currentStage = mainStage;
 		if(setATag == false){
 			System.out.println("Current user in Photo view " + User.getCurrentUser());
 			System.out.println("Current Album in Photo view is: " + Album.getCurrentAlbum());
-	    	int imgTotal;
-	    	int imgPosition = 0;
-	    	ImageView imgMain = new ImageView();
-			ImageView imgThumb = new ImageView();
-			imgThumb.setFitHeight(100);
-			imgThumb.setFitWidth(200);
-			// List of Images
-			System.out.println("here");
-			List<File> images = new ArrayList<File>();
-			//File chooser
-			final FileChooser fileChooser = new FileChooser();
-	    		File file = fileChooser.showOpenDialog(mainStage);
-	    		if(file == null){
-    				System.out.println("Bad");
-    				currentStage.close();///not sure why isnt working
-    			}
-	    		else if(file.isFile() &&
-	    				(file.getName().contains(".jpg") || file.getName().contains(".png") || file.getName().contains(".hmp") ||
-	    						file.getName().contains(".gif"))){
-	    			System.out.println("In file success");
-	    			images.add(file);
-	    			imgTotal = images.size();
-	    			
-	    			if(imgTotal > 1){
-	    				imgPosition++;
-	    			}
-	    			
-	    			URL = file.toURI().toURL().toString();
-	        		Image imgLoad = new Image(URL);
-	        		//pass image to ImageView
-	        		image.setImage(imgLoad);
-	        		Calendar cal = Calendar.getInstance();
-	        		Date date1 = new Date(0L);
-	        		cal.set(Calendar.MILLISECOND, 0);
-	        		date1 = cal.getTime();
-	        		String date = date1.toString();
-	        		Photo photo = new Photo(date, URL);
-	        		Photo.setCurrentPhoto(photo);
-	        		Album a = Album.getCurrentAlbum();
-	        		a.addOnePhotoToCount();
-	        		System.out.println("Photo count for album is: " + a.getNumOfPhotos());
-	        		
-	    		}
+			Image imgLoad = new Image(Photo.getCurrentPhoto().getSrc());
+    		image.setImage(imgLoad);
 		}
 		
     			
@@ -105,6 +66,10 @@ public class addPhotoController {
     @FXML
     void handle(ActionEvent e) throws IOException {
     	Button b= (Button)e.getSource();
+    	if (nullPhoto == true){
+    		b = cancel;
+    		nullPhoto = 	false;
+    	}
     	if(b == addPhoto){
 
         		Album.getCurrentAlbum().addPhotoToAlbum(Photo.getCurrentPhoto());

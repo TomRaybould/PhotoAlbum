@@ -1,7 +1,10 @@
 package View;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Optional;
 
 import Model.Album;
@@ -25,6 +28,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -203,6 +207,28 @@ public class PhotoViewController {
 		
 		}
 		else if(b == addPhoto){
+			final FileChooser fileChooser = new FileChooser();
+    		File file = fileChooser.showOpenDialog(currentStage);
+    		if(file == null){
+				System.out.println("Bad");
+			}
+    		else if(file.isFile() &&
+    				(file.getName().contains(".jpg") || file.getName().contains(".png") || file.getName().contains(".hmp") ||
+    						file.getName().contains(".gif"))){
+    			System.out.println("In file success");
+    			
+			String URL = file.toURI().toURL().toString();
+    		
+    		Calendar cal = Calendar.getInstance();
+    		Date date1 = new Date(0L);
+    		cal.set(Calendar.MILLISECOND, 0);
+    		date1 = cal.getTime();
+    		String date = date1.toString();
+    		Photo photo = new Photo(date, URL);
+    		Photo.setCurrentPhoto(photo);
+    		Album a = Album.getCurrentAlbum();
+    		a.addOnePhotoToCount();
+    		System.out.println("Photo count for album is: " + a.getNumOfPhotos());
 		
 			System.out.println("User main");
 			FXMLLoader loader = new FXMLLoader();
@@ -218,6 +244,7 @@ public class PhotoViewController {
 			newStage.setScene(scene);
 			newStage.showAndWait();
 			this.update();
+    		}
 			
 		}
 		else if(b == removePhoto){
