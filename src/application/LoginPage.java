@@ -35,9 +35,8 @@ public class LoginPage extends Application {
 			User u;
 		    try {
 		        while ((u = (User) ois.readObject()) != null) {
-		            System.out.println(u);
+		            //System.out.println(u);
 		            User.addUser(u);
-		            
 		        }
 		    } catch (EOFException e) {
 
@@ -47,7 +46,7 @@ public class LoginPage extends Application {
 
 	        
 			for(User k: User.getAllUsers()){
-				System.out.println(k);
+				System.out.println(k+"test");
 			}
 		
 		LoginPageController loginController=loader.getController();

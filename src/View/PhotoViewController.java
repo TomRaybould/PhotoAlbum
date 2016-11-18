@@ -196,7 +196,7 @@ public class PhotoViewController {
 		}
 		else if(b == backToMain){
 			System.out.println("User main");
-			User.saveAll();
+			User.write();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/UserAlbumView.fxml"));
 		

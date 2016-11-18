@@ -34,28 +34,19 @@ public class User implements Serializable{
 		return allUsers;
 	}
 	
-	public static void write(User u) throws IOException{
-		if(empty == 0){
-			oos = new ObjectOutputStream (new FileOutputStream(storeDir +File.separator +storeFile));
+	public static void write() throws IOException{
+		oos = new ObjectOutputStream (new FileOutputStream(storeDir +File.separator +storeFile));
+		for(User u : User.getAllUsers()){	
 			oos.writeObject(u);
-			empty = 1;
-		}
-		else{
-			oos.writeObject(u);
-		}
-				
+		}		
 	}
-	public static void saveAll() throws IOException{
-		ArrayList<User> users = allUsers;
-		for(User u: users){
-			write(u);
-		}
-	}
+	
 	public static User read()
 	           throws IOException, ClassNotFoundException {
 	           ObjectInputStream ois = new ObjectInputStream(
 	                new FileInputStream(storeDir + File.separator + storeFile));
 	           User u = (User)ois.readObject();
+	           ois.close();
 	           return u;
 	}
 	public static void setAllUsers(ArrayList<User> users){

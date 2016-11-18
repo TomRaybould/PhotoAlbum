@@ -82,7 +82,7 @@ public class UserAlbumViewController {
 		userTitle.setText(currUser.getUserName()+"'s Albums"); 
 		System.out.println("Current user in User album view" + currUser);
 		this.update();
-		User.saveAll();
+		User.write();
 		tableView
         	.getSelectionModel()
         	.selectedItemProperty()

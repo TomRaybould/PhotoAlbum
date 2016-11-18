@@ -90,7 +90,7 @@ public class MainAdminController {
     		else{
     			User u = new User(name, pass);
     			User.addUser(u);
-    			User.write(u);
+    			User.write();
     			for(User K: User.getAllUsers()){
     			System.out.println(K);
     			}
@@ -99,13 +99,16 @@ public class MainAdminController {
 
     	}
     	else if(b == deleteUser){
+    		while(User.getAllUsers().size()>0){
+    			User.getAllUsers().remove(0);
+    		}
     		System.out.println(selectedUser);
     		User.deleteUser(selectedUser);
     		this.update();
     	}
 		else if(b == logOut){
 			System.out.println("log out");
-			User.saveAll();
+			User.write();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/LoginPage.fxml"));
 			AnchorPane root = (AnchorPane)loader.load();
