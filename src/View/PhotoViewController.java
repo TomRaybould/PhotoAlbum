@@ -342,9 +342,13 @@ public class PhotoViewController {
 			AnchorPane root = (AnchorPane)loader.load();
 			
 			RemoveTagController RemoveTag =loader.getController();
-			RemoveTag.start(currentStage);
+			
 			Scene scene = new Scene(root);
-			currentStage.setScene(scene);
+			Stage newStage = new Stage();
+			newStage.initModality(Modality.APPLICATION_MODAL);
+			RemoveTag.start(newStage);
+			newStage.setScene(scene);
+			newStage.centerOnScreen();
 			
 		}
 		else if(b == editTagTypes){

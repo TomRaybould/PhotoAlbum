@@ -30,12 +30,23 @@ public class Photo implements Serializable{
 	public ArrayList<Tag> getTags() {
 		return tags;
 	}
+	
+	public void setTags(ArrayList<Tag> tags){
+		this.tags = tags;
+	}
 
 	public String getSrc() {
 		return src;
 	}
 	public void addTag(Tag t){
 		tags.add(t);
+	}
+	public void deleteTag(Tag t ){
+		for(Tag tag: this.getTags()){
+			if(t.type.equals(tag.type) && t.value.equals(tag.value)){
+				this.getTags().remove(tag);
+			}
+		}
 	}
 	public static void setCurrentPhoto(Photo p) {
 		currentPhoto = p;
