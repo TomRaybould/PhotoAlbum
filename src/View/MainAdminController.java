@@ -99,9 +99,6 @@ public class MainAdminController {
 
     	}
     	else if(b == deleteUser){
-    		while(User.getAllUsers().size()>0){
-    			User.getAllUsers().remove(0);
-    		}
     		System.out.println(selectedUser);
     		User.deleteUser(selectedUser);
     		this.update();
