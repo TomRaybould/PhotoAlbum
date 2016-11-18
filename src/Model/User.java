@@ -18,6 +18,7 @@ public class User implements Serializable{
 	private ArrayList<String> tagTypes = new ArrayList<String>();
 	static public ObjectOutputStream oos; 
 	static int empty;
+	static int newSession;
 
 	
 	public User(String userName, String password){
@@ -40,6 +41,11 @@ public class User implements Serializable{
 			oos.writeObject(u);
 			empty = 1;
 		}
+		if(newSession == 1){
+			oos = new ObjectOutputStream (new FileOutputStream(storeDir +File.separator +storeFile));
+			oos.writeObject(u);
+			newSession = 0;
+		}
 		else{
 			oos.writeObject(u);
 		}
@@ -47,6 +53,7 @@ public class User implements Serializable{
 	}
 	public static void saveAll() throws IOException{
 		ArrayList<User> users = allUsers;
+		empty = 0;
 		for(User u: users){
 			write(u);
 		}
@@ -56,6 +63,7 @@ public class User implements Serializable{
 	           ObjectInputStream ois = new ObjectInputStream(
 	                new FileInputStream(storeDir + File.separator + storeFile));
 	           User u = (User)ois.readObject();
+	           newSession =1;
 	           return u;
 	}
 	public static void setAllUsers(ArrayList<User> users){
