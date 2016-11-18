@@ -35,7 +35,6 @@ public class LoginPage extends Application {
 			User u;
 		    try {
 		        while ((u = (User) ois.readObject()) != null) {
-		            System.out.println(u);
 		            User.addUser(u);
 		            
 		        }
