@@ -90,6 +90,7 @@ public class MainAdminController {
     		else{
     			User u = new User(name, pass);
     			User.addUser(u);
+    			User.write(u);
     			for(User K: User.getAllUsers()){
     			System.out.println(K);
     			}

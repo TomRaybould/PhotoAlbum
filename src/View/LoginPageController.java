@@ -12,9 +12,14 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.io.Serializable;
+
 import Model.User;
 
-public class LoginPageController {
+public class LoginPageController implements Serializable {
+
 	@FXML
 	private TextField userNameField;
 	@FXML
@@ -24,11 +29,12 @@ public class LoginPageController {
 
 	private Stage currentStage;
 	
-	public void start(Stage mainStage){
+	public void start(Stage mainStage) throws IOException{
 		currentStage = mainStage;
 		
 		User dummy= new User("Dummy","dummy");
 		User.addUser(dummy);
+		User.write(dummy);
 		
 	}
 	

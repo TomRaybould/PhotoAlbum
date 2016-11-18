@@ -6,11 +6,16 @@ import java.util.ArrayList;
 import javafx.scene.image.Image;
 
 public class Photo implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4214429024702902104L;
 	private String date;
 	private String caption;
 	private String src;
 	private ArrayList<Tag> tags;
 	private static Photo currentPhoto;
+
 	
 	public Photo(String date, String src){
 		this.date = date;

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.io.*;
 
 public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4640600435000251009L;
 	private static final String storeDir = "dat";
 	private static final String storeFile = "Users.dat";
 	private static ArrayList<User> allUsers = new ArrayList<User>();
@@ -12,6 +16,9 @@ public class User implements Serializable{
 	private String password;
 	private ArrayList<Album> albumList = new ArrayList<Album>();
 	private ArrayList<String> tagTypes = new ArrayList<String>();
+	static public ObjectOutputStream oos; 
+	static int empty;
+
 	
 	public User(String userName, String password){
 		this.userName = userName;
@@ -26,11 +33,17 @@ public class User implements Serializable{
 	public static ArrayList<User> getAllUsers(){
 		return allUsers;
 	}
-	/*
+	
 	public static void write(User u) throws IOException{
-		ObjectOutputStream oos = new ObjectOutputStream (
-				new FileOutputStream(storeDir +File.separator +storeFile));
-		oos.writeObject(u);
+		if(empty == 0){
+			oos = new ObjectOutputStream (new FileOutputStream(storeDir +File.separator +storeFile));
+			oos.writeObject(u);
+			empty = 1;
+		}
+		else{
+			oos.writeObject(u);
+		}
+				
 	}
 	public static User read()
 	           throws IOException, ClassNotFoundException {
@@ -38,8 +51,11 @@ public class User implements Serializable{
 	                new FileInputStream(storeDir + File.separator + storeFile));
 	           User u = (User)ois.readObject();
 	           return u;
-	        }
-	  */ 
+	}
+	public static void setAllUsers(ArrayList<User> users){
+		allUsers = users;
+	}
+	  
 	public static void addUser(User u){
 		allUsers.add(u);
 	}

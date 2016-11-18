@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import javafx.scene.image.Image;
 
 public class Album implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7153580835213056212L;
 	private String name;
 	private String oldestDate;
 	private String latestDate;
@@ -14,6 +18,7 @@ public class Album implements Serializable{
 	private static Album currentAlbum;
 	private static boolean existingAlbum;
 	private static ArrayList<Photo> searchResults;
+
 	// an album will mainly consist of a list of photos
 	// it can also have a list of tags, but unclear whether or not that would be necessary
 	

@@ -3,8 +3,13 @@ package Model;
 import java.io.Serializable;
 
 public class Tag implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2028385128694426315L;
 	String type;
 	String value;
+
 
 	// tag will consist of a type and value
 	// such as location : NJ
