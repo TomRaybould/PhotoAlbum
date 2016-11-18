@@ -141,6 +141,7 @@ public class UserAlbumViewController {
 				Album newAlbum = new Album(newAlbumName); 
 				Album.setCurrentAlbum(newAlbum);
 				User.getCurrentUser().addAlbum(newAlbum);
+				Album.write();
 			
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));

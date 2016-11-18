@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
+import Model.Album;
 import Model.User;
 import View.LoginPageController;
 import javafx.application.Application;
@@ -16,9 +17,10 @@ import javafx.stage.Stage;
 
 
 public class LoginPage extends Application {
-	private static final String storeDir = "dat";
-	private static final String storeFile = "Users.dat";
-
+	private static final String storeDirUser = "dat";
+	private static final String storeFileUser= "Users.dat";
+	private static final String storeDirAlbum = "dat";
+	private static final String storeFileAlbum = "Albums.dat";
     
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -28,26 +30,49 @@ public class LoginPage extends Application {
 		loader.setLocation(getClass().getResource("/view/LoginPage.fxml"));
 		
 		AnchorPane root = (AnchorPane)loader.load();
-		
-	      ObjectInputStream ois; 
-			ois = new ObjectInputStream(
-	                new FileInputStream(storeDir + File.separator + storeFile));
+		//////user load
+		  ObjectInputStream oisUser; 
+			oisUser = new ObjectInputStream(
+		            new FileInputStream(storeDirUser + File.separator + storeFileUser));
 			User u;
 		    try {
-		        while ((u = (User) ois.readObject()) != null) {
+		        while ((u = (User) oisUser.readObject()) != null) {
 		            User.addUser(u);
 		        }
 		    } catch (EOFException e) {
-
+		
 		    } finally {
-		        ois.close();
+		        oisUser.close();
 		    }
-
-	        
+		
+		    
 			for(User k: User.getAllUsers()){
 				System.out.println(k+"test");
-			}
+		}
+		/////album load
+			ObjectInputStream oisAlbum; 
+			oisAlbum = new ObjectInputStream(
+		            new FileInputStream(storeDirAlbum + File.separator + storeFileAlbum));
+			Album a;
+		    try {
+		        while ((a = (Album) oisAlbum.readObject()) != null) {
+		            for(User k: User.getAllUsers()){
+		            	ArrayList<Album> temp = new ArrayList<Album>();
+		            	temp =k.getAlbumList();
+		            	for(Album album: temp){
+		            		if(a.getName().equals(album.getName())){
+		            			k.addAlbum(album);
+		            		}
+		            	}
+		            }
+		        }
+		    } catch (EOFException e) {
 		
+		    } finally {
+		        oisUser.close();
+		    }
+		
+			
 		LoginPageController loginController=loader.getController();
 		loginController.start(primaryStage);
 		Scene scene = new Scene(root);
