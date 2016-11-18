@@ -42,12 +42,28 @@ public class User implements Serializable{
 		}
 	}
 	
-	public static User read()
-	           throws IOException, ClassNotFoundException {
-	           ObjectInputStream ois = new ObjectInputStream(
-	                new FileInputStream(storeDir + File.separator + storeFile));
-	           User u = (User)ois.readObject();
-	           return u;
+	public static void read() throws IOException, ClassNotFoundException {
+		ObjectInputStream oisUser; 
+		oisUser = new ObjectInputStream(
+	    
+        new FileInputStream(storeDir + File.separator + storeFile));
+		
+		User u;
+			try {
+				while ((u = (User) oisUser.readObject()) != null) {
+					User.addUser(u);
+				}
+			} catch (EOFException e) {
+	
+			} finally {
+				oisUser.close();
+			}
+	    
+		for(User k: User.getAllUsers()){
+			User.setCurrentUser(k);
+			//read the albums for that user
+			//Album.read();
+		}
 	}
 	public static void setAllUsers(ArrayList<User> users){
 		allUsers = users;
@@ -103,9 +119,19 @@ public class User implements Serializable{
 	
 	public void addAlbum(Album album){
 		this.albumList.add(album); 
+		try{
+			this.write();
+		}catch(Exception e){
+			
+		}
 	}
 	public void removeAlbum(Album album){
 		this.albumList.remove(album); 
+		try{
+			this.write();
+		}catch(Exception e){
+			
+		}
 	}
 
 	@Override

@@ -45,9 +45,19 @@ public class Photo implements Serializable{
 	}
 	public void addTag(Tag t){
 		tags.add(t);
+		try{
+			User.write();
+		}catch(Exception e){
+			
+		}
 	}
 	public void deleteTag(Tag t ){
 		this.getTags().remove(t);
+		try{
+			User.write();
+		}catch(Exception e){
+			
+		}
 		//fixes concur error
 	}
 	public static void setCurrentPhoto(Photo p) {
@@ -67,6 +77,11 @@ public class Photo implements Serializable{
 
 	public void setCaption(String caption) {
 		this.caption = caption;
+		try{
+			User.write();
+		}catch(Exception e){
+			
+		}
 	}
 
 	

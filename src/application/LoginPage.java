@@ -30,47 +30,8 @@ public class LoginPage extends Application {
 		loader.setLocation(getClass().getResource("/view/LoginPage.fxml"));
 		
 		AnchorPane root = (AnchorPane)loader.load();
-		//////user load
-		  ObjectInputStream oisUser; 
-			oisUser = new ObjectInputStream(
-		            new FileInputStream(storeDirUser + File.separator + storeFileUser));
-			User u;
-		    try {
-		        while ((u = (User) oisUser.readObject()) != null) {
-		            User.addUser(u);
-		        }
-		    } catch (EOFException e) {
 		
-		    } finally {
-		        oisUser.close();
-		    }
-		
-		    
-			for(User k: User.getAllUsers()){
-				System.out.println(k+"test");
-		}
-		/////album load
-			ObjectInputStream oisAlbum; 
-			oisAlbum = new ObjectInputStream(
-		            new FileInputStream(storeDirAlbum + File.separator + storeFileAlbum));
-			Album a;
-		    try {
-		        while ((a = (Album) oisAlbum.readObject()) != null) {
-		            for(User k: User.getAllUsers()){
-		            	ArrayList<Album> temp = new ArrayList<Album>();
-		            	temp =k.getAlbumList();
-		            	for(Album album: temp){
-		            		if(a.getName().equals(album.getName())){
-		            			k.addAlbum(album);
-		            		}
-		            	}
-		            }
-		        }
-		    } catch (EOFException e) {
-		
-		    } finally {
-		        oisUser.close();
-		    }
+		User.read();
 		
 			
 		LoginPageController loginController=loader.getController();

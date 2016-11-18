@@ -40,8 +40,7 @@ public class Album implements Serializable{
 		}
 	}
 	
-	public static Album read()
-	           throws IOException, ClassNotFoundException {
+	public static Album read() throws IOException, ClassNotFoundException {
 	           ObjectInputStream ois = new ObjectInputStream(
 	                new FileInputStream(storeDir + File.separator + storeFile));
 	           Album a = (Album)ois.readObject();
