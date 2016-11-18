@@ -206,13 +206,14 @@ public class UserAlbumViewController {
 	    				System.out.println("T value: " + t.getValue());
 	    				System.out.println("Target Type: " + target.getType());
 	    				System.out.println("Target value: " + target.getValue());
-	    				if(target.getType().equals(t.getType()) && target.getValue().equals(t.getValue())){
+	    				if(target.equals(t)||(target.getType()=="All Tags"&& target.getValue().equals(t.getValue()))){
+	    					/*
+	    					 * This means if the tags are equals add to list, or if the tag type of target is "All Tags"
+	    					 * and the values are the same also add it to the list
+	    					 */
 	    					System.out.println("In here");
 	    					results.add(p);
-	    					break; //multiple tags will cause multiple additions
-	    				}
-	    				else if(target.getType() == null && target.getValue().equals(t.getType())){
-	    					results.add(p);
+	    					break;
 	    				}
 	    			}
 	    		}

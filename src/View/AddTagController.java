@@ -47,7 +47,7 @@ public class AddTagController {
     @FXML
     private Text currentTagType;
     
-    private ObservableList<String> myComboBoxData = FXCollections.observableArrayList();
+    private ObservableList<String> myComboBoxData;
     
     private Stage currentStage;
     
@@ -56,11 +56,7 @@ public class AddTagController {
 		System.out.println("Current user in Photo view " + User.getCurrentUser());
 		System.out.println("Current Album in Photo view is: " + Album.getCurrentAlbum());
 		System.out.println("Current Photo in add tag is: " + Photo.getCurrentPhoto());
-		myComboBoxData.add(new String("Location"));
-		myComboBoxData.add(new String("Weather"));
-		myComboBoxData.add(new String("Food"));
-		myComboBoxData.add(new String("Other"));
-		tagDropDown.setItems(myComboBoxData);
+		
 			currentStage.show();
 			update();
 			/*
@@ -68,7 +64,13 @@ public class AddTagController {
 			 */
 	}
     private void update (){
+    	myComboBoxData = FXCollections.observableArrayList();
+    	//populates list from back end users tag types
+    	for(String tagType :User.getCurrentUser().getTagTypes()){
+    		myComboBoxData.add(tagType);
+    	}
     	
+    	tagDropDown.setItems(myComboBoxData);
     }
     
     public void handle(ActionEvent e) throws IOException{

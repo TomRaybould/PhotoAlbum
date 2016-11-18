@@ -23,7 +23,7 @@ public class CopyPhotoController {
     
     private ObservableList<String> obslist;
     
-    private String selectedUser;
+    private String selectedAlbum;
 	
 	public void start(Stage mainStage){
 		this.update();
@@ -34,7 +34,8 @@ public class CopyPhotoController {
         .selectedItemProperty()
         .addListener(
         (obs , oldVal, newVal) -> 
-        	{this.selectedUser = destList.getSelectionModel().getSelectedItem();});
+        	{this.selectedAlbum = destList.getSelectionModel().getSelectedItem();});
+			//shouldnt be called selected user
 	}
 	
 	public void update(){
@@ -57,15 +58,14 @@ public class CopyPhotoController {
 	public void handle(ActionEvent e) {
 		Button b = (Button)e.getSource();
     	if(b == copyButton){
-    		System.out.println(selectedUser);
-    		Album goBack = Album.getCurrentAlbum();
+    		System.out.println(selectedAlbum);
     		System.out.println(Photo.getCurrentPhoto().toString());
     		for(Album a: User.getCurrentUser().getAlbumList()){
-    			if(a.getName().equals(selectedUser)){
-    				Album.setCurrentAlbum(a);
-    				Album.getCurrentAlbum().addPhotoToAlbum(Photo.getCurrentPhoto());
-    				Album.getCurrentAlbum().addOnePhotoToCount();
-    				Album.setCurrentAlbum(goBack);
+    			if(a.getName().equals(selectedAlbum)){
+    				
+    				a.addPhotoToAlbum(Photo.getCurrentPhoto());
+    				//no need to mess with the current album of Album Class
+    				//add Photo method adjusts the count
     				this.update();
     				currentStage.close();
     			}

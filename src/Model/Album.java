@@ -29,9 +29,17 @@ public class Album implements Serializable{
 	public static void setSearchResults(ArrayList<Photo> searchResults) {
 		Album.searchResults = searchResults;
 	}
-
+	public void addPhotoToAlbum(Photo p){
+		photosInAlbum.add(p);
+		this.numOfPhotos++;
+		return;
+		//change number of photos here so we never forget to call a second method
+	}
 	public void removePhotoFromAlbum(Photo p){
 		photosInAlbum.remove(p);
+		this.numOfPhotos--;
+		return;
+		//change number of photos here so we never forget to call a second method
 	}
 	
 	public Album(String name ){
@@ -43,13 +51,7 @@ public class Album implements Serializable{
 		return numOfPhotos;
 	}
 	
-	public void addOnePhotoToCount(){
-		this.numOfPhotos = this.numOfPhotos + 1;
-	}
-	
-	public void subtractOnePhotoToCount(){
-		this.numOfPhotos = this.numOfPhotos - 1;
-	}
+	//Just change count in add and remove
 	
 	public String getName() {
 		return name;
@@ -72,9 +74,6 @@ public class Album implements Serializable{
 
 	public static Album getCurrentAlbum() {
 		return currentAlbum;
-	}
-	public void addPhotoToAlbum(Photo photo){
-		photosInAlbum.add(photo);
 	}
 	
 	public void iterate(){

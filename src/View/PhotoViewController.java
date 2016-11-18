@@ -229,7 +229,10 @@ public class PhotoViewController {
     		Photo photo = new Photo(date, URL);
     		Photo.setCurrentPhoto(photo);
     		Album a = Album.getCurrentAlbum();
-    		a.addOnePhotoToCount();
+    		/*
+    		 * The count will be adjusted when the user actually presses add photo
+    		 * in the next view, because add photo now adjusts the count
+    		 */
     		System.out.println("Photo count for album is: " + a.getNumOfPhotos());
 		
 			System.out.println("User main");
@@ -253,7 +256,7 @@ public class PhotoViewController {
 			//need an alert
 			if(Photo.getCurrentPhoto()!=null){
 			Album.getCurrentAlbum().removePhotoFromAlbum(Photo.getCurrentPhoto());
-			Album.getCurrentAlbum().subtractOnePhotoToCount();
+			//remove method subtracts from count
 			System.out.println("Current count is " + Album.getCurrentAlbum().getNumOfPhotos());
 			Photo.setCurrentPhoto(null);
 			this.update();

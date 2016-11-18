@@ -41,22 +41,18 @@ public class Tag implements Serializable{
 	public String toString() {
 		return "Tag [type=" + type + ", value=" + value + "]";
 	}
-	//@Override
-	/*public boolean equals(Object o){
+	@Override
+	public boolean equals(Object o){
 		if(!(o instanceof Tag)){
 			return false;
 		}
 		Tag t = (Tag)o;
-		
-		//if the tag type is All Tags just compare 
-		if (this.type.equals("All Tags") || t.type.equals("All Tags") && this.value.equals(t.value)){
-			return true;
-		}
-		else if(this.type.equals(t.type)&&(this.value.equals(t.value))){
+	
+		if(this.type.equals(t.type)&&(this.value.equals(t.value))){
 			return true;
 		}
 		else{
 			return false;
 		}
-	}*/
+	}
 }

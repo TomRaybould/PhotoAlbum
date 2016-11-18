@@ -47,11 +47,8 @@ public class Photo implements Serializable{
 		tags.add(t);
 	}
 	public void deleteTag(Tag t ){
-		for(Tag tag: this.getTags()){
-			if(t.type.equals(tag.type) && t.value.equals(tag.value)){
-				this.getTags().remove(tag);
-			}
-		}
+		this.getTags().remove(t);
+		//fixes concur error
 	}
 	public static void setCurrentPhoto(Photo p) {
 		currentPhoto = p;
