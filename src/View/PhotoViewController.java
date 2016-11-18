@@ -129,6 +129,7 @@ public class PhotoViewController {
     				nestedPane.setStyle(STYLE_PRESSED);
     				selectedPane = nestedPane;
     				System.out.println("selected");
+    				System.out.println(photo);
     			}
     		});
     		
@@ -315,16 +316,19 @@ public class PhotoViewController {
 			if(Photo.getCurrentPhoto()==null){
 				return;
 			}
-			System.out.println("add Tag");
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/AddTag.fxml"));
-		
+			loader.setLocation(getClass().getResource("/view/addTag.fxml"));
+			
 			AnchorPane root = (AnchorPane)loader.load();
 			
-			AddTagController AddTag =loader.getController();
-			AddTag.start(currentStage);
+			AddTagController addTag = loader.getController();
+			
 			Scene scene = new Scene(root);
-			currentStage.setScene(scene);
+			Stage newStage = new Stage();
+			newStage.initModality(Modality.APPLICATION_MODAL);
+			addTag.start(newStage);
+			newStage.setScene(scene);
+			newStage.centerOnScreen();
 			
 		}
 		else if(b == removeTag){
