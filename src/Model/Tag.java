@@ -36,8 +36,8 @@ public class Tag implements Serializable{
 	public String toString() {
 		return "Tag [type=" + type + ", value=" + value + "]";
 	}
-	@Override
-	public boolean equals(Object o){
+	//@Override
+	/*public boolean equals(Object o){
 		if(!(o instanceof Tag)){
 			return false;
 		}
@@ -53,5 +53,5 @@ public class Tag implements Serializable{
 		else{
 			return false;
 		}
-	}
+	}*/
 }

@@ -190,6 +190,8 @@ public class UserAlbumViewController {
 			
 			String tagVal = tagValue.getText();
 			String tagTyp = tagDropDown.getSelectionModel().getSelectedItem();
+			System.out.println("Value: " + tagVal);
+			System.out.println("Type: " + tagTyp);
 			
 			Tag target= new Tag(tagTyp,tagVal);
 			
@@ -199,17 +201,26 @@ public class UserAlbumViewController {
 	    		ArrayList<Photo> photos = a.getPhotosInAlbum();
 	    		for(Photo p: photos){
 	    			for(Tag t: p.getTags()){
-	    				
-	    				if(target.equals(t)){
+	    				System.out.println(p);
+	    				System.out.println("T Type: " + t.getType());
+	    				System.out.println("T value: " + t.getValue());
+	    				System.out.println("Target Type: " + target.getType());
+	    				System.out.println("Target value: " + target.getValue());
+	    				if(target.getType().equals(t.getType()) && target.getValue().equals(t.getValue())){
+	    					System.out.println("In here");
 	    					results.add(p);
+	    					break; //multiple tags will cause multiple additions
 	    				}
-	    				else{
-	    					continue;
+	    				else if(target.getType() == null && target.getValue().equals(t.getType())){
+	    					results.add(p);
 	    				}
 	    			}
 	    		}
 	    	}
-	    	
+	    	System.out.println("Search Results---------------------------");
+	    	for(Photo p: results){
+	    		System.out.println(p);
+	    	}
 	    	if(results.size()<=0){
 	    		//alert
 	    		return;

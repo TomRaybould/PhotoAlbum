@@ -75,7 +75,7 @@ public class AddTagController {
     	Button b = (Button)e.getSource();
     	if(b == addTag){
     		System.out.println("add Tag");
-    		String tagType = currentTagType.getText();
+    		String tagType = tagDropDown.getSelectionModel().getSelectedItem();
     		String tag = tagText.getText();
     		Photo p = Photo.getCurrentPhoto();
     		if (p == null){
