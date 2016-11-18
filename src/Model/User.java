@@ -45,6 +45,12 @@ public class User implements Serializable{
 		}
 				
 	}
+	public static void saveAll() throws IOException{
+		ArrayList<User> users = allUsers;
+		for(User u: users){
+			write(u);
+		}
+	}
 	public static User read()
 	           throws IOException, ClassNotFoundException {
 	           ObjectInputStream ois = new ObjectInputStream(

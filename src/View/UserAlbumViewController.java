@@ -76,13 +76,13 @@ public class UserAlbumViewController {
 	
 	private ObservableList<String> myComboBoxData = FXCollections.observableArrayList();
 	
-	public void start(Stage mainStage){
+	public void start(Stage mainStage) throws IOException{
 		currentStage = mainStage;
 		currUser = User.getCurrentUser();
 		userTitle.setText(currUser.getUserName()+"'s Albums"); 
 		System.out.println("Current user in User album view" + currUser);
 		this.update();
-		
+		User.saveAll();
 		tableView
         	.getSelectionModel()
         	.selectedItemProperty()

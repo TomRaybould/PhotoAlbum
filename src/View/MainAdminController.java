@@ -105,6 +105,7 @@ public class MainAdminController {
     	}
 		else if(b == logOut){
 			System.out.println("log out");
+			User.saveAll();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/LoginPage.fxml"));
 			AnchorPane root = (AnchorPane)loader.load();

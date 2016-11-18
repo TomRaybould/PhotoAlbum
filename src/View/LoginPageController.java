@@ -32,9 +32,9 @@ public class LoginPageController implements Serializable {
 	public void start(Stage mainStage) throws IOException{
 		currentStage = mainStage;
 		
-		User dummy= new User("Dummy","dummy");
-		User.addUser(dummy);
-		User.write(dummy);
+		//User dummy= new User("Dummy","dummy");
+		//User.addUser(dummy);
+		//User.write(dummy);
 		
 	}
 	
