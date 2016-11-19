@@ -65,15 +65,11 @@ public class RemoveTagController {
     		String value = selectedTag.substring(selectedTag.indexOf("-") + 1, selectedTag.length());
     		System.out.println("type -" + type + "- ");
     		System.out.println("value -" + value + "- ");
-    		Tag t = new Tag(type, value);
     		
-    		ArrayList<Tag> tags =Photo.getCurrentPhoto().getTags();
-    		for(Tag tag: tags){
-    			if(t.getType().equals(tag.getType()) && t.getValue().equals(tag.getValue())){
-    				tags.remove(tag);
-    			}
-    		}
-    		Photo.getCurrentPhoto().setTags(tags);
+    		Tag target = Photo.getCurrentPhoto().searchTags(type, value);
+    
+    		Photo.getCurrentPhoto().removeTag(target);
+    
     		currentStage.close();
     		
     	}

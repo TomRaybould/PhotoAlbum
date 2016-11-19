@@ -43,6 +43,7 @@ public class Photo implements Serializable{
 	public String getSrc() {
 		return src;
 	}
+	
 	public void addTag(Tag t){
 		tags.add(t);
 		try{
@@ -51,15 +52,26 @@ public class Photo implements Serializable{
 			
 		}
 	}
-	public void deleteTag(Tag t ){
+	
+	public void removeTag(Tag t ){
 		this.getTags().remove(t);
 		try{
 			User.write();
 		}catch(Exception e){
 			
 		}
-		//fixes concur error
 	}
+	
+	public Tag searchTags(String type, String value){
+		Tag search =new Tag(type,value);
+		for(Tag t : tags){
+			if(t.equals(search)){
+				return t;
+			}
+		}
+		return null;
+	}
+	
 	public static void setCurrentPhoto(Photo p) {
 		currentPhoto = p;
 	}
