@@ -358,6 +358,19 @@ public class PhotoViewController {
 			
 		}
 		else if(b == editTagTypes){
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/EditTagType.fxml"));
+			
+			AnchorPane root = (AnchorPane)loader.load();
+			
+			EditTagTypeController EditTagType = loader.getController();
+			
+			Scene scene = new Scene(root);
+			Stage newStage = new Stage();
+			newStage.initModality(Modality.APPLICATION_MODAL);
+			EditTagType.start(newStage);
+			newStage.setScene(scene);
+			newStage.centerOnScreen();
 		
 		}
 
