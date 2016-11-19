@@ -11,7 +11,8 @@ public class Photo implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -4214429024702902104L;
-	private Date date;
+	private String date;
+	private Date calDate;
 	private String caption;
 	private String src;
 	private ArrayList<Tag> tags;
@@ -19,18 +20,18 @@ public class Photo implements Serializable{
 
 	
 	public Photo(Date date, String src){
-		this.date = date;
+		this.calDate = date;
 		this.tags = new ArrayList<Tag>();
 		this.src = src;
 	}
 
 
-	public Date getDate() {
-		return date;
+	public Date getCalDate() {
+		return this.calDate;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void Date(Date date) {
+		this.calDate = date;
 	}
 
 	public ArrayList<Tag> getTags() {

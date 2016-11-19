@@ -328,7 +328,7 @@ public class UserAlbumViewController {
 		
 		for(Album a :User.getCurrentUser().getAlbumList()){
 			for(Photo p: a.getPhotosInAlbum()){
-				int [] dateArr = convertDate(p.getDate().toString());
+				int [] dateArr = convertDate(p.getCalDate().toString());
 			}
 		}
 		
