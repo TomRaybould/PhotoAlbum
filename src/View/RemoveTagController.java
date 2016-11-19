@@ -49,7 +49,7 @@ public class RemoveTagController {
 		for(Tag t : p.getTags()){
 			String type = t.getType();
 			String val = t.getValue();
-			String addThis = type + "|" + val;
+			String addThis = type + "-" + val;
 			obslist.add(addThis);
 		}
 		
@@ -61,8 +61,8 @@ public class RemoveTagController {
     	Button b = (Button)e.getSource();
     	if(b == removeTags){
     		System.out.println("remove Tag");
-    		String type = selectedTag.substring(0, selectedTag.indexOf("|"));
-    		String value = selectedTag.substring(selectedTag.indexOf("|") + 1, selectedTag.length());
+    		String type = selectedTag.substring(0, selectedTag.indexOf("-"));
+    		String value = selectedTag.substring(selectedTag.indexOf("-") + 1, selectedTag.length());
     		System.out.println("type -" + type + "- ");
     		System.out.println("value -" + value + "- ");
     		Tag t = new Tag(type, value);

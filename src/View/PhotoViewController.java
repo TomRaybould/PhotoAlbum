@@ -334,6 +334,7 @@ public class PhotoViewController {
 			newStage.setScene(scene);
 			newStage.centerOnScreen();
 			
+			
 		}
 		else if(b == removeTag){
 			if(Photo.getCurrentPhoto()==null){
@@ -354,9 +355,10 @@ public class PhotoViewController {
 			newStage.setScene(scene);
 			newStage.centerOnScreen();
 			
+			
 		}
 		else if(b == editTagTypes){
-			
+		
 		}
 
     }//end of handle

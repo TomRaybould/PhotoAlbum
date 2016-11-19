@@ -167,6 +167,8 @@ public class UserAlbumViewController {
 			Album album = (Album) tableView.getSelectionModel().getSelectedItem(); 
 			String newAlbumName = oneLineDialog("Rename Album","","Enter new name for album", album.getName());
 			album.setName(newAlbumName);
+			Album.write();
+			User.write();
 			this.update();
 		}
 		else if(b == logOut){

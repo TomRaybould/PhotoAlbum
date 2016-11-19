@@ -15,6 +15,6 @@
       </Text>
       <Text layoutX="147.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a Tag Type" />
       <Button fx:id="removeTags" layoutX="120.0" layoutY="283.0" mnemonicParsing="false" onAction="#handle" text="Remove Selected Tag/s" />
-      <ListView fx:id="list" layoutX="120.0" layoutY="76.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="list" layoutX="15.0" layoutY="76.0" prefHeight="200.0" prefWidth="429.0" />
    </children>
 </AnchorPane>
