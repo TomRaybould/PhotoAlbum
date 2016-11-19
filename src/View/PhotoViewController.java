@@ -191,7 +191,11 @@ public class PhotoViewController {
 			SlideShowController SlideShow = loader.getController();
 			SlideShow.start(currentStage);
 			Scene scene = new Scene(root);
-			currentStage.setScene(scene);
+			Stage newStage =new Stage();
+			newStage.initModality(Modality.APPLICATION_MODAL);
+			newStage.setScene(scene);
+			newStage.centerOnScreen();
+			newStage.showAndWait();
 			
 		}
 		else if(b == backToMain){
