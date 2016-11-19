@@ -57,8 +57,8 @@ public class AddTagController {
 		System.out.println("Current Album in Photo view is: " + Album.getCurrentAlbum());
 		System.out.println("Current Photo in add tag is: " + Photo.getCurrentPhoto());
 		
-		currentStage.show();
-		update();
+			currentStage.show();
+			update();
 			/*
 			 * make the combo box update from back end like in the userAlbumViewController 
 			 */

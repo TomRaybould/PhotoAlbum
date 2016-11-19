@@ -2,6 +2,7 @@ package Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javafx.scene.image.Image;
 
@@ -10,25 +11,25 @@ public class Photo implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -4214429024702902104L;
-	private String date;
+	private Date date;
 	private String caption;
 	private String src;
 	private ArrayList<Tag> tags;
 	private static Photo currentPhoto;
 
 	
-	public Photo(String date, String src){
+	public Photo(Date date, String src){
 		this.date = date;
 		this.tags = new ArrayList<Tag>();
 		this.src = src;
 	}
 
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

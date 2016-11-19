@@ -50,7 +50,7 @@ public class DisplayPictureController {
 		Image anImage = new Image(p.getSrc());
 		image.setImage(anImage);
 		caption.setText(p.getCaption());
-		date.setText(p.getDate());
+		date.setText(p.getDate().toString());
     	//listview of tags
 		this.update();
 		currentStage.show();

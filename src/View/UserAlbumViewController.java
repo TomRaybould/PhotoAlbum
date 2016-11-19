@@ -52,7 +52,17 @@ public class UserAlbumViewController {
 	@FXML
 	private ComboBox<String>  tagDropDown;
 	@FXML
-	private DatePicker dateSelector;
+	private DatePicker dateStart;
+	@FXML
+	private TextField hourStart;
+	@FXML
+	private TextField minStart;
+	@FXML
+	private DatePicker dateEnd;
+	@FXML
+	private TextField hourEnd;
+	@FXML
+	private TextField minEnd;
 	@FXML
 	private Button searchTag;
 	@FXML
@@ -88,7 +98,6 @@ public class UserAlbumViewController {
         	.selectedItemProperty()
         	.addListener(
         			(obs , oldVal, newVal) -> System.out.println());
-		
 	}
 	
 	public void update(){
@@ -245,7 +254,8 @@ public class UserAlbumViewController {
 			
 		}
 		else if(b == searchDate){
-			
+			ArrayList<Photo> result = new ArrayList<Photo>();
+			result = getPhotosInRange();
 		}
 		else if(b == openAlbum){
 			if(tableView.getSelectionModel().getSelectedItem()==null){
@@ -298,5 +308,40 @@ public class UserAlbumViewController {
 		   alert.showAndWait();
 		   
 	}
+	
+	private ArrayList<Photo> getPhotosInRange(){
+		
+		if(dateStart.getValue()==null||dateEnd.getValue()==null){
+			return null;
+		}
+		int startYear= dateStart.getValue().getYear();	
+		int startMonth= dateStart.getValue().getDayOfMonth();
+		int startDay= dateStart.getValue().getDayOfMonth();
+		int startHour= convertTimeInput(hourStart.getText().toString());
+		int startMin= convertTimeInput(minStart.getText().toString());
+		
+		for(Album a :User.getCurrentUser().getAlbumList()){
+			for(Photo p: a.getPhotosInAlbum()){
+				int [] dateArr = convertDate(p.getDate().toString());
+			}
+		}
+		
+		return null;
+	}
+	
+	private int convertTimeInput(String str){
+		//returns the int value of the string and also converts garbage to 0
+		return 0;
+	}
+	
+	private int[] convertDate(String date){
+		
+		/*
+		 * takes in the date string and return an int arr with year,month,day,hour,min in that order
+		 */
+		return null;
+	}
+	
+	
 }//end of class
 	

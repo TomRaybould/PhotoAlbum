@@ -226,10 +226,11 @@ public class PhotoViewController {
 			String URL = file.toURI().toURL().toString();
     		
     		Calendar cal = Calendar.getInstance();
-    		Date date1 = new Date(0L);
+    		Date date = new Date(0L);
     		cal.set(Calendar.MILLISECOND, 0);
-    		date1 = cal.getTime();
-    		String date = date1.toString();
+    		date = cal.getTime();
+    		
+    		
     		Photo photo = new Photo(date, URL);
     		Photo.setCurrentPhoto(photo);
     		Album a = Album.getCurrentAlbum();

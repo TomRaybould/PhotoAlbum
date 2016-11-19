@@ -42,7 +42,7 @@ public class SlideShowController {
 		Image anImage = new Image(start.getSrc());
 		image.setImage(anImage);
 		caption.setText(start.getCaption());
-		date.setText(start.getDate());
+		date.setText(start.getDate().toString());
 		count = 0; //will equal index
 	}
 
@@ -60,7 +60,7 @@ public class SlideShowController {
     			Image anImage = new Image(curr.getSrc());
     			image.setImage(anImage);
     			caption.setText(curr.getCaption());
-    			date.setText(curr.getDate());
+    			date.setText(curr.getDate().toString());
     		}
     		
     	}
@@ -75,7 +75,7 @@ public class SlideShowController {
     			Image anImage = new Image(curr.getSrc());
     			image.setImage(anImage);
     			caption.setText(curr.getCaption());
-    			date.setText(curr.getDate());
+    			date.setText(curr.getDate().toString());
     		}
     	}
     }
