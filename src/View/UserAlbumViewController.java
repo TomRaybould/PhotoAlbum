@@ -320,6 +320,12 @@ public class UserAlbumViewController {
 		int startHour= convertTimeInput(hourStart.getText().toString());
 		int startMin= convertTimeInput(minStart.getText().toString());
 		
+		int endYear= dateEnd.getValue().getYear();	
+		int endMonth= dateEnd.getValue().getDayOfMonth();
+		int endDay= dateEnd.getValue().getDayOfMonth();
+		int endHour= convertTimeInput(hourEnd.getText().toString());
+		int endMin= convertTimeInput(minEnd.getText().toString());
+		
 		for(Album a :User.getCurrentUser().getAlbumList()){
 			for(Photo p: a.getPhotosInAlbum()){
 				int [] dateArr = convertDate(p.getDate().toString());
@@ -341,7 +347,6 @@ public class UserAlbumViewController {
 		 */
 		return null;
 	}
-	
 	
 }//end of class
 	
