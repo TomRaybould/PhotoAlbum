@@ -317,39 +317,74 @@ public class UserAlbumViewController {
 		int startYear= dateStart.getValue().getYear();	
 		int startMonth= dateStart.getValue().getMonthValue();
 		int startDay= dateStart.getValue().getDayOfMonth();
-		int startHour= convertTimeInput(hourStart.getText().toString());
-		int startMin= convertTimeInput(minStart.getText().toString());
+		int startHour= convertHourInput(hourStart.getText().toString());
+		int startMin= convertHourInput(minStart.getText().toString());
 		
 		System.out.println("Start date: " + startYear+", "+startMonth+", "+startDay+", "+startHour+", "+startMin);
 		
 		int endYear= dateEnd.getValue().getYear();	
 		int endMonth= dateEnd.getValue().getMonthValue();
 		int endDay= dateEnd.getValue().getDayOfMonth();
-		int endHour= convertTimeInput(hourEnd.getText().toString());
-		int endMin= convertTimeInput(minEnd.getText().toString());
+		int endHour= convertHourInput(hourEnd.getText().toString());
+		int endMin= convertMinInput(minEnd.getText().toString());
 		
 		System.out.println("End date: " + endYear+", "+endMonth+", "+endDay+", "+endHour+", "+endMin);
 		
 		for(Album a :User.getCurrentUser().getAlbumList()){
 			for(Photo p: a.getPhotosInAlbum()){
 				int [] dateArr = convertDate(p.getCalDate().toString());
+				//comapare date to range
 			}
 		}
 		
 		return null;
 	}
+	//parse the input of text of hour and return 0 for anything not in the 0-23 range
+	private int convertHourInput(String str){
+		int i;
+		try{
+			i=Integer.parseInt(str);
+		}catch(Exception e){
+			return 0;//if there is no int in the string
+		}
+		if(i>=0 && i<=23){
+			return i;
+		}
+		else{
+			return 0;
+		}
+	}
 	
-	private int convertTimeInput(String str){
-		//returns the int value of the string and also converts garbage to 0
-		return 0;
+	//parse the input of text of hour and return 0 for anything not in the 0-59 range
+	private int convertMinInput(String str){
+		int i;
+		try{
+			i=Integer.parseInt(str);
+		}catch(Exception e){
+			return 0;//if there is no int in the string
+		}
+		if(i>=0 && i<=59){
+			return i;
+		}
+		else{
+			return 0;
+		}
 	}
 	
 	private int[] convertDate(String date){
-		
+		int month= monthFinder(date);
 		/*
 		 * takes in the date string and return an int arr with year,month,day,hour,min in that order
 		 */
 		return null;
+	}
+	
+	private int monthFinder(String date){
+		//just an example
+		if(date.contains("Nov")){
+			return 11;
+		}
+		return 0;
 	}
 	
 }//end of class
