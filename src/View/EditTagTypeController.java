@@ -38,7 +38,13 @@ public class EditTagTypeController {
     private ObservableList<String> obslist;
     
     private String selectedTagType;
-    
+    /**
+     * Loads current screen and data associated with the screen
+     * 
+     * @param mainStage stage that is passed to be loaded
+     * 
+     * @return void
+     */
     public void start(Stage mainStage){
     	this.update();
 		currentStage = mainStage;
@@ -51,7 +57,11 @@ public class EditTagTypeController {
         (obs , oldVal, newVal) -> 
         	{this.selectedTagType = listView.getSelectionModel().getSelectedItem();});
 		}
-    
+    /**
+     * Updates data associated with screen
+     * 
+     * @return void
+     */
     public void update(){
 		obslist = FXCollections.observableArrayList();
 		User u = User.getCurrentUser();
@@ -62,6 +72,13 @@ public class EditTagTypeController {
 		
 		listView.setItems(obslist);
 	}
+    /**
+     * Handles button and action events that occur on this screen
+     * 
+     * @param e an Action event
+     * 
+     * @return void
+     */
     @FXML
     void handle(ActionEvent e) {
     	Button b = (Button)e.getSource();

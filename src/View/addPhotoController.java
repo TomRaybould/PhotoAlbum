@@ -55,7 +55,13 @@ public class addPhotoController {
     private boolean setATag = false;
     
     private boolean nullPhoto = false;
-    
+    /**
+     * Loads current screen and data associated with the screen
+     * 
+     * @param mainStage stage that is passed to be loaded
+     * 
+     * @return void
+     */
     public void start(Stage mainStage) throws IOException{
 		currentStage = mainStage;
 		if(setATag == false){
@@ -67,7 +73,13 @@ public class addPhotoController {
 		
     			
 	}
-
+    /**
+     * Handles button and action events that occur on this screen
+     * 
+     * @param e an Action event
+     * 
+     * @return void
+     */
     @FXML
     void handle(ActionEvent e) throws IOException {
     	Button b= (Button)e.getSource();

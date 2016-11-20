@@ -46,13 +46,27 @@ public class SearchResultsController {
     private Stage currentStage;
     
     private ArrayList<Photo> searchResult = new ArrayList<Photo>();
-    
+    /**
+     * Loads current screen and data associated with the screen
+     * 
+     * @param mainStage stage that is passed to be loaded
+     * 
+     * @return void
+     */
     public void start(Stage mainStage){
     	
     	currentStage = mainStage;
     	
     	
 	}
+    
+    /**
+     * Handles button and action events that occur on this screen
+     * 
+     * @param e an Action event
+     * 
+     * @return void
+     */
     public void handle(ActionEvent e){
     	Button b = (Button)e.getSource();
     	if(b == addTag){

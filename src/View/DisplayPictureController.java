@@ -44,7 +44,13 @@ public class DisplayPictureController {
     private ObservableList<String> obslist;
     
     private String selectedTag;
-    
+    /**
+     * Loads current screen and data associated with the screen
+     * 
+     * @param mainStage stage that is passed to be loaded
+     * 
+     * @return void
+     */
     public void start(Stage mainStage) throws MalformedURLException{
     	currentStage = mainStage;
 		System.out.println("Current user in Photo view " + User.getCurrentUser());
@@ -64,9 +70,12 @@ public class DisplayPictureController {
         .addListener(
         (obs , oldVal, newVal) -> 
         	{this.selectedTag = listOfTags.getSelectionModel().getSelectedItem();});
-		
-		
-   }
+	}
+    /**
+     * Updates data associated with screen
+     * 
+     * @return void
+     */
     public void update(){
 		obslist = FXCollections.observableArrayList();
 		Photo p = Photo.getCurrentPhoto();
@@ -79,7 +88,13 @@ public class DisplayPictureController {
 		
 		listOfTags.setItems(obslist);
 	}
-   
+    /**
+     * Handles button and action events that occur on this screen
+     * 
+     * @param e an Action event
+     * 
+     * @return void
+     */
     public void handle(ActionEvent e) throws IOException{ 
     	Button b = (Button)e.getSource();
  

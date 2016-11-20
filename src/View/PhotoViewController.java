@@ -88,13 +88,23 @@ public class PhotoViewController {
     
     private final String STYLE_PRESSED = "-fx-border-color: #039ED3; -fx-faint-border-color: #039ED322;";
     private final String STYLE_NORMAL = "-fx-border-color: transparent; -fx-faint-border-color: transparent;";
-    
+    /**
+     * Loads current screen and data associated with the screen
+     * 
+     * @param mainStage stage that is passed to be loaded
+     * 
+     * @return void
+     */
     public void start(Stage mainStage){
     		currentStage = mainStage;
     		Photo.setCurrentPhoto(null);
     		update();    	
 	}
-    
+    /**
+     * Updates data associated with screen
+     * 
+     * @return void
+     */
     public void update(){
     	ArrayList<GridPane> nestedPanes=new ArrayList<GridPane>();
     	for(Photo photo: Album.getCurrentAlbum().getPhotosInAlbum()){
@@ -164,7 +174,13 @@ public class PhotoViewController {
 		scrollPane.setPadding(paddingVals);
 		scrollPane.setContent(containerPane);
     }
-
+    /**
+     * Handles button and action events that occur on this screen
+     * 
+     * @param e an Action event
+     * 
+     * @return void
+     */
     @FXML
     public void handle(ActionEvent e) throws IOException {
     	Button b= (Button)e.getSource();

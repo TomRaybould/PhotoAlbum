@@ -32,7 +32,13 @@ public class RemoveTagController {
     private ObservableList<String> obslist;
     
     private String selectedTag;
-    
+    /**
+    * Loads current screen and data associated with the screen
+    * 
+    * @param mainStage stage that is passed to be loaded
+    * 
+    * @return void
+    */
     public void start(Stage mainStage){
     	this.update();
 		currentStage = mainStage;
@@ -46,7 +52,11 @@ public class RemoveTagController {
         	{this.selectedTag = list.getSelectionModel().getSelectedItem();});
 		
 	}
-    
+    /**
+     * Updates data associated with screen
+     * 
+     * @return void
+     */
     public void update(){
 		obslist = FXCollections.observableArrayList();
 		Photo p = Photo.getCurrentPhoto();
@@ -59,7 +69,13 @@ public class RemoveTagController {
 		
 		list.setItems(obslist);
 	}
-
+    /**
+     * Handles button and action events that occur on this screen
+     * 
+     * @param e an Action event
+     * 
+     * @return void
+     */
     @FXML
     public void handle(ActionEvent e){
     	Button b = (Button)e.getSource();

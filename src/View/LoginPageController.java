@@ -33,7 +33,13 @@ public class LoginPageController implements Serializable {
 	private Button loginButton;
 
 	private Stage currentStage;
-	
+	 /**
+	    * Loads current screen and data associated with the screen
+	    * 
+	    * @param mainStage stage that is passed to be loaded
+	    * 
+	    * @return void
+	    */
 	public void start(Stage mainStage) throws IOException{
 		currentStage = mainStage;
 		
@@ -42,7 +48,13 @@ public class LoginPageController implements Serializable {
 		//User.write(dummy);
 		
 	}
-	
+	 /**
+     * Handles button and action events that occur on this screen
+     * 
+     * @param e an Action event
+     * 
+     * @return void
+     */
 	public void handle(ActionEvent e) throws Exception{
 		Button b = (Button)e.getSource();
 		if(b == loginButton){

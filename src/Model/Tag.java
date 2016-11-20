@@ -33,19 +33,39 @@ public class Tag implements Serializable{
 		this.type = type;
 		this.value = value;
 	}
-
+	/**
+	 * method to get a tag type
+	 *
+	 * @return String the tag type
+	 */
 	public String getType() {
 		return type;
 	}
-
+	/**
+	 * method to set a tag type
+	 *
+	 * @param type the name of the tag type
+	 *
+	 * @return void
+	 */
 	public void setType(String type) {
 		this.type = type;
 	}
-
+	/**
+	 * method to get a tag Value
+	 *
+	 * @return String the tag Value
+	 */
 	public String getValue() {
 		return value;
 	}
-
+	/**
+	 * method to set a tag Value
+	 *
+	 * @param type the name of the tag Value
+	 *
+	 * @return void
+	 */
 	public void setValue(String value) {
 		this.value = value;
 	}

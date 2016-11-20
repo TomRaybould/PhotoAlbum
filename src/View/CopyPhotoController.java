@@ -29,7 +29,13 @@ public class CopyPhotoController {
     private ObservableList<String> obslist;
     
     private String selectedAlbum;
-	
+    /**
+     * Loads current screen and data associated with the screen
+     * 
+     * @param mainStage stage that is passed to be loaded
+     * 
+     * @return void
+     */
 	public void start(Stage mainStage){
 		this.update();
 		currentStage = mainStage;
@@ -42,7 +48,11 @@ public class CopyPhotoController {
         	{this.selectedAlbum = destList.getSelectionModel().getSelectedItem();});
 			//shouldnt be called selected user
 	}
-	
+	/**
+     * Updates data associated with screen
+     * 
+     * @return void
+     */
 	public void update(){
 		obslist = FXCollections.observableArrayList();
 		
@@ -57,7 +67,13 @@ public class CopyPhotoController {
 		destList.setItems(obslist);
 	}
 	
-
+	 /**
+     * Handles button and action events that occur on this screen
+     * 
+     * @param e an Action event
+     * 
+     * @return void
+     */
 	// Event Listener on Button[#copyButton].onAction
 	@FXML
 	public void handle(ActionEvent e) {

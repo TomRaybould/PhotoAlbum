@@ -29,23 +29,43 @@ public class Admin implements Serializable{
 		this.name = name;
 		this.password = password;
 	}
-
+	/**
+	 * getter method for name
+	 *
+	 * @return String returns name of admin
+	 */
 	public String getName() {
 		return name;
 	}
-
+	/**
+	 * setter method for name
+	 *
+	 * @return void
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	/**
+	 * getter method for password
+	 *
+	 * @return String returns password of admin
+	 */
 	public String getPassword() {
 		return password;
 	}
-
+	/**
+	 * setter method for password
+	 *
+	 * @return void
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	/**
+	 * getter method for list of users
+	 *
+	 * @return ArrayList<User> list of users
+	 */
 	public ArrayList<User> getListOfUsers() {
 		return listOfUsers;
 	}

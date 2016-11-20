@@ -37,12 +37,22 @@ public class Photo implements Serializable{
 		this.tags = new ArrayList<Tag>();
 		this.src = src;
 	}
-
+	/**
+	 * method to get a calendar date
+	 *
+	 * @return Date the calendar Date object 
+	 */
 
 	public Date getCalDate() {
 		return this.calDate;
 	}
-
+	/**
+	 * method to set a calendar date
+	 *
+	 * @param date the Date object you would like to set
+	 *
+	 * @return void
+	 */
 	public void Date(Date date) {
 		this.calDate = date;
 	}
@@ -50,7 +60,13 @@ public class Photo implements Serializable{
 	public ArrayList<Tag> getTags() {
 		return tags;
 	}
-	
+	/**
+	 * setter method for array list tags
+	 * 
+	 * @param tags list of tags you would like to set
+	 * 
+	 * @return void
+	 */
 	public void setTags(ArrayList<Tag> tags){
 		this.tags = tags;
 	}
@@ -58,7 +74,13 @@ public class Photo implements Serializable{
 	public String getSrc() {
 		return src;
 	}
-	
+	/**
+	 * method to add a tag to a list of tags
+	 *
+	 * @param t Tag you would like to add
+	 *
+	 * @return void
+	 */
 	public void addTag(Tag t){
 		tags.add(t);
 		try{
@@ -67,7 +89,13 @@ public class Photo implements Serializable{
 			
 		}
 	}
-	
+	/**
+	 * method to remove a tag from a list of tags
+	 *
+	 * @param t Tag you would like to remove
+	 *
+	 * @return void
+	 */
 	public void removeTag(Tag t ){
 		this.getTags().remove(t);
 		try{
@@ -76,7 +104,15 @@ public class Photo implements Serializable{
 			
 		}
 	}
-	
+	/**
+	 * method searches tag list for a target tag
+	 * 
+	 * @param type the tag type
+	 * 
+	 * @param value the tag value
+	 *
+	 * @return Tag the target tag you are searching for
+	 */
 	public Tag searchTags(String type, String value){
 		Tag search =new Tag(type,value);
 		for(Tag t : tags){
@@ -86,11 +122,21 @@ public class Photo implements Serializable{
 		}
 		return null;
 	}
-	
+	/**
+	 * setter method to set the current photo
+	 *
+	 *@param p Photo you are setting
+	 *
+	 * @return void
+	 */
 	public static void setCurrentPhoto(Photo p) {
 		currentPhoto = p;
 	}
-
+	/**
+	 * getter method to get current Photo
+	 *
+	 * @return Photo the current photo
+	 */
 	public static Photo getCurrentPhoto() {
 		return currentPhoto;
 	}
@@ -98,10 +144,21 @@ public class Photo implements Serializable{
 	public String toString() {
 		return "Photo [date=" + date + ", src=" + src + ", tags=" + tags + "]";
 	}
+	/**
+	 * getter method to get a caption
+	 *
+	 * @return String caption
+	 */
 	public String getCaption() {
 		return caption;
 	}
-
+	/**
+	 * setter method to set a caption
+	 * 
+	 * @param caption The caption you are setting
+	 *
+	 * @return void
+	 */
 	public void setCaption(String caption) {
 		this.caption = caption;
 		try{

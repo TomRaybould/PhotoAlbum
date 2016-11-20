@@ -38,7 +38,13 @@ public class SlideShowController {
     private Stage currentStage;
     
     private int count;
-    
+    /**
+     * Loads current screen and data associated with the screen
+     * 
+     * @param mainStage stage that is passed to be loaded
+     * 
+     * @return void
+     */
     public void start(Stage mainStage){
 		currentStage = mainStage;
 		Album a = Album.getCurrentAlbum();
@@ -50,7 +56,13 @@ public class SlideShowController {
 		date.setText(start.getCalDate().toString());
 		count = 0; //will equal index
 	}
-
+    /**
+     * Handles button and action events that occur on this screen
+     * 
+     * @param e an Action event
+     * 
+     * @return void
+     */
     @FXML
     void handle(ActionEvent e){
     	Button b= (Button)e.getSource();

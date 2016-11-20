@@ -54,7 +54,13 @@ public class AddTagController {
     private ObservableList<String> myComboBoxData;
     
     private Stage currentStage;
-    
+    /**
+     * Loads current screen and data associated with the screen
+     * 
+     * @param mainStage stage that is passed to be loaded
+     * 
+     * @return void
+     */
     public void start(Stage mainStage){
 		currentStage = mainStage;
 		System.out.println("Current user in Photo view " + User.getCurrentUser());
@@ -67,6 +73,11 @@ public class AddTagController {
 			 * make the combo box update from back end like in the userAlbumViewController 
 			 */
 	}
+    /**
+     * Updates data associated with screen
+     * 
+     * @return void
+     */
     private void update (){
     	myComboBoxData = FXCollections.observableArrayList();
     	//populates list from back end users tag types
@@ -76,7 +87,13 @@ public class AddTagController {
     	
     	tagDropDown.setItems(myComboBoxData);
     }
-    
+    /**
+     * Handles button and action events that occur on this screen
+     * 
+     * @param e an Action event
+     * 
+     * @return void
+     */
     public void handle(ActionEvent e) throws IOException{
     	Button b = (Button)e.getSource();
     	if(b == addTag){

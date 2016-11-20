@@ -93,7 +93,13 @@ public class UserAlbumViewController {
 	private User currUser;
 	
 	private ObservableList<String> myComboBoxData = FXCollections.observableArrayList();
-	
+	/**
+     * Loads current screen and data associated with the screen
+     * 
+     * @param mainStage stage that is passed to be loaded
+     * 
+     * @return void
+     */
 	public void start(Stage mainStage) throws IOException{
 		currentStage = mainStage;
 		currUser = User.getCurrentUser();
@@ -107,7 +113,11 @@ public class UserAlbumViewController {
         	.addListener(
         			(obs , oldVal, newVal) -> System.out.println());
 	}
-	
+	/**
+     * Updates data associated with screen
+     * 
+     * @return void
+     */
 	public void update(){
 		
 		for(String str: User.getCurrentUser().getTagTypes()){
@@ -134,7 +144,13 @@ public class UserAlbumViewController {
 		
 	}
 	
-	
+	 /**
+     * Handles button and action events that occur on this screen
+     * 
+     * @param e an Action event
+     * 
+     * @return void
+     */
 	public void handle(ActionEvent e) throws IOException {
 		Button b= (Button)e.getSource();
 		

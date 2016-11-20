@@ -44,7 +44,11 @@ public class User implements Serializable{
 		tagTypes.add("Food");
 		tagTypes.add("Weather");
 	}
-	
+	/**
+	 * getter method to get a list of all Current Users
+	 *
+	 * @return ArrayList<User> list of all current Users
+	 */
 	public static ArrayList<User> getAllUsers(){
 		return allUsers;
 	}
@@ -88,14 +92,33 @@ public class User implements Serializable{
 			//Album.read();
 		}
 	}
+	/**
+	 * method to set an array list that contains all current Users
+	 *
+	 * @param users ArrayList of all active users
+	 *
+	 * @return void
+	 */
 	public static void setAllUsers(ArrayList<User> users){
 		allUsers = users;
 	}
-	  
+	/**
+	 * method to add a user to list that contains all current users
+	 *
+	 * @param u the User object that you want to add to list
+	 *
+	 * @return void
+	 */ 
 	public static void addUser(User u){
 		allUsers.add(u);
 	}
-	
+	/**
+	 * method to delete a user from the list that contains all current users
+	 *
+	 * @param userName the userName for the User object you would like to delete form lisr
+	 *
+	 * @return void
+	 */
 	public static void deleteUser(String userName){
 		User u=null;
 		for(User a : allUsers){
@@ -182,31 +205,65 @@ public class User implements Serializable{
 	public String toString() {
 		return "User [userName=" + userName + ", password=" + password + "]";
 	}
-
+	/**
+	 * getter method to get current User object
+	 *
+	 * @return User the current User object
+	 */
 	public static User getCurrentUser() {
 		return currentUser;
 	}
-
+	/**
+	 * setter method to set current User object
+	 *
+	 *@param currUser the User you would like to set as current User
+	 *
+	 * @return void
+	 */
 	public static void setCurrentUser(User currUser) {
 		currentUser = currUser;
 	}
-
+	/**
+	 * getter method to get a User object's Name
+	 *
+	 * @return String The User objects userName
+	 */
 	public String getUserName() {
 		return userName;
 	}
-	
+	/**
+	 * getter method to get a list of albums from a User object
+	 *
+	 * @return ArrayList<Album> The album List
+	 */
 	public ArrayList<Album> getAlbumList() {
 		return albumList;
 	}
-
+	/**
+	 * setter method to set a list of albums for a User object
+	 *
+	 *@param albumList the list of albums you would like to set for a User object
+	 *
+	 * @return void
+	 */
 	public void setAlbumList(ArrayList<Album> albumList) {
 		this.albumList = albumList;
 	}
-	
+	/**
+	 * getter method to get a User's list of tag types
+	 *
+	 * @return ArrayList<String> a list of a User object's tag types
+	 */
 	public ArrayList<String> getTagTypes() {
 		return tagTypes;
 	}
-
+	/**
+	 * setter method to set a list of tag types for a User object
+	 *
+	 *@param tagTypes the list of tags you would like to set for a User object
+	 *
+	 * @return void
+	 */
 	public void setTagTypes(ArrayList<String> tagTypes) {
 		this.tagTypes = tagTypes;
 	}
