@@ -20,6 +20,7 @@ import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 /**
 * addTagController is the class associated with the screen for adding tags to a
@@ -114,7 +115,22 @@ public class AddTagController {
     	}
     	else if(b == addTypeToList){
     		System.out.println("Create new tag type");
-    		
+    		FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/EditTagType.fxml"));
+			
+			AnchorPane root = (AnchorPane)loader.load();
+			
+			EditTagTypeController EditTagType = loader.getController();
+			
+			Scene scene = new Scene(root);
+			Stage newStage = new Stage();
+			newStage.initModality(Modality.APPLICATION_MODAL);
+			EditTagType.start(newStage);
+			newStage.setScene(scene);
+			newStage.centerOnScreen();
+			///how to reload list??
+			
+			update();
     	}
     }
 

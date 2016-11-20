@@ -1,5 +1,6 @@
 package View;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import Model.Photo;
@@ -26,6 +27,9 @@ public class EditTagTypeController {
 
     @FXML
     private Button addType;
+    
+    @FXML
+    private Button saveAndExit;
     
     @FXML
     private TextField addTypeField;
@@ -78,9 +82,10 @@ public class EditTagTypeController {
      * @param e an Action event
      * 
      * @return void
+     * @throws IOException 
      */
     @FXML
-    void handle(ActionEvent e) {
+    void handle(ActionEvent e) throws IOException {
     	Button b = (Button)e.getSource();
     	if(b == removeType){
     		String selected = selectedTagType;
@@ -108,6 +113,11 @@ public class EditTagTypeController {
         		this.update();
         		
     		}
+    	}
+    	else if(b == saveAndExit){
+    		this.update();
+    		User.write();
+    		currentStage.close();
     	}
 
     }

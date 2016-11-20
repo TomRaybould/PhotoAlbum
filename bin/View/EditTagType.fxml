@@ -20,5 +20,6 @@
       <TextField fx:id="addTypeField" layoutX="334.0" layoutY="89.0" promptText="Enter new tag type" />
       <Button fx:id="addType" layoutX="379.0" layoutY="137.0" mnemonicParsing="false" onAction="#handle" text="Add Type" />
       <ListView fx:id="listView" layoutX="32.0" layoutY="51.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button fx:id="saveAndExit" layoutX="345.0" layoutY="277.0" mnemonicParsing="false" onAction="#handle" text="Save List and Exit" />
    </children>
 </AnchorPane>
