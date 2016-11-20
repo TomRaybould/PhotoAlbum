@@ -25,7 +25,12 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
+/**
+* addPhotoController is the class associated with the screen for adding photos to a
+* Users album. It is capable of adding a photo, cancel add photo, tagging a photo,
+* and putting a caption on to the photo
+* @author  Tom Raybould & Mike Tomkowich
+*/
 public class addPhotoController {
 
 	@FXML

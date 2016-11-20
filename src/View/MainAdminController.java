@@ -19,7 +19,11 @@ import java.io.IOException;
 
 import Model.Admin;
 import Model.User;
-
+/**
+* MainAdminController is the class associated with the screen for the Main administrator page.
+* This screen allows the administrator to add and delete users.
+* @author  Tom Raybould & Mike Tomkowich
+*/
 public class MainAdminController {
 
     @FXML

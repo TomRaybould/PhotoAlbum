@@ -20,7 +20,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
+/**
+* DisplayPictureController is the class associated with the screen for displaying a selected picture.
+* The screen will show the date, caption and tags associated with the selected photo.
+* @author  Tom Raybould & Mike Tomkowich
+*/
 public class DisplayPictureController {
 
 	@FXML

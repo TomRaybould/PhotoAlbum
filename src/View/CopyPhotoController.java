@@ -12,7 +12,12 @@ import javafx.event.ActionEvent;
 
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-
+/**
+* CopyPhotoController is the class associated with the screen for copying photos from one 
+* album to another. Its main purpose is to allow the user to select a photo from one destination
+* and move that photo to another destination by making a copy of the selcted photo
+* @author  Tom Raybould & Mike Tomkowich
+*/
 public class CopyPhotoController {
 	@FXML
 	private ListView<String> destList;

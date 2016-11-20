@@ -32,7 +32,14 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
+/**
+* PhotoViewController is the class associated with the screen for displaying an Albums main 
+* page. This page allows the user to view thumbnails of all photos that exist in the selected album.
+* It also allows the user to add, edit and delete tags from photos, add new photos, delete photos,
+* add/edit captions, move and copy photos, view photos from a selected thumbnail image in a larger screen,
+* and view the photos in a slideshow
+* @author  Tom Raybould & Mike Tomkowich
+*/
 public class PhotoViewController {
 	@FXML
 	private Text photoTitle;

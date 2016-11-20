@@ -35,7 +35,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-
+/**
+* UserAlbumViewController is the class associated with the User homepage for all albums.
+* In this page the user can search for photos by tags or dates and see all existing albums.
+* The albums show the date ranges, earliest photo, number of photos in album, and the name of the 
+* album. The User can make a new album, open an existing album, and delete an album on this page
+* @author  Tom Raybould & Mike Tomkowich
+*/
 public class UserAlbumViewController {
 	@FXML
 	private Text userTitle;

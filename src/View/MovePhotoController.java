@@ -14,7 +14,12 @@ import javafx.scene.control.ListView;
 
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
+/**
+* MovePhotoController is the class associated with the screen for moving photos
+* from one album to another album. This action will delete a photo from the current album
+* and add it to the selected destination album's list of photos
+* @author  Tom Raybould & Mike Tomkowich
+*/
 public class MovePhotoController {
 	@FXML
 	private ListView<String> destList;

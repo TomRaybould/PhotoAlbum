@@ -14,7 +14,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+/**
+* RemoveTagController is the class associated with the screen for removing tags from a selected
+* photo.
+* @author  Tom Raybould & Mike Tomkowich
+*/
 public class RemoveTagController {
 
 	  @FXML

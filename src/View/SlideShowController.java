@@ -11,7 +11,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
+/**
+* SlideShowController is the class associated with the screen for displaying photos
+* in a slideshow. The photos are shown in order and the user moves along the slideshow
+* by clicking the next or last button
+* @author  Tom Raybould & Mike Tomkowich
+*/
 public class SlideShowController {
 
 	@FXML

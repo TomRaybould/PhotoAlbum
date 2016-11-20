@@ -17,7 +17,12 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import Model.User;
-
+/**
+* LoginPageController is the class associated with the screen for logging in.
+* This class either allows the administrator to get to the admin main page
+* or an existing user to get to his or her home album page
+* @author  Tom Raybould & Mike Tomkowich
+*/
 public class LoginPageController implements Serializable {
 
 	@FXML

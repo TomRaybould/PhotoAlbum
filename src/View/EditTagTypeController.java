@@ -13,7 +13,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+/**
+* EditTagTypeController is the class associated with the screen for editing tag types that exist
+* in a User's instance. This will allow the User to add and delete tag types to and from their
+* own personal existing array of tag types
+* @author  Tom Raybould & Mike Tomkowich
+*/
 public class EditTagTypeController {
 
     @FXML

@@ -21,7 +21,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
+/**
+* addTagController is the class associated with the screen for adding tags to a
+* selected photo. Its main purpose is to add a new tag to an existing photo
+* @author  Tom Raybould & Mike Tomkowich
+*/
 
 public class AddTagController {
 
