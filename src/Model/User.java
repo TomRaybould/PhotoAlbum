@@ -232,6 +232,14 @@ public class User implements Serializable{
 		return userName;
 	}
 	/**
+	 * getter method to get a User object's password
+	 *
+	 * @return String The User objects password
+	 */
+	public String getPassword() {
+		return password;
+	}
+	/**
 	 * getter method to get a list of albums from a User object
 	 *
 	 * @return ArrayList<Album> The album List

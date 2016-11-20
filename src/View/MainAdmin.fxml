@@ -14,7 +14,7 @@
             <Font size="26.0" />
          </font></Text>
       <ListView fx:id="userList" layoutX="238.0" layoutY="70.0" prefHeight="293.0" prefWidth="260.0" />
-      <Text layoutX="341.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User List" />
+      <Text layoutX="257.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User List (Username - Password)" />
       <Button fx:id="addUser" layoutX="14.0" layoutY="153.0" mnemonicParsing="false" onAction="#handle" text="Add User" />
       <Button fx:id="deleteUser" layoutX="14.0" layoutY="336.0" mnemonicParsing="false" onAction="#handle" text="Delete User" />
       <Button fx:id="logOut" layoutX="238.0" layoutY="386.0" mnemonicParsing="false" onAction="#handle" text="Log Out" />

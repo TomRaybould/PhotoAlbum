@@ -81,10 +81,12 @@ public class MainAdminController {
 		
 		for(User u : User.getAllUsers()){
 			String s = new String(u.getUserName());
+			String password = new String(u.getPassword());
 			if(s==u.getUserName()){
 				System.out.println("not working");
 			}
-			obslist.add(s);
+			String namePasswordCombo = s + "-" + password;
+			obslist.add(namePasswordCombo);
 		}
 		
 		userList.setItems(obslist);
