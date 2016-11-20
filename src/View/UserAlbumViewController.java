@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Optional;
 
 import Model.Album;
@@ -239,7 +241,9 @@ public class UserAlbumViewController {
 	    		return;
 	    	}
 	    	else{
-	    
+	  		
+	    		
+	    		Album.setSearchResults(results);
 	    		FXMLLoader loader = new FXMLLoader();
 	    		loader.setLocation(getClass().getResource("/view/SearchResults.fxml"));
 		
@@ -256,6 +260,25 @@ public class UserAlbumViewController {
 		else if(b == searchDate){
 			ArrayList<Photo> result = new ArrayList<Photo>();
 			result = getPhotosInRange();
+			
+			if(result==null){
+				makeInfoAlert("No Results Found","","You have no photos in this range");
+			}
+			
+			else{
+				Album.setSearchResults(result);
+				
+				FXMLLoader loader = new FXMLLoader();
+	    		loader.setLocation(getClass().getResource("/view/SearchResults.fxml"));
+		
+	    		GridPane root = (GridPane)loader.load();
+		
+	    		SearchResultsController SearchResults=loader.getController();
+	    		SearchResults.start(currentStage);
+	    		Scene scene = new Scene(root);
+	    		currentStage.setScene(scene);
+	    		currentStage.centerOnScreen();
+			}
 		}
 		else if(b == openAlbum){
 			if(tableView.getSelectionModel().getSelectedItem()==null){
@@ -279,6 +302,11 @@ public class UserAlbumViewController {
 	}//end of handle
 	
 	
+	private void makeInfoAlert(String string, String string2, String string3) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private String oneLineDialog(String title, String header, String content, String hint){
 		
 		TextInputDialog dialog = new TextInputDialog(hint);
@@ -310,37 +338,51 @@ public class UserAlbumViewController {
 	}
 	
 	private ArrayList<Photo> getPhotosInRange(){
-		
+		ArrayList<Photo> results= new ArrayList<Photo>();
 		if(dateStart.getValue()==null||dateEnd.getValue()==null){
 			return null;
 		}
 		int startYear= dateStart.getValue().getYear();	
-		int startMonth= dateStart.getValue().getMonthValue();
+		int startMonth= (dateStart.getValue().getMonthValue()-1);
 		int startDay= dateStart.getValue().getDayOfMonth();
 		int startHour= convertHourInput(hourStart.getText().toString());
 		int startMin= convertHourInput(minStart.getText().toString());
 		
 		System.out.println("Start date: " + startYear+", "+startMonth+", "+startDay+", "+startHour+", "+startMin);
 		
+		Calendar cal = Calendar.getInstance();
+		cal.setTimeInMillis(0);
+		cal.set(startYear, startMonth, startDay, startHour, startMin, 0);
+		Date dateBeginRange = cal.getTime(); // get back a Date object
+		System.out.println(dateBeginRange);
+		
 		int endYear= dateEnd.getValue().getYear();	
-		int endMonth= dateEnd.getValue().getMonthValue();
+		int endMonth= (dateEnd.getValue().getMonthValue()-1);
 		int endDay= dateEnd.getValue().getDayOfMonth();
 		int endHour= convertHourInput(hourEnd.getText().toString());
 		int endMin= convertMinInput(minEnd.getText().toString());
+		
+		cal.set(endYear, endMonth, endDay, endHour, endMin, 0);
+		Date dateEndRange = cal.getTime(); // get back a Date object
+		System.out.println(dateEndRange);
 		
 		System.out.println("End date: " + endYear+", "+endMonth+", "+endDay+", "+endHour+", "+endMin);
 		
 		for(Album a :User.getCurrentUser().getAlbumList()){
 			for(Photo p: a.getPhotosInAlbum()){
-				int [] dateArr = convertDate(p.getCalDate().toString());
-				//comapare date to range
+				System.out.println("photo dates being searched on: "+p.getCalDate().toString());
+				if(p.getCalDate().compareTo(dateBeginRange)>=0 && p.getCalDate().compareTo(dateEndRange)<=0){
+					results.add(p);
+				}
+				else{
+					continue;
+				}
 			}
 		}
-		
-		return null;
+		return results;
 	}
 	//parse the input of text of hour and return 0 for anything not in the 0-23 range
-	private int convertHourInput(String str){
+	private static int convertHourInput(String str){
 		int i;
 		try{
 			i=Integer.parseInt(str);
@@ -356,7 +398,7 @@ public class UserAlbumViewController {
 	}
 	
 	//parse the input of text of hour and return 0 for anything not in the 0-59 range
-	private int convertMinInput(String str){
+	private static int convertMinInput(String str){
 		int i;
 		try{
 			i=Integer.parseInt(str);
@@ -371,21 +413,6 @@ public class UserAlbumViewController {
 		}
 	}
 	
-	private int[] convertDate(String date){
-		int month= monthFinder(date);
-		/*
-		 * takes in the date string and return an int arr with year,month,day,hour,min in that order
-		 */
-		return null;
-	}
-	
-	private int monthFinder(String date){
-		//just an example
-		if(date.contains("Nov")){
-			return 11;
-		}
-		return 0;
-	}
 	
 }//end of class
 	
