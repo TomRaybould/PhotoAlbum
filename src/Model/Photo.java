@@ -56,7 +56,11 @@ public class Photo implements Serializable{
 	public void Date(Date date) {
 		this.calDate = date;
 	}
-
+	/**
+	 * getter method to get a List of tag objects
+	 *
+	 * @return ArrayList<Tag> a list of tags
+	 */
 	public ArrayList<Tag> getTags() {
 		return tags;
 	}
@@ -70,7 +74,11 @@ public class Photo implements Serializable{
 	public void setTags(ArrayList<Tag> tags){
 		this.tags = tags;
 	}
-
+	/**
+	 * getter method to get a source of a photo object
+	 *
+	 * @return String the source string
+	 */
 	public String getSrc() {
 		return src;
 	}
