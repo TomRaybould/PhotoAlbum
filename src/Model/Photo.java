@@ -5,7 +5,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javafx.scene.image.Image;
-
+/**
+* Photo is used to manipulate data associated with an individual photo
+* It holds an array of tags, a name, a date, the source of the photo,
+* and the current active photo, as well as other fields associated with photo
+* 
+* @author  Tom Raybould & Mike Tomkowich
+*/
 public class Photo implements Serializable{
 	/**
 	 * 

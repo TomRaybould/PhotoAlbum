@@ -10,7 +10,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import javafx.scene.image.Image;
-
+/**
+* Album used to manipulate data associated with a user's album
+* It holds an array of photos for each album, number of photos, the current albums,
+* and other fields associated with albums
+* 
+* @author  Tom Raybould & Mike Tomkowich
+*/
 public class Album implements Serializable{
 	/**
 	 * 

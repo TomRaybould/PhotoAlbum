@@ -2,7 +2,11 @@ package Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+/**
+* Admin is a class that is used to add and delete users from the List of all users
+* 
+* @author  Tom Raybould & Mike Tomkowich
+*/
 public class Admin implements Serializable{
 	/**
 	 * 

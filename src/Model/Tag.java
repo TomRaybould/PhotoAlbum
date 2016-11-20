@@ -1,7 +1,13 @@
 package Model;
 
 import java.io.Serializable;
-
+/**
+* Tag is used to manipulate data associated with a tag that is attached to a photo
+* Its only two fields are type and value. Mainly used for creating a new tag
+* and getting and setting tag values and types
+* 
+* @author  Tom Raybould & Mike Tomkowich
+*/
 public class Tag implements Serializable{
 	/**
 	 * 
