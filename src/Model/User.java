@@ -27,7 +27,14 @@ public class User implements Serializable{
 	static int empty;
 	static int newSession;
 
-	
+	/**
+	 * Constructor method that takes in a user name and password. Sets default tag types
+	 * for the user
+	 * @param userName is the User name
+	 * @param password is the Password
+	 * 
+	 * @return User an instance of User
+	 */
 	public User(String userName, String password){
 		this.userName = userName;
 		this.password = password;

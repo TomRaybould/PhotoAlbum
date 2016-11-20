@@ -22,6 +22,13 @@ public class Tag implements Serializable{
 	// a list of types should not be put in here because
 	// each user will have its own list
 	// so put that list in user
+	/**
+	 * Constructor method that takes in a a tag type and tag value
+	 * @param type is the type of tag
+	 * @param value is the value/keyword of the tag
+	 * 
+	 * @return Tag an instance of Tag
+	 */
 	public Tag(String type, String value){
 		this.type = type;
 		this.value = value;

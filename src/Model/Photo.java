@@ -24,7 +24,14 @@ public class Photo implements Serializable{
 	private ArrayList<Tag> tags;
 	private static Photo currentPhoto;
 
-	
+	/**
+	 * Constructor method that takes in Date and source of where the photo comes from
+	 * Also holds an array list of tags that is associated with the instance of the photo
+	 * @param date is the Date object that is associated with the photo
+	 * @param src is a string that hold the location of the photo
+	 * 
+	 * @return Photo an instance of Photo
+	 */
 	public Photo(Date date, String src){
 		this.calDate = date;
 		this.tags = new ArrayList<Tag>();

@@ -18,6 +18,13 @@ public class Admin implements Serializable{
 	
 	//this class should be able to add and delete users
 	// not much else to this class
+	/**
+	 * Constructor method that takes in a name and password
+	 * @param name is the name of the administrator
+	 * @param password is the password for the administrator
+	 * 
+	 * @return User an instance of Admin
+	 */
 	public Admin(String name, String password){
 		this.name = name;
 		this.password = password;

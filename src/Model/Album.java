@@ -72,7 +72,15 @@ public class Album implements Serializable{
 		return;
 		//change number of photos here so we never forget to call a second method
 	}
-	
+	/**
+	 * Constructor method that takes in a String name of the album. 
+	 * The instance also holds an array list of photos and the number 
+	 * of photos currently in the album
+	 * 
+	 * @param name is the name of the album
+	 * 
+	 * @return User an instance of Tag
+	 */
 	public Album(String name ){
 		this.name = name;
 		this.photosInAlbum = new ArrayList<Photo>();
