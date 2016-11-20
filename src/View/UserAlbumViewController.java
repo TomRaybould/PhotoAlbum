@@ -219,7 +219,8 @@ public class UserAlbumViewController {
 			
 		}
 		else if(b == safeQuit){
-			
+			User.write();
+			currentStage.close();
 		}
 		else if(b == searchTag){
 			ArrayList<Photo> results= new ArrayList<Photo>();

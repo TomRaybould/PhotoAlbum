@@ -55,5 +55,6 @@
             <Button fx:id="editTagTypes" mnemonicParsing="false" onAction="#handle" text="Add/Edit Tag Types" GridPane.rowIndex="4" />
          </children>
       </GridPane>
+      <Button fx:id="safeQuit" layoutX="35.0" layoutY="581.0" mnemonicParsing="false" onAction="#handle" text="Safe Quit" />
    </children>
 </AnchorPane>

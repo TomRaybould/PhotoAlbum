@@ -80,6 +80,9 @@ public class PhotoViewController {
     @FXML
     private Button editTagTypes;
     
+    @FXML
+    private Button safeQuit;
+    
     
     private Stage currentStage;
     
@@ -399,7 +402,10 @@ public class PhotoViewController {
 			EditTagType.start(newStage);
 			newStage.setScene(scene);
 			newStage.centerOnScreen();
-		
+		}
+		else if(b == safeQuit){
+			User.write();
+			currentStage.close();
 		}
 
     }//end of handle
