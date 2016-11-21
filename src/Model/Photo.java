@@ -17,7 +17,7 @@ public class Photo implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -4214429024702902104L;
-	private String date;
+	//private String date;
 	private Date calDate;
 	private String caption;
 	private String src;
@@ -150,7 +150,7 @@ public class Photo implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Photo [date=" + date + ", src=" + src + ", tags=" + tags + "]";
+		return "Photo [date=" + calDate + ", src=" + src + ", tags=" + tags + "]";
 	}
 	/**
 	 * getter method to get a caption

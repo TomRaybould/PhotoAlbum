@@ -255,9 +255,11 @@ public class PhotoViewController {
     		Date date = new Date(0L);
     		cal.set(Calendar.MILLISECOND, 0);
     		date = cal.getTime();
-    		
+    		System.out.println("date is: " + date);
     		
     		Photo photo = new Photo(date, URL);
+    		System.out.println("Right after creation");
+    		System.out.println(photo);
     		Photo.setCurrentPhoto(photo);
     		Album a = Album.getCurrentAlbum();
     		/*
