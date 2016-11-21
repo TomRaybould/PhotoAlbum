@@ -269,12 +269,14 @@ public class PhotoViewController {
     						file.getName().contains(".gif"))){
     			System.out.println("In file success");
     			
-			String URL = file.toURI().toURL().toString();
     		
-    		Calendar cal = Calendar.getInstance();
-    		Date date = new Date(0L);
-    		cal.set(Calendar.MILLISECOND, 0);
-    		date = cal.getTime();
+			String URL = file.toURI().toString();
+			//URL = "/photoalbum72/src/pics/bird.jpg";
+    		
+			//sets date to last modified fixed
+    		Date date = new Date();
+    		date.setTime(file.lastModified());
+    		
     		System.out.println("date is: " + date);
     		
     		Photo photo = new Photo(date, URL);
