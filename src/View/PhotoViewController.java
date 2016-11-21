@@ -245,7 +245,26 @@ public class PhotoViewController {
 				System.out.println("Bad");
 			}
     		else if(file.isFile() &&
-    				(file.getName().contains(".jpg") || file.getName().contains(".png") || file.getName().contains(".hmp") ||
+    				(file.getName().contains(".jpg") || file.getName().contains(".png") || file.getName().contains(".gif")|| 
+    						file.getName().contains(".hmp") ||
+    						file.getName().contains(".JPG") ||
+    						file.getName().contains(".PNG") ||
+    						file.getName().contains(".GIF") ||
+    						file.getName().contains(".HMP") ||
+    						file.getName().contains(".jpeg") ||
+    						file.getName().contains(".JPEG") ||
+    						file.getName().contains(".ani") ||
+    						file.getName().contains(".ANI") ||
+    						file.getName().contains(".bmp") ||
+    						file.getName().contains(".BMP") ||
+    						file.getName().contains(".jpe") ||
+    						file.getName().contains(".JPE") ||
+    						file.getName().contains(".JBG") ||
+    						file.getName().contains(".jbg") ||
+    						file.getName().contains(".img") ||
+    						file.getName().contains(".IMG") ||
+    						file.getName().contains(".PSD") ||
+    						file.getName().contains(".psd") ||
     						file.getName().contains(".gif"))){
     			System.out.println("In file success");
     			

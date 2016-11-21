@@ -4,9 +4,13 @@ import java.util.ArrayList;
 
 import Model.Album;
 import Model.Photo;
+import Model.Tag;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -33,7 +37,13 @@ public class SlideShowController {
 
     @FXML
     private ImageView image;
+    
+    @FXML
+    private ListView<String> listView;
 
+    private ObservableList<String> obslist;
+    
+    private String selectedTag;
     
     private Stage currentStage;
     
@@ -56,7 +66,33 @@ public class SlideShowController {
 		caption.setText(start.getCaption());
 		date.setText(start.getCalDate().toString());
 		count = 0; //will equal index
+		//listview of tags
+		this.update(start);
+		currentStage.show();
+		listView
+        .getSelectionModel()
+        .selectedItemProperty()
+        .addListener(
+        (obs , oldVal, newVal) -> 
+        	{this.selectedTag = listView.getSelectionModel().getSelectedItem();});
 	}
+    /**
+     * Updates data associated with screen
+     * 
+     * @return void
+     */
+    public void update(Photo p){
+		obslist = FXCollections.observableArrayList();
+		for(Tag t : p.getTags()){
+			String type = t.getType();
+			String val = t.getValue();
+			String addThis = type + "-" + val;
+			obslist.add(addThis);
+		}
+		
+		listView.setItems(obslist);
+	}
+	
     /**
      * Handles button and action events that occur on this screen
      * 
@@ -79,7 +115,9 @@ public class SlideShowController {
     			image.setImage(anImage);
     			caption.setText(curr.getCaption());
     			date.setText(curr.getCalDate().toString());
+    			this.update(curr);
     		}
+    		
     		
     	}
     	else if(b == lastImage1){
@@ -94,7 +132,9 @@ public class SlideShowController {
     			image.setImage(anImage);
     			caption.setText(curr.getCaption());
     			date.setText(curr.getCalDate().toString());
+    			this.update(curr);
     		}
+    		
     	}
     }
 

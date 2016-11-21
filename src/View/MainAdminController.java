@@ -138,7 +138,8 @@ public class MainAdminController {
 			currentStage.setScene(scene);
 		}
 		else if(b == safeQuit){
-			System.out.println("safe quit");
+			User.write();
+			currentStage.close();
 		}
     }
 
