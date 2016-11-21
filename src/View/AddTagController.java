@@ -10,6 +10,7 @@ import Model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -55,6 +57,7 @@ public class AddTagController {
     private ObservableList<String> myComboBoxData;
     
     private Stage currentStage;
+      
     /**
      * Loads current screen and data associated with the screen
      * 
@@ -67,7 +70,13 @@ public class AddTagController {
 		System.out.println("Current user in Photo view " + User.getCurrentUser());
 		System.out.println("Current Album in Photo view is: " + Album.getCurrentAlbum());
 		System.out.println("Current Photo in add tag is: " + Photo.getCurrentPhoto());
-		
+			
+			tagDropDown.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+    			public void handle(MouseEvent m){
+    				update();
+    			}
+    		});
+			
 			currentStage.show();
 			update();
 			/*
@@ -128,8 +137,9 @@ public class AddTagController {
 			EditTagType.start(newStage);
 			newStage.setScene(scene);
 			newStage.centerOnScreen();
+			newStage.showAndWait();
 			///how to reload list??
-			
+
 			update();
     	}
     }

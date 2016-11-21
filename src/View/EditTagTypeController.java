@@ -109,6 +109,7 @@ public class EditTagTypeController {
     			User u = User.getCurrentUser();
         		ArrayList<String> types = u.getTagTypes();
         		types.add(addThis);
+        		System.out.println(types);
         		User.getCurrentUser().setTagTypes(types);
         		this.update();
         		
