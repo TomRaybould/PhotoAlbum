@@ -24,8 +24,8 @@ public class User implements Serializable{
 	private ArrayList<Album> albumList = new ArrayList<Album>();
 	private ArrayList<String> tagTypes = new ArrayList<String>();
 	static public ObjectOutputStream oos; 
-	static int empty;
-	static int newSession;
+	//static int empty;
+	//static int newSession;
 
 	/**
 	 * Constructor method that takes in a user name and password. Sets default tag types

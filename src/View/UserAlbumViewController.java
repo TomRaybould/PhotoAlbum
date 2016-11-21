@@ -174,7 +174,6 @@ public class UserAlbumViewController {
 				Album newAlbum = new Album(newAlbumName); 
 				Album.setCurrentAlbum(newAlbum);
 				User.getCurrentUser().addAlbum(newAlbum);
-				Album.write();
 			
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
@@ -200,7 +199,6 @@ public class UserAlbumViewController {
 			Album album = (Album) tableView.getSelectionModel().getSelectedItem(); 
 			String newAlbumName = oneLineDialog("Rename Album","","Enter new name for album", album.getName());
 			album.setName(newAlbumName);
-			Album.write();
 			User.write();
 			this.update();
 		}
@@ -265,12 +263,12 @@ public class UserAlbumViewController {
 	    	}
 	    	else{
 	  		
-	    		
+	    		results = filterDuplicateDates(results);
 	    		Album.setSearchResults(results);
 	    		FXMLLoader loader = new FXMLLoader();
 	    		loader.setLocation(getClass().getResource("/view/SearchResults.fxml"));
 		
-	    		GridPane root = (GridPane)loader.load();
+	    		AnchorPane root = (AnchorPane)loader.load();
 		
 	    		SearchResultsController SearchResults=loader.getController();
 	    		SearchResults.start(currentStage);
@@ -283,7 +281,7 @@ public class UserAlbumViewController {
 		else if(b == searchDate){
 			ArrayList<Photo> result = new ArrayList<Photo>();
 			result = getPhotosInRange();
-			
+			result = filterDuplicateDates(result);
 			if(result==null){
 				makeInfoAlert("No Results Found","","You have no photos in this range");
 			}
@@ -294,7 +292,7 @@ public class UserAlbumViewController {
 				FXMLLoader loader = new FXMLLoader();
 	    		loader.setLocation(getClass().getResource("/view/SearchResults.fxml"));
 		
-	    		GridPane root = (GridPane)loader.load();
+	    		AnchorPane root = (AnchorPane)loader.load();
 		
 	    		SearchResultsController SearchResults=loader.getController();
 	    		SearchResults.start(currentStage);
@@ -434,6 +432,29 @@ public class UserAlbumViewController {
 		else{
 			return 0;
 		}
+	}
+	
+	private static ArrayList<Photo> filterDuplicateDates(ArrayList<Photo> tempResult){
+		ArrayList<Photo> finalResult = new ArrayList<Photo>();
+		int dontAdd = 0;
+		for(Photo p: tempResult){
+			Photo current = p;
+			for(Photo testAgainst: finalResult){
+				if(testAgainst.getSrc().equals(p.getSrc())){
+					dontAdd = 1;
+					break;
+				}
+			}
+			if(dontAdd == 0){
+				System.out.println("added this: "+ p);
+				finalResult.add(p);
+			}
+			else if(dontAdd == 1){
+				System.out.println("Didnt add this: " + p);
+				continue;
+			}
+		}
+		return finalResult;
 	}
 	
 	

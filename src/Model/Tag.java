@@ -13,8 +13,8 @@ public class Tag implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -2028385128694426315L;
-	String type;
-	String value;
+	private String type;
+	private String value;
 
 
 	// tag will consist of a type and value

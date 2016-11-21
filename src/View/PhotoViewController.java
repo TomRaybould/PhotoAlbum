@@ -294,7 +294,7 @@ public class PhotoViewController {
 		
 			AnchorPane root = (AnchorPane)loader.load();
 			
-			addPhotoController addPhoto =loader.getController();
+			AddPhotoController addPhoto =loader.getController();
 			Scene scene = new Scene(root);
 			Stage newStage =new Stage();
 			addPhoto.start(newStage);

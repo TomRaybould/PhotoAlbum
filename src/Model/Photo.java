@@ -53,7 +53,7 @@ public class Photo implements Serializable{
 	 *
 	 * @return void
 	 */
-	public void Date(Date date) {
+	public void Date(Date date) { ////////This may have be a naming confilct.... better to change this to setDate
 		this.calDate = date;
 	}
 	/**

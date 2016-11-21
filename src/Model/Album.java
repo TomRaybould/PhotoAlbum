@@ -22,8 +22,6 @@ public class Album implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 7153580835213056212L;
-	private static final String storeDir = "dat";
-	private static final String storeFile = "Albums.dat";
 	static public ObjectOutputStream oos;
 	private String name;
 	private String oldestDate;
@@ -31,27 +29,12 @@ public class Album implements Serializable{
 	private int numOfPhotos;
 	private ArrayList<Photo> photosInAlbum = new ArrayList<Photo>();
 	private static Album currentAlbum;
-	private static boolean existingAlbum;
 	private static ArrayList<Photo> searchResults;
 
 	// an album will mainly consist of a list of photos
 	// it can also have a list of tags, but unclear whether or not that would be necessary
 	
-	public static void write() throws IOException{
-		oos = new ObjectOutputStream (new FileOutputStream(storeDir +File.separator +storeFile));
-		for(User u : User.getAllUsers()){	
-			for(Album a: u.getAlbumList()){
-				oos.writeObject(a);
-			}
-		}
-	}
 	
-	public static Album read() throws IOException, ClassNotFoundException {
-	           ObjectInputStream ois = new ObjectInputStream(
-	                new FileInputStream(storeDir + File.separator + storeFile));
-	           Album a = (Album)ois.readObject();
-	           return a;
-	}
 	/**
 	 * getter method for a list of current search results
 	 *
