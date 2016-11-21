@@ -174,7 +174,6 @@ public class UserAlbumViewController {
 				Album newAlbum = new Album(newAlbumName); 
 				Album.setCurrentAlbum(newAlbum);
 				User.getCurrentUser().addAlbum(newAlbum);
-				Album.write();
 			
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
@@ -200,7 +199,6 @@ public class UserAlbumViewController {
 			Album album = (Album) tableView.getSelectionModel().getSelectedItem(); 
 			String newAlbumName = oneLineDialog("Rename Album","","Enter new name for album", album.getName());
 			album.setName(newAlbumName);
-			Album.write();
 			User.write();
 			this.update();
 		}
