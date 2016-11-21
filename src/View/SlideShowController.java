@@ -50,6 +50,7 @@ public class SlideShowController {
 		Album a = Album.getCurrentAlbum();
 		ArrayList<Photo> photos = a.getPhotosInAlbum();
 		Photo start = photos.get(0); ///need to have indexes or dates for slideshow
+		System.out.println(start);
 		Image anImage = new Image(start.getSrc());
 		image.setImage(anImage);
 		caption.setText(start.getCaption());

@@ -44,7 +44,7 @@ public class Photo implements Serializable{
 	 */
 
 	public Date getCalDate() {
-		return this.calDate;
+		return calDate;
 	}
 	/**
 	 * method to set a calendar date
