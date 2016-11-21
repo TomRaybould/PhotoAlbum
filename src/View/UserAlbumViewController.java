@@ -268,7 +268,7 @@ public class UserAlbumViewController {
 	    		FXMLLoader loader = new FXMLLoader();
 	    		loader.setLocation(getClass().getResource("/view/SearchResults.fxml"));
 		
-	    		GridPane root = (GridPane)loader.load();
+	    		AnchorPane root = (AnchorPane)loader.load();
 		
 	    		SearchResultsController SearchResults=loader.getController();
 	    		SearchResults.start(currentStage);
@@ -292,7 +292,7 @@ public class UserAlbumViewController {
 				FXMLLoader loader = new FXMLLoader();
 	    		loader.setLocation(getClass().getResource("/view/SearchResults.fxml"));
 		
-	    		GridPane root = (GridPane)loader.load();
+	    		AnchorPane root = (AnchorPane)loader.load();
 		
 	    		SearchResultsController SearchResults=loader.getController();
 	    		SearchResults.start(currentStage);

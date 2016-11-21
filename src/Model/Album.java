@@ -22,8 +22,6 @@ public class Album implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 7153580835213056212L;
-	private static final String storeDir = "dat";
-	private static final String storeFile = "Albums.dat";
 	static public ObjectOutputStream oos;
 	private String name;
 	private String oldestDate;
@@ -31,7 +29,6 @@ public class Album implements Serializable{
 	private int numOfPhotos;
 	private ArrayList<Photo> photosInAlbum = new ArrayList<Photo>();
 	private static Album currentAlbum;
-	private static boolean existingAlbum;
 	private static ArrayList<Photo> searchResults;
 
 	// an album will mainly consist of a list of photos

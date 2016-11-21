@@ -31,7 +31,7 @@ import javafx.stage.Stage;
 * and putting a caption on to the photo
 * @author  Tom Raybould & Mike Tomkowich
 */
-public class addPhotoController {
+public class AddPhotoController {
 
 	@FXML
     private ImageView image;
