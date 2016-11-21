@@ -452,6 +452,9 @@ public class SearchResultsController {
 				Album newAlbum = new Album(newAlbumName); 
 				Album.setCurrentAlbum(newAlbum);
 				User.getCurrentUser().addAlbum(newAlbum);
+				for(Photo p: Album.getSearchResults()){
+					Album.getCurrentAlbum().addPhotoToAlbum(p); ///need to fix search duplicates
+				}
 			
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(getClass().getResource("/view/PhotoView.fxml"));
