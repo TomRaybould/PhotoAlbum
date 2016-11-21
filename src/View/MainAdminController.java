@@ -122,7 +122,8 @@ public class MainAdminController {
     	}
     	else if(b == deleteUser){
     		System.out.println(selectedUser);
-    		User.deleteUser(selectedUser);
+    		String deleteThis = selectedUser.substring(0, selectedUser.indexOf("-"));
+    		User.deleteUser(deleteThis);
     		this.update();
     	}
 		else if(b == logOut){
