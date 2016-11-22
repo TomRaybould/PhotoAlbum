@@ -138,7 +138,7 @@ public class UserAlbumViewController {
 		tableAlbumName.setCellValueFactory(new PropertyValueFactory<>("name"));
 		tableNumOfPhotos.setCellValueFactory(new PropertyValueFactory<>("numOfPhotos"));
 		tableEarliestPhoto.setCellValueFactory(new PropertyValueFactory<>("oldestDate"));
-		tableDateRange.setCellValueFactory(new PropertyValueFactory<>("latestDate"));
+		tableDateRange.setCellValueFactory(new PropertyValueFactory<>("dateRange"));
 		tableView.setItems(obslist);
 		
 		tableView.getColumns().setAll(tableAlbumName,tableNumOfPhotos,tableEarliestPhoto,tableDateRange);

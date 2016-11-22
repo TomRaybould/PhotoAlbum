@@ -26,6 +26,7 @@ public class Album implements Serializable{
 	static public ObjectOutputStream oos;
 	private String name;
 	private String oldestDate;
+	private String dateRange;
 	private String latestDate;
 	private int numOfPhotos;
 	private ArrayList<Photo> photosInAlbum = new ArrayList<Photo>();
@@ -33,9 +34,22 @@ public class Album implements Serializable{
 	private static ArrayList<Photo> searchResults;
 	
 	// an album will mainly consist of a list of photos
-	// it can also have a list of tags, but unclear whether or not that would be necessary
+	// it can also have a list of tags, but unclear whether or not that would be necessary		
 	
-	
+	/**
+	 * Constructor method that takes in a String name of the album. 
+	 * The instance also holds an array list of photos and the number 
+	 * of photos currently in the album
+	 * 
+	 * @param name is the name of the album
+	 * 
+	 * @return User an instance of Tag
+	 */
+	public Album(String name ){
+		this.name = name;
+		this.photosInAlbum = new ArrayList<Photo>();
+		this.numOfPhotos = 0;
+	}
 	/**
 	 * getter method for a list of current search results
 	 *
@@ -62,6 +76,8 @@ public class Album implements Serializable{
 		this.numOfPhotos++;
 		Comparator<Photo> c= (a,b)-> a.getCalDate().compareTo(b.getCalDate());
 		photosInAlbum.sort(c);
+		findDateRange();
+		sortAlbums();
 		return;
 		//change number of photos here so we never forget to call a second method
 	}
@@ -75,23 +91,11 @@ public class Album implements Serializable{
 		this.numOfPhotos--;
 		Comparator<Photo> c= (a,b)-> a.getCalDate().compareTo(b.getCalDate());
 		photosInAlbum.sort(c);
-		return;
+		currentAlbum.findDateRange();
+		sortAlbums();
 		//change number of photos here so we never forget to call a second method
 	}
-	/**
-	 * Constructor method that takes in a String name of the album. 
-	 * The instance also holds an array list of photos and the number 
-	 * of photos currently in the album
-	 * 
-	 * @param name is the name of the album
-	 * 
-	 * @return User an instance of Tag
-	 */
-	public Album(String name ){
-		this.name = name;
-		this.photosInAlbum = new ArrayList<Photo>();
-		this.numOfPhotos = 0;
-	}
+	
 	/**
 	 * getter method for number of photos in album
 	 *
@@ -149,6 +153,50 @@ public class Album implements Serializable{
 	 */
 	public static Album getCurrentAlbum() {
 		return currentAlbum;
+	}
+	
+	public String getDateRange(){
+		return this.dateRange;
+	}
+	
+	public String getOldestDate(){
+		return this.oldestDate;
+	}
+	
+	private static void sortAlbums(){
+		Comparator<Album> a= (g,h)-> {
+			if(g.photosInAlbum.size()<1){
+				return 1;
+			}
+			else if(h.photosInAlbum.size()<1){
+				return -1;
+			}
+			else{
+				return g.photosInAlbum.get(0).getCalDate().compareTo(h.photosInAlbum.get(0).getCalDate());
+			}
+		};
+		User.getCurrentUser().getAlbumList().sort(a);
+		for(Album alb : User.getCurrentUser().getAlbumList()){
+			System.out.println(alb.getName());
+		}
+	}
+	
+	private void findDateRange(){
+		if(this.photosInAlbum.isEmpty()){
+			this.dateRange=null;
+			this.oldestDate=null;
+			this.latestDate=null;
+		}
+		else if(this.photosInAlbum.size()==1){
+			this.oldestDate=this.photosInAlbum.get(0).getCalDate().toString();
+			this.latestDate=this.photosInAlbum.get(0).getCalDate().toString();
+			this.dateRange = this.oldestDate + " - " + this.latestDate;
+		}
+		else if(this.photosInAlbum.size()>1){
+			this.oldestDate=this.photosInAlbum.get(0).getCalDate().toString();
+			this.latestDate=this.photosInAlbum.get((this.photosInAlbum.size()-1)).getCalDate().toString();
+			this.dateRange = this.oldestDate + " - " + this.latestDate;
+		}
 	}
 	
 	public void iterate(){
