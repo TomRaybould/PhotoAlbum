@@ -60,7 +60,7 @@ public class CopyPhotoController {
 		for(Album a : User.getCurrentUser().getAlbumList()){
 			//the current album should not be an option
 			if(!a.getName().equals(Album.getCurrentAlbum().getName())){	
-				obslist.add(a.toString());
+				obslist.add(a.getName().toString());
 			}
 		}
 		
