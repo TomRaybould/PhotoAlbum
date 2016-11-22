@@ -18,9 +18,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -271,7 +273,20 @@ public class PhotoViewController {
     			
     		
 			String URL = file.toURI().toString();
-			//URL = "/photoalbum72/src/pics/bird.jpg";
+			
+			Photo searchRes= User.searchBySrc(URL);
+			
+			if(searchRes!=null){//the photo already exists
+				for(Photo p: Album.getCurrentAlbum().getPhotosInAlbum()){
+					if(URL.equals(p.getSrc())){
+						makeAlertInfo("Photo Alrady Exists","","This photo is already in this album");
+						return;
+					}
+				}
+				Album.getCurrentAlbum().addPhotoToAlbum(searchRes);
+				this.update();
+				return;
+			}
     		
 			//sets date to last modified fixed
     		Date date = new Date();
@@ -450,6 +465,17 @@ public class PhotoViewController {
 			
 		}
 		return str;
+	}
+    
+    private void makeAlertInfo(String errorTitle, String errorHeader, String errorContent) {    
+		
+		   Alert alert = new Alert(AlertType.INFORMATION);
+		   alert.initOwner(null);
+		   alert.setTitle(errorTitle);
+		   alert.setHeaderText(errorHeader);
+		   alert.setContentText(errorContent);
+		   alert.showAndWait();
+		   
 	}
     
 }//end of class

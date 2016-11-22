@@ -44,6 +44,19 @@ public class User implements Serializable{
 		tagTypes.add("Food");
 		tagTypes.add("Weather");
 	}
+	
+	
+	public static Photo searchBySrc(String str){
+		for(Album a: currentUser.albumList){
+			for(Photo p: a.getPhotosInAlbum()){
+				if (p.getSrc().equals(str)){
+					return p;
+				}
+			}
+		}
+		return null;
+	}
+	
 	/**
 	 * getter method to get a list of all Current Users
 	 *
