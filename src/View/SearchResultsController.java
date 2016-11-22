@@ -119,8 +119,20 @@ public class SearchResultsController {
     		ImageView pic= new ImageView();
     		Image img = new Image(photo.getSrc());
     		pic.setImage(img);
-    		pic.setFitHeight(100);
-    		pic.setFitWidth(200);
+    		int Hgap;
+    		int leftPadding;
+    		if(img.getWidth()>img.getHeight()){
+    			pic.setFitHeight(100);
+    			pic.setFitWidth(200);
+    			Hgap=15;
+    			leftPadding=10;
+    		}
+    		else{
+    			pic.setFitHeight(100);
+    			pic.setFitWidth(75);
+    			Hgap=80;
+    			leftPadding=70;
+    		}
     		Text caption=new Text();
     		caption.setWrappingWidth(200);
     	
@@ -152,9 +164,9 @@ public class SearchResultsController {
     		nestedPane.add(caption, 1, 0);
     		
     		nestedPane.setVgap(10);
-    		nestedPane.setHgap(15);
+    		nestedPane.setHgap(Hgap);
     		
-    		Insets nestedPadding =  new Insets(10,10,10,10); //top,right,bottom,left
+    		Insets nestedPadding =  new Insets(10,10,10,leftPadding); //top,right,bottom,left
     		nestedPane.setPadding(nestedPadding);
     		
     		nestedPane.setStyle(STYLE_NORMAL);
