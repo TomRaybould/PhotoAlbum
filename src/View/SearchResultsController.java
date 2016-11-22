@@ -470,10 +470,18 @@ public class SearchResultsController {
 				//if cancel was pressed the string is null
 				return;
 			}
+			for(Album a : User.getCurrentUser().getAlbumList()){
+				if(newAlbumName.equals(a.getName())){
+					makeAlertInfo("Invalid Album Name","","This album name is already taken");
+					return;
+				}
+			}
 			
 			if(newAlbumName.equals("")){
 				makeAlertInfo("No Album Name","","You must give your new album a name");
+				return;
 			}
+			
 			
 			else{	
 				Album newAlbum = new Album(newAlbumName); 
