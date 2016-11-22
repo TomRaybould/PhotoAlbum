@@ -135,16 +135,16 @@ public class PhotoViewController {
     		
     		Text caption=new Text();
     		caption.setWrappingWidth(200);
-    		String shorterDateStr= photo.getCalDate().toString().substring(0,11)+photo.getCalDate().toString().substring(24);
+    		String shorterDateStr= photo.getCalDate().toString().substring(0,20)+photo.getCalDate().toString().substring(24);
     		
     		if(photo.getCaption() == null || photo.getCaption().equals("")){
-    			caption.setText("Date: "+shorterDateStr+"\n" +"Caption: "+"N/A");
+    			caption.setText("Date:"+shorterDateStr+"\n" +"Caption: "+"N/A");
     		}
     		else if(photo.getCaption().length()>=100){
-    			caption.setText("Date: "+shorterDateStr+"\n"+"Caption: "+photo.getCaption().substring(0,96)+"...");
+    			caption.setText("Date:"+shorterDateStr+"\n"+"Caption: "+photo.getCaption().substring(0,96)+"...");
     		}
     		else{
-    			caption.setText("Date: "+shorterDateStr+"\n"+"Caption: "+photo.getCaption());
+    			caption.setText("Date:"+shorterDateStr+"\n"+"Caption: "+photo.getCaption());
     		}
     		
     		GridPane nestedPane= new GridPane();

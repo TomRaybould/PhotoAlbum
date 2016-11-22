@@ -151,7 +151,7 @@ public class SearchResultsController {
     			}
     		}
     		
-    		String shorterDateStr= photo.getCalDate().toString().substring(0,11)+photo.getCalDate().toString().substring(24);
+    		String shorterDateStr= photo.getCalDate().toString().substring(0,20)+photo.getCalDate().toString().substring(24);
     		
     		
     		caption.setText("Date: "+shorterDateStr+"\n" +"In Albums: "+Albums);
