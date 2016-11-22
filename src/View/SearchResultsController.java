@@ -123,15 +123,28 @@ public class SearchResultsController {
     		pic.setFitWidth(200);
     		Text caption=new Text();
     		caption.setWrappingWidth(200);
+    	
+    		String Albums ="";
+    		
+    		for(Album a: User.getCurrentUser().getAlbumList()){
+    			for(Photo p: a.getPhotosInAlbum()){
+    				if(p.getSrc().equals(photo.getSrc())){
+    					if(Albums.equals("")){
+    						Albums+= a.getName();
+    					}
+    					else{
+    						Albums+=", "+a.getName();
+    					}
+    				}
+    			}
+    		}
     		
     		String shorterDateStr= photo.getCalDate().toString().substring(0,11)+photo.getCalDate().toString().substring(24);
     		
-    		if(photo.getCaption() == null || photo.getCaption().equals("")){
-    			caption.setText("Date: "+shorterDateStr+"\n" +"Caption: "+"N/A");
-    		}
-    		else{
-    			caption.setText("Date: "+shorterDateStr+"\n"+"Caption: "+photo.getCaption());
-    		}
+    		
+    		caption.setText("Date: "+shorterDateStr+"\n" +"In Albums: "+Albums);
+    		
+    		
     		
     		GridPane nestedPane= new GridPane();
     		
