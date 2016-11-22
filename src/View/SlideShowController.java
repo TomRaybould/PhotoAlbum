@@ -59,13 +59,19 @@ public class SlideShowController {
 		currentStage = mainStage;
 		Album a = Album.getCurrentAlbum();
 		ArrayList<Photo> photos = a.getPhotosInAlbum();
-		Photo start = photos.get(0); ///need to have indexes or dates for slideshow
+		Photo start = Photo.getCurrentPhoto(); ///need to have indexes or dates for slideshow
 		System.out.println(start);
 		Image anImage = new Image(start.getSrc());
 		image.setImage(anImage);
 		caption.setText(start.getCaption());
 		date.setText(start.getCalDate().toString());
-		count = 0; //will equal index
+		count = 0;
+		for(Photo ph: a.getPhotosInAlbum()){
+			if(ph.getSrc().equals(start.getSrc())){
+				break;
+			}
+			count++;
+		}
 		//listview of tags
 		this.update(start);
 		currentStage.show();
