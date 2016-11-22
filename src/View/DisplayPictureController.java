@@ -59,6 +59,7 @@ public class DisplayPictureController {
 		Photo p = Photo.getCurrentPhoto();
 		Image anImage = new Image(p.getSrc());
 		image.setImage(anImage);
+		caption.setWrappingWidth(300);
 		caption.setText(p.getCaption());
 		date.setText(p.getCalDate().toString());
     	//listview of tags
