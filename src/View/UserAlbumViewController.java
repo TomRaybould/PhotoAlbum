@@ -314,7 +314,7 @@ public class UserAlbumViewController {
 	    	System.out.println("Search Results---------------------------");
 	    	
 	    	if(results==null||results.size()<=0){
-				makeAlertInfo("No Results Found","","You have no photos in this range");
+				makeAlertInfo("No Results Found","","No photos contain that tag");
 				return;
 			}
 	    	else{
@@ -342,7 +342,7 @@ public class UserAlbumViewController {
 			ArrayList<Photo> result = new ArrayList<Photo>();
 			result = getPhotosInRange();
 			
-			if(result==null){
+			if(result==null||result.size()<=0){
 				makeAlertInfo("No Results Found","","You have no photos in this range");
 				return;
 			}
