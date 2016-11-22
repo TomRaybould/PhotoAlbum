@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Optional;
 
@@ -242,10 +243,7 @@ public class UserAlbumViewController {
 	    				System.out.println("Target Type: " + target.getType());
 	    				System.out.println("Target value: " + target.getValue());
 	    				if(target.equals(t)||(target.getType()=="All Tags"&& target.getValue().equals(t.getValue()))){
-	    					/*
-	    					 * This means if the tags are equals add to list, or if the tag type of target is "All Tags"
-	    					 * and the values are the same also add it to the list
-	    					 */
+	    				
 	    					System.out.println("In here");
 	    					//will stop duplicates
 	    					if(!results.contains(p)){
@@ -257,6 +255,8 @@ public class UserAlbumViewController {
 	    		}
 	    	}
 	    	System.out.println("Search Results---------------------------");
+	    	Comparator<Photo> c= (h,k)-> h.getCalDate().compareTo(k.getCalDate());
+			results.sort(c);
 	    	for(Photo p: results){
 	    		System.out.println(p);
 	    	}
@@ -284,7 +284,8 @@ public class UserAlbumViewController {
 		else if(b == searchDate){
 			ArrayList<Photo> result = new ArrayList<Photo>();
 			result = getPhotosInRange();
-			
+			Comparator<Photo> c= (h,k)-> h.getCalDate().compareTo(k.getCalDate());
+			result.sort(c);
 			if(result==null){
 				makeInfoAlert("No Results Found","","You have no photos in this range");
 			}

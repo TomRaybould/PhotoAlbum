@@ -5,12 +5,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.DisplayPictureController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.DisplayPictureController">
    <children>
-      <Text fx:id="caption" layoutX="140.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caption" />
-      <Text fx:id="date" layoutX="140.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
-      <ImageView fx:id="image" fitHeight="488.0" fitWidth="580.0" layoutX="112.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true" />
-      <ListView fx:id="listOfTags" layoutX="140.0" layoutY="615.0" prefHeight="116.0" prefWidth="506.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" />
-      <Text fx:id="tags" layoutX="337.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags (Type-Value)" />
+      <Text fx:id="caption" layoutX="74.0" layoutY="596.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caption" />
+      <Text fx:id="date" layoutX="74.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+      <ImageView fx:id="image" fitHeight="459.0" fitWidth="683.0" layoutX="62.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
+      <ListView fx:id="listOfTags" layoutX="483.0" layoutY="525.0" prefHeight="116.0" prefWidth="300.0" AnchorPane.leftAnchor="483.0" AnchorPane.rightAnchor="23.0" />
+      <Text fx:id="tags" layoutX="576.0" layoutY="512.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags (Type-Value)" />
    </children>
 </AnchorPane>

@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import javafx.scene.image.Image;
 /**
@@ -30,7 +31,7 @@ public class Album implements Serializable{
 	private ArrayList<Photo> photosInAlbum = new ArrayList<Photo>();
 	private static Album currentAlbum;
 	private static ArrayList<Photo> searchResults;
-
+	
 	// an album will mainly consist of a list of photos
 	// it can also have a list of tags, but unclear whether or not that would be necessary
 	
@@ -59,6 +60,8 @@ public class Album implements Serializable{
 	public void addPhotoToAlbum(Photo p){
 		photosInAlbum.add(p);
 		this.numOfPhotos++;
+		Comparator<Photo> c= (a,b)-> a.getCalDate().compareTo(b.getCalDate());
+		photosInAlbum.sort(c);
 		return;
 		//change number of photos here so we never forget to call a second method
 	}
@@ -70,6 +73,8 @@ public class Album implements Serializable{
 	public void removePhotoFromAlbum(Photo p){
 		photosInAlbum.remove(p);
 		this.numOfPhotos--;
+		Comparator<Photo> c= (a,b)-> a.getCalDate().compareTo(b.getCalDate());
+		photosInAlbum.sort(c);
 		return;
 		//change number of photos here so we never forget to call a second method
 	}
