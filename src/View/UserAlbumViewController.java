@@ -209,10 +209,8 @@ public class UserAlbumViewController {
 				return;
 			}
 			
-		
 				
-			else{	
-				
+			else{		
 				
 				Album newAlbum = new Album(newAlbumName); 
 				Album.setCurrentAlbum(newAlbum);
@@ -285,6 +283,10 @@ public class UserAlbumViewController {
 			ArrayList<Photo> results= new ArrayList<Photo>();
 			
 			String tagVal = tagValue.getText();
+			if (tagDropDown.getSelectionModel().getSelectedItem()==null){
+				makeAlertInfo("Invalid Search","","You must select a tag type");
+				return;
+			}
 			String tagTyp = tagDropDown.getSelectionModel().getSelectedItem();
 			System.out.println("Value: " + tagVal);
 			System.out.println("Type: " + tagTyp);
