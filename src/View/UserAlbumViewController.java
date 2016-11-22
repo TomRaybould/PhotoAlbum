@@ -312,17 +312,17 @@ public class UserAlbumViewController {
 	    		}
 	    	}
 	    	System.out.println("Search Results---------------------------");
-	    	Comparator<Photo> c= (h,k)-> h.getCalDate().compareTo(k.getCalDate());
-			results.sort(c);
-	    	for(Photo p: results){
-	    		System.out.println(p);
-	    	}
-	    	if(results.size()<=0){
-	    		//alert
-	    		return;
-	    	}
+	    	
+	    	if(results==null||results.size()<=0){
+				makeAlertInfo("No Results Found","","You have no photos in this range");
+				return;
+			}
 	    	else{
-	  		
+	    		Comparator<Photo> c= (h,k)-> h.getCalDate().compareTo(k.getCalDate());
+				results.sort(c);
+		    	for(Photo p: results){
+		    		System.out.println(p);
+		    	}
 	    		
 	    		Album.setSearchResults(results);
 	    		FXMLLoader loader = new FXMLLoader();
@@ -341,11 +341,12 @@ public class UserAlbumViewController {
 		else if(b == searchDate){
 			ArrayList<Photo> result = new ArrayList<Photo>();
 			result = getPhotosInRange();
-			Comparator<Photo> c= (h,k)-> h.getCalDate().compareTo(k.getCalDate());
-			result.sort(c);
+			
 			if(result==null){
-				makeInfoAlert("No Results Found","","You have no photos in this range");
+				makeAlertInfo("No Results Found","","You have no photos in this range");
+				return;
 			}
+			
 			
 			else{
 				Album.setSearchResults(result);
@@ -383,11 +384,6 @@ public class UserAlbumViewController {
 		
 	}//end of handle
 	
-	
-	private void makeInfoAlert(String string, String string2, String string3) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	private String oneLineDialog(String title, String header, String content, String hint){
 		
