@@ -82,7 +82,7 @@ public class Tag implements Serializable{
 		}
 		Tag t = (Tag)o;
 	
-		if(this.type.equals(t.type)&&(this.value.equals(t.value))){
+		if(this.type.equals(t.type)&&(this.value.equalsIgnoreCase(t.value))){
 			return true;
 		}
 		else{

@@ -14,10 +14,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -71,7 +73,7 @@ public class AddTagController {
 		System.out.println("Current Album in Photo view is: " + Album.getCurrentAlbum());
 		System.out.println("Current Photo in add tag is: " + Photo.getCurrentPhoto());
 			
-		
+		tagDropDown.getSelectionModel().select(0);
 			tagDropDown.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
     			public void handle(MouseEvent m){
     				update();
@@ -110,13 +112,26 @@ public class AddTagController {
     	if(b == addTag){
     		System.out.println("add Tag");
     		String tagType = tagDropDown.getSelectionModel().getSelectedItem();
+    		if(tagType==null){
+    			makeAlertInfo("Invalid Tag", "","Select a tag type");
+				return;
+    		}
     		String tag = tagText.getText();
     		Photo p = Photo.getCurrentPhoto();
-    		if (p == null){
+    		if (p == null|| tag.equals("")){
     			return;
     		}
     		Tag t = new Tag(tagType, tag);
+    		System.out.println(t);
+    		for(Tag tagInList :p.getTags()){
+    			if(t.equals(tagInList)){
+    				makeAlertInfo("Invalid Tag", "","The photo already contains this tag");
+    				return;
+    			}
+    		}
+    		
     		p.addTag(t);
+    		
     		ArrayList<Tag> photoTags = p.getTags();
     		for(Tag tag1: photoTags){
     			System.out.println(tag1);
@@ -138,11 +153,21 @@ public class AddTagController {
 			EditTagType.start(newStage);
 			newStage.setScene(scene);
 			newStage.centerOnScreen();
-			newStage.showAndWait();
+			
 			///how to reload list??
 
 			update();
     	}
     }
 
+    private void makeAlertInfo(String errorTitle, String errorHeader, String errorContent) {    
+		
+		   Alert alert = new Alert(AlertType.INFORMATION);
+		   alert.initOwner(null);
+		   alert.setTitle(errorTitle);
+		   alert.setHeaderText(errorHeader);
+		   alert.setContentText(errorContent);
+		   alert.showAndWait();
+		   
+	}
 }

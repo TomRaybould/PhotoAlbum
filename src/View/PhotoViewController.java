@@ -140,6 +140,9 @@ public class PhotoViewController {
     		if(photo.getCaption() == null || photo.getCaption().equals("")){
     			caption.setText("Date: "+shorterDateStr+"\n" +"Caption: "+"N/A");
     		}
+    		else if(photo.getCaption().length()>=100){
+    			caption.setText("Date: "+shorterDateStr+"\n"+"Caption: "+photo.getCaption().substring(0,96)+"...");
+    		}
     		else{
     			caption.setText("Date: "+shorterDateStr+"\n"+"Caption: "+photo.getCaption());
     		}
@@ -388,6 +391,7 @@ public class PhotoViewController {
 		}
 		else if(b == addEditCaption){
 			if(Photo.getCurrentPhoto()==null){
+				makeAlertInfo("No Photo Selected","","You must select a photo");
 				return;
 			}
 			if(Photo.getCurrentPhoto()!=null){
@@ -403,6 +407,7 @@ public class PhotoViewController {
 		}
 		else if(b == addTag){
 			if(Photo.getCurrentPhoto()==null){
+				makeAlertInfo("No Photo Selected","","You must select a photo");
 				return;
 			}
 			FXMLLoader loader = new FXMLLoader();
@@ -422,7 +427,9 @@ public class PhotoViewController {
 			
 		}
 		else if(b == removeTag){
+			
 			if(Photo.getCurrentPhoto()==null){
+				makeAlertInfo("No Photo Selected","","You must select a photo");
 				return;
 			}
 			System.out.println("Remove Tag");

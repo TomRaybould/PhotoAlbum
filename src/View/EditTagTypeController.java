@@ -2,7 +2,9 @@ package View;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
+import Model.Album;
 import Model.Photo;
 import Model.Tag;
 import Model.User;
@@ -88,16 +90,22 @@ public class EditTagTypeController {
     void handle(ActionEvent e) throws IOException {
     	Button b = (Button)e.getSource();
     	if(b == removeType){
+    		
     		String selected = selectedTagType;
     		User u = User.getCurrentUser();
-    		ArrayList<String> types = u.getTagTypes();
-    		for(String s: types){
-    			if(s.equals(selected)){
-    				types.remove(s);
-    				break;
+    		u.getTagTypes().remove(selected);
+    		
+    		//take out all the tags of that type
+    		Predicate<Tag> pre= (i) -> i.getType().equalsIgnoreCase(selectedTagType);
+    		
+    		for(Album a:u.getAlbumList()){
+    			for(Photo p: a.getPhotosInAlbum()){
+    				p.getTags().removeIf(pre);
     			}
     		}
-    		User.getCurrentUser().setTagTypes(types);
+    		
+    		
+    		
     		this.update();
     	}
     	else if(b == addType){
@@ -105,14 +113,21 @@ public class EditTagTypeController {
     		if(addThis == null){
     			return;
     		}
+    		if(addThis.equals("")){
+    			return;
+    		}
     		else{
+    			for(String type : User.getCurrentUser().getTagTypes()){
+    				if(addThis.equalsIgnoreCase(type)){
+    					return;
+    				}
+    			}
     			User u = User.getCurrentUser();
         		ArrayList<String> types = u.getTagTypes();
         		types.add(addThis);
         		System.out.println(types);
         		User.getCurrentUser().setTagTypes(types);
         		this.update();
-        		
     		}
     	}
     	else if(b == saveAndExit){
