@@ -124,11 +124,13 @@ public class SearchResultsController {
     		Text caption=new Text();
     		caption.setWrappingWidth(200);
     		
+    		String shorterDateStr= photo.getCalDate().toString().substring(0,11)+photo.getCalDate().toString().substring(24);
+    		
     		if(photo.getCaption() == null || photo.getCaption().equals("")){
-    			caption.setText("Caption:\n"+"N/A");
+    			caption.setText("Date: "+shorterDateStr+"\n" +"Caption: "+"N/A");
     		}
     		else{
-    			caption.setText("Caption:\n"+photo.getCaption());
+    			caption.setText("Date: "+shorterDateStr+"\n"+"Caption: "+photo.getCaption());
     		}
     		
     		GridPane nestedPane= new GridPane();
