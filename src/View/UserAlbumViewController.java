@@ -30,6 +30,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextField;
@@ -67,17 +69,23 @@ public class UserAlbumViewController {
 	@FXML
 	private TextField minStart;
 	@FXML
+	private TextField secStart;
+	@FXML
 	private DatePicker dateEnd;
 	@FXML
 	private TextField hourEnd;
 	@FXML
 	private TextField minEnd;
 	@FXML
+	private TextField secEnd;
+	@FXML
 	private Button searchTag;
 	@FXML
 	private Button searchDate;
 	@FXML
 	private TableView tableView;
+	@FXML
+	private ImageView firstPic;
 	@FXML
 	private TableColumn tableAlbumName;
 	@FXML
@@ -112,7 +120,7 @@ public class UserAlbumViewController {
         	.getSelectionModel()
         	.selectedItemProperty()
         	.addListener(
-        			(obs , oldVal, newVal) -> System.out.println());
+        			(obs , oldVal, newVal) -> loadFirstPhoto());
 	}
 	/**
      * Updates data associated with screen
@@ -143,6 +151,26 @@ public class UserAlbumViewController {
 		
 		tableView.getColumns().setAll(tableAlbumName,tableNumOfPhotos,tableEarliestPhoto,tableDateRange);
 		
+	}//end of update
+	
+	private void loadFirstPhoto(){
+		if(tableView.getSelectionModel().getSelectedItem()==null){
+			firstPic.setImage(null);
+		}
+		Album a =(Album)tableView.getSelectionModel().getSelectedItem();
+		if(a.getNumOfPhotos()<=0){
+			firstPic.setImage(null);
+		}
+		else if (a.getNumOfPhotos()>=1){
+			Image img = new Image(a.getPhotosInAlbum().get(0).getSrc());
+			firstPic.setImage(img);
+			//firstPic.setFitHeight(110);
+			firstPic.setFitWidth(150);
+		}
+		else{
+			System.out.println("First image loader is not working");
+			return;
+		}
 	}
 	
 	 /**
@@ -400,13 +428,14 @@ public class UserAlbumViewController {
 		int startMonth= (dateStart.getValue().getMonthValue()-1);
 		int startDay= dateStart.getValue().getDayOfMonth();
 		int startHour= convertHourInput(hourStart.getText().toString());
-		int startMin= convertHourInput(minStart.getText().toString());
+		int startMin= convertMinInput(minStart.getText().toString());
+		int startSec= convertMinInput(secStart.getText().toString());
 		
-		System.out.println("Start date: " + startYear+", "+startMonth+", "+startDay+", "+startHour+", "+startMin);
+		System.out.println("Start date: " + startYear+", "+startMonth+", "+startDay+", "+startHour+", "+startMin+", "+startSec);
 		
 		Calendar cal = Calendar.getInstance();
 		cal.setTimeInMillis(0);
-		cal.set(startYear, startMonth, startDay, startHour, startMin, 0);
+		cal.set(startYear, startMonth, startDay, startHour, startMin, startSec);
 		Date dateBeginRange = cal.getTime(); // get back a Date object
 		System.out.println(dateBeginRange);
 		
@@ -415,12 +444,13 @@ public class UserAlbumViewController {
 		int endDay= dateEnd.getValue().getDayOfMonth();
 		int endHour= convertHourInput(hourEnd.getText().toString());
 		int endMin= convertMinInput(minEnd.getText().toString());
+		int endSec= convertMinInput(secEnd.getText().toString());
 		
-		cal.set(endYear, endMonth, endDay, endHour, endMin, 0);
+		cal.set(endYear, endMonth, endDay, endHour, endMin, endSec);
 		Date dateEndRange = cal.getTime(); // get back a Date object
 		System.out.println(dateEndRange);
 		
-		System.out.println("End date: " + endYear+", "+endMonth+", "+endDay+", "+endHour+", "+endMin);
+		System.out.println("End date: " + endYear+", "+endMonth+", "+endDay+", "+endHour+", "+endMin+", "+endSec);
 		
 		for(Album a :User.getCurrentUser().getAlbumList()){
 			for(Photo p: a.getPhotosInAlbum()){

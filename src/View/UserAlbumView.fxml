@@ -7,66 +7,73 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UserAlbumViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UserAlbumViewController">
    <children>
-      <Button fx:id="makeNewAlbum" layoutX="818.0" layoutY="52.0" mnemonicParsing="false" onAction="#handle" prefHeight="27.0" prefWidth="135.0" text="Make New Album" />
-      <Button fx:id="deleteAlbum" layoutX="818.0" layoutY="141.0" mnemonicParsing="false" onAction="#handle" text="Delete Album" textAlignment="CENTER" />
-      <Button fx:id="renameAlbum" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="818.0" layoutY="95.0" mnemonicParsing="false" onAction="#handle" text="Rename Album" />
-      <Button fx:id="logOut" layoutX="818.0" layoutY="446.0" mnemonicParsing="false" onAction="#handle" text="Log Out" />
-      <Button fx:id="safeQuit" layoutX="820.0" layoutY="490.0" mnemonicParsing="false" onAction="#handle" text="Safe Quit" />
+      <Button fx:id="makeNewAlbum" layoutX="1036.0" layoutY="45.0" mnemonicParsing="false" onAction="#handle" prefHeight="27.0" prefWidth="135.0" text="Make New Album" />
+      <Button fx:id="deleteAlbum" layoutX="1036.0" layoutY="117.0" mnemonicParsing="false" onAction="#handle" text="Delete Album" textAlignment="CENTER" />
+      <Button fx:id="renameAlbum" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="1036.0" layoutY="81.0" mnemonicParsing="false" onAction="#handle" text="Rename Album" />
+      <Button fx:id="logOut" layoutX="1087.0" layoutY="460.0" mnemonicParsing="false" onAction="#handle" text="Log Out" />
+      <Button fx:id="safeQuit" layoutX="1083.0" layoutY="529.0" mnemonicParsing="false" onAction="#handle" text="Safe Quit" />
       <Text fx:id="userTitle" layoutX="40.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User's Albums" wrappingWidth="706.8564453125">
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-      <Text layoutX="19.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search by tag" wrappingWidth="100.02685546875">
+      <Text layoutX="36.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search by tag" wrappingWidth="100.02685546875">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="40.0" layoutY="452.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- or -">
+      <Text layoutX="44.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- or -">
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Text layoutX="12.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search by date">
+      <Text layoutX="39.0" layoutY="548.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search by date">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <ComboBox id="tagNameDropDown" fx:id="tagDropDown" layoutX="152.0" layoutY="384.0" prefHeight="28.0" prefWidth="127.0" promptText="Name" />
-      <TextField fx:id="tagValue" layoutX="299.0" layoutY="384.0" onAction="#handle" prefHeight="13.0" prefWidth="172.0" promptText="Tag value">
+      <ComboBox id="tagNameDropDown" fx:id="tagDropDown" layoutX="169.0" layoutY="404.0" prefHeight="28.0" prefWidth="127.0" promptText="Name" />
+      <TextField fx:id="tagValue" layoutX="316.0" layoutY="404.0" onAction="#handle" prefHeight="13.0" prefWidth="172.0" promptText="Tag value">
          <opaqueInsets>
             <Insets right="10.0" top="10.0" />
          </opaqueInsets>
       </TextField>
-      <DatePicker fx:id="dateStart" layoutX="119.0" layoutY="490.0" prefHeight="27.0" prefWidth="136.0" />
-      <Button id="Search" fx:id="searchTag" layoutX="483.0" layoutY="383.0" mnemonicParsing="false" onAction="#handle" text="Search Tag" />
-      <Button id="SearchDate" fx:id="searchDate" layoutX="624.0" layoutY="490.0" mnemonicParsing="false" onAction="#handle" text="Search Date Range" />
-      <TableView fx:id="tableView" layoutX="44.0" layoutY="45.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="716.0">
+      <DatePicker fx:id="dateStart" layoutX="146.0" layoutY="529.0" prefHeight="27.0" prefWidth="136.0" />
+      <Button id="Search" fx:id="searchTag" layoutX="500.0" layoutY="403.0" mnemonicParsing="false" onAction="#handle" text="Search Tag" />
+      <Button id="SearchDate" fx:id="searchDate" layoutX="740.0" layoutY="531.0" mnemonicParsing="false" onAction="#handle" text="Search Date Range" />
+      <TableView fx:id="tableView" layoutX="44.0" layoutY="45.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="968.0">
          <columns>
-            <TableColumn fx:id="tableAlbumName" prefWidth="174.0" text="Album Name" />
-            <TableColumn fx:id="tableNumOfPhotos" maxWidth="100.0" minWidth="100.0" prefWidth="200.0" text="# Of Photos" />
-            <TableColumn fx:id="tableEarliestPhoto" maxWidth="150.0" minWidth="150.0" prefWidth="251.0" text="Earliest Photo" />
-            <TableColumn fx:id="tableDateRange" prefWidth="247.0" text="Date Range" />
+            <TableColumn fx:id="tableAlbumName" minWidth="5.0" prefWidth="225.0" resizable="false" text="Album Name" />
+            <TableColumn fx:id="tableNumOfPhotos" maxWidth="265.0" minWidth="71.0" prefWidth="95.0" resizable="false" text="# Of Photos" />
+            <TableColumn fx:id="tableEarliestPhoto" maxWidth="261.0" minWidth="86.0" prefWidth="237.0" resizable="false" text="Earliest Photo" />
+            <TableColumn fx:id="tableDateRange" prefWidth="408.0" resizable="false" text="Date Range" />
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="openAlbum" layoutX="818.0" layoutY="190.0" mnemonicParsing="false" onAction="#handle" text="Open Album" />
-      <TextField fx:id="hourStart" layoutX="269.0" layoutY="490.0" prefHeight="27.0" prefWidth="33.0" text="00" />
-      <TextField fx:id="hourEnd" layoutX="527.0" layoutY="490.0" prefHeight="27.0" prefWidth="33.0" text="00" />
-      <TextField fx:id="minEnd" layoutX="578.0" layoutY="490.0" prefHeight="27.0" prefWidth="33.0" text="00" />
-      <TextField fx:id="minStart" layoutX="315.0" layoutY="490.0" prefHeight="27.0" prefWidth="33.0" text="00" />
-      <DatePicker fx:id="dateEnd" layoutX="385.0" layoutY="490.0" prefHeight="27.0" prefWidth="136.0" />
-      <Text layoutX="354.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-to-" />
-      <Text layoutX="270.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hour" />
-      <Text layoutX="317.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MIn" />
-      <Text layoutX="529.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hour" />
-      <Text layoutX="583.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MIn" />
+      <Button fx:id="openAlbum" layoutX="1036.0" layoutY="153.0" mnemonicParsing="false" onAction="#handle" text="Open Album" />
+      <TextField fx:id="hourStart" layoutX="292.0" layoutY="529.0" prefHeight="27.0" prefWidth="33.0" promptText="12" />
+      <TextField fx:id="minStart" layoutX="334.0" layoutY="529.0" prefHeight="27.0" prefWidth="33.0" promptText="00" />
+      <Text layoutX="421.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-to-" />
+      <Text layoutX="292.0" layoutY="521.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hour" />
+      <Text layoutX="334.0" layoutY="521.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MIn" />
+      <Text layoutX="1036.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Photo in Album" />
+      <ImageView fx:id="firstPic" fitHeight="110.0" fitWidth="150.0" layoutX="1036.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="secStart" layoutX="377.0" layoutY="529.0" prefHeight="27.0" prefWidth="33.0" promptText="00" />
+      <Text layoutX="377.0" layoutY="521.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sec" />
+      <DatePicker fx:id="dateEnd" layoutX="456.0" layoutY="531.0" prefHeight="27.0" prefWidth="136.0" />
+      <TextField fx:id="hourEnd" layoutX="602.0" layoutY="531.0" prefHeight="27.0" prefWidth="33.0" promptText="12" />
+      <TextField fx:id="minEnd" layoutX="644.0" layoutY="531.0" prefHeight="27.0" prefWidth="33.0" promptText="00" />
+      <Text layoutX="602.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hour" />
+      <Text layoutX="644.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MIn" />
+      <TextField fx:id="secEnd" layoutX="687.0" layoutY="531.0" prefHeight="27.0" prefWidth="33.0" promptText="00" />
+      <Text layoutX="687.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sec" />
    </children>
 </AnchorPane>
