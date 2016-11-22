@@ -299,7 +299,7 @@ public class UserAlbumViewController {
 	    				System.out.println("T value: " + t.getValue());
 	    				System.out.println("Target Type: " + target.getType());
 	    				System.out.println("Target value: " + target.getValue());
-	    				if(target.equals(t)||(target.getType()=="All Tags"&& target.getValue().equals(t.getValue()))){
+	    				if(target.equals(t)||(target.getType().equals("All Tags")&& target.getValue().equals(t.getValue()))){
 	    				
 	    					System.out.println("In here");
 	    					//will stop duplicates
