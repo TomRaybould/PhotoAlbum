@@ -71,6 +71,7 @@ public class AddTagController {
 		System.out.println("Current Album in Photo view is: " + Album.getCurrentAlbum());
 		System.out.println("Current Photo in add tag is: " + Photo.getCurrentPhoto());
 			
+		
 			tagDropDown.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
     			public void handle(MouseEvent m){
     				update();
