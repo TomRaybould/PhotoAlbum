@@ -156,16 +156,19 @@ public class UserAlbumViewController {
 	private void loadFirstPhoto(){
 		if(tableView.getSelectionModel().getSelectedItem()==null){
 			firstPic.setImage(null);
+			return;
 		}
 		Album a =(Album)tableView.getSelectionModel().getSelectedItem();
 		if(a.getNumOfPhotos()<=0){
 			firstPic.setImage(null);
+			return;
 		}
 		else if (a.getNumOfPhotos()>=1){
 			Image img = new Image(a.getPhotosInAlbum().get(0).getSrc());
 			firstPic.setImage(img);
 			//firstPic.setFitHeight(110);
 			firstPic.setFitWidth(150);
+			return;
 		}
 		else{
 			System.out.println("First image loader is not working");
