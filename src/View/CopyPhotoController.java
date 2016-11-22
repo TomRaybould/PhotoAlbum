@@ -1,7 +1,7 @@
 package View;
 
 import javafx.fxml.FXML;
-
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import Model.Album;
 import Model.Photo;
@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.ListView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 /**
 * CopyPhotoController is the class associated with the screen for copying photos from one 
@@ -57,11 +58,10 @@ public class CopyPhotoController {
 		obslist = FXCollections.observableArrayList();
 		
 		for(Album a : User.getCurrentUser().getAlbumList()){
-			String s = new String(a.getName());
-			if(s==a.getName()){
-				System.out.println("not working");
+			//the current album should not be an option
+			if(!a.getName().equals(Album.getCurrentAlbum().getName())){	
+				obslist.add(a.toString());
 			}
-			obslist.add(s);
 		}
 		
 		destList.setItems(obslist);
@@ -83,15 +83,28 @@ public class CopyPhotoController {
     		System.out.println(Photo.getCurrentPhoto().toString());
     		for(Album a: User.getCurrentUser().getAlbumList()){
     			if(a.getName().equals(selectedAlbum)){
-    				
-    				a.addPhotoToAlbum(Photo.getCurrentPhoto());
-    				//no need to mess with the current album of Album Class
-    				//add Photo method adjusts the count
-    				this.update();
-    				currentStage.close();
+  
+    				if(!a.getPhotosInAlbum().contains(Photo.getCurrentPhoto())){
+    					// the photo isn't already there 
+    					a.addPhotoToAlbum(Photo.getCurrentPhoto());
+    					this.update();
+    					currentStage.close();
+    				}
+    				else{
+    					makeAlertInfo("Invalid Copy","","The photo is already in the destination album");
+    				}
     			}
     		}
-    		
     	}
+	}
+	
+	private void makeAlertInfo(String errorTitle, String errorHeader, String errorContent) {    
+		
+		   Alert alert = new Alert(AlertType.INFORMATION);
+		   alert.initOwner(null);
+		   alert.setTitle(errorTitle);
+		   alert.setHeaderText(errorHeader);
+		   alert.setContentText(errorContent);
+		   alert.showAndWait();   
 	}
 }
