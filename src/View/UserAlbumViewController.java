@@ -111,6 +111,8 @@ public class UserAlbumViewController {
      * @return void
      */
 	public void start(Stage mainStage) throws IOException{
+		Album.setCurrentAlbum(null);
+		Album.setSearchResults(null);
 		currentStage = mainStage;
 		currUser = User.getCurrentUser();
 		userTitle.setText(currUser.getUserName()+"'s Albums"); 

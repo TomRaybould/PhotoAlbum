@@ -10,3 +10,9 @@ You will now go to the main album screen. This is where you will see all existin
 Enter or create a new album.
 In here you can add pictures to your album. Pictures will be sorted from earliest to latest modified date. You can tag and caption all photos in here. You can also move, copy, delete, and add photos from here. New tag types are also created in here.
 Do not touch the dat folder!!!!!! This contains serilized information. If touched or deleted, our program will not run
+
+Extra features added:
+
+- You can sort by date name and number of photos for albums, in our album table
+- You can see the first photo in each album by clicking on an album
+- You can see what albums the photo is from, in the search results next to the thumbnail
