@@ -247,7 +247,7 @@ public class SearchResultsController {
 			AnchorPane root = (AnchorPane)loader.load();
 			
 			SlideShowController SlideShow = loader.getController();
-			SlideShow.start(currentStage);
+			SlideShow.start(currentStage, Album.getSearchResults());
 			Scene scene = new Scene(root);
 			Stage newStage =new Stage();
 			newStage.initModality(Modality.APPLICATION_MODAL);

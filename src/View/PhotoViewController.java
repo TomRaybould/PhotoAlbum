@@ -236,7 +236,7 @@ public class PhotoViewController {
 			AnchorPane root = (AnchorPane)loader.load();
 			
 			SlideShowController SlideShow = loader.getController();
-			SlideShow.start(currentStage);
+			SlideShow.start(currentStage,Album.getCurrentAlbum().getPhotosInAlbum());
 			Scene scene = new Scene(root);
 			Stage newStage =new Stage();
 			newStage.initModality(Modality.APPLICATION_MODAL);

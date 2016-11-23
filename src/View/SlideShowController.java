@@ -48,6 +48,8 @@ public class SlideShowController {
     private Stage currentStage;
     
     private int count;
+    
+    private ArrayList<Photo> photoSlides;
     /**
      * Loads current screen and data associated with the screen
      * 
@@ -55,23 +57,28 @@ public class SlideShowController {
      * 
      * @return void
      */
-    public void start(Stage mainStage){
+    public void start(Stage mainStage, ArrayList<Photo> slides){
 		currentStage = mainStage;
-		Album a = Album.getCurrentAlbum();
-		ArrayList<Photo> photos = a.getPhotosInAlbum();
-		Photo start = Photo.getCurrentPhoto(); ///need to have indexes or dates for slideshow
+		if(slides==null){
+			currentStage.close();
+			return;
+		}
+		if(slides.size()<=0){
+			currentStage.close();
+			return;
+		}
+		
+		photoSlides= slides;
+		
+		Photo start = photoSlides.get(0);
+		
 		System.out.println(start);
 		Image anImage = new Image(start.getSrc());
 		image.setImage(anImage);
 		caption.setText(start.getCaption());
 		date.setText(start.getCalDate().toString());
 		count = 0;
-		for(Photo ph: a.getPhotosInAlbum()){
-			if(ph.getSrc().equals(start.getSrc())){
-				break;
-			}
-			count++;
-		}
+		
 		//listview of tags
 		this.update(start);
 		currentStage.show();
@@ -111,12 +118,12 @@ public class SlideShowController {
     	Button b= (Button)e.getSource();
     	if(b == nextImage){
     		count++;
-    		if(count > Album.getCurrentAlbum().getPhotosInAlbum().size() - 1){
+    		if(count > photoSlides.size() - 1){
     			//count too large, so block action
     			count--;
     		}
     		else{
-    			Photo curr = Album.getCurrentAlbum().getPhotosInAlbum().get(count);
+    			Photo curr = photoSlides.get(count);
     			Image anImage = new Image(curr.getSrc());
     			image.setImage(anImage);
     			caption.setText(curr.getCaption());
@@ -133,7 +140,7 @@ public class SlideShowController {
     			count++;
     		}
     		else{
-    			Photo curr = Album.getCurrentAlbum().getPhotosInAlbum().get(count);
+    			Photo curr = photoSlides.get(count);
     			Image anImage = new Image(curr.getSrc());
     			image.setImage(anImage);
     			caption.setText(curr.getCaption());
