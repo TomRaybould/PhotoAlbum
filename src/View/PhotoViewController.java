@@ -211,7 +211,10 @@ public class PhotoViewController {
     	Button b= (Button)e.getSource();
     	
     	if(b == displayPicture){
-    		
+    		if(Photo.getCurrentPhoto()==null){
+				makeAlertInfo("No Photo Selected","","You must select a photo");
+				return;
+			}
     		System.out.println("DisplayPicture");
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/DisplayPicture.fxml"));
@@ -230,6 +233,10 @@ public class PhotoViewController {
 			
 		}
 		else if(b == slideShow){
+			if(Photo.getCurrentPhoto()==null){
+				makeAlertInfo("No Photo Selected","","You must select a photo");
+				return;
+			}
 			System.out.println("slideShow");
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/SlideShow.fxml"));
@@ -342,6 +349,10 @@ public class PhotoViewController {
 			
 		}
 		else if(b == removePhoto){
+			if(Photo.getCurrentPhoto()==null){
+				makeAlertInfo("No Photo Selected","","You must select a photo");
+				return;
+			}
 			if(!(makeAlertConfirm("Deleteing Photo", "", "Are you sure you want to delete"))){
 				return;
 			}
@@ -357,6 +368,7 @@ public class PhotoViewController {
 		}
 		else if(b == movePhoto){
 			if(Photo.getCurrentPhoto()==null){
+				makeAlertInfo("No Photo Selected","","You must select a photo");
 				return;
 			}
 			FXMLLoader loader = new FXMLLoader();
@@ -375,6 +387,7 @@ public class PhotoViewController {
 		}
 		else if(b == copyPhoto){
 			if(Photo.getCurrentPhoto()==null){
+				makeAlertInfo("No Photo Selected","","You must select a photo");
 				return;
 			}
 			FXMLLoader loader = new FXMLLoader();

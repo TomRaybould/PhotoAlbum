@@ -76,7 +76,13 @@ public class SlideShowController {
 		System.out.println(start);
 		Image anImage = new Image(start.getSrc());
 		image.setImage(anImage);
-		caption.setText(start.getCaption());
+		String captionStr= start.getCaption();
+		if(captionStr!=null &&captionStr.length()>40){
+			captionStr=captionStr.substring(1, 25)+"...";
+		}
+		
+		this.caption.setText(captionStr);
+		this.caption.setWrappingWidth(300);
 		date.setText(start.getCalDate().toString());
 		count = 0;
 		
@@ -127,7 +133,13 @@ public class SlideShowController {
     			Photo curr = photoSlides.get(count);
     			Image anImage = new Image(curr.getSrc());
     			image.setImage(anImage);
-    			caption.setText(curr.getCaption());
+    			String captionStr= curr.getCaption();
+    			if(captionStr!=null &&captionStr.length()>40){
+    				captionStr=captionStr.substring(1, 25)+"...";
+    			}
+    			
+    			this.caption.setText(captionStr);
+    			this.caption.setWrappingWidth(300);
     			date.setText(curr.getCalDate().toString());
     			this.update(curr);
     		}
@@ -144,7 +156,13 @@ public class SlideShowController {
     			Photo curr = photoSlides.get(count);
     			Image anImage = new Image(curr.getSrc());
     			image.setImage(anImage);
-    			caption.setText(curr.getCaption());
+    			String captionStr= curr.getCaption();
+    			if(captionStr!=null &&captionStr.length()>40){
+    				captionStr=captionStr.substring(1, 25)+"...";
+    			}
+    			
+    			this.caption.setText(captionStr);
+    			this.caption.setWrappingWidth(300);
     			date.setText(curr.getCalDate().toString());
     			this.update(curr);
     		}
