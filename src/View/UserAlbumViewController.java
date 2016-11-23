@@ -230,7 +230,9 @@ public class UserAlbumViewController {
 			}
 		}
 		else if(b == deleteAlbum){
-			
+			if(tableView.getSelectionModel().getSelectedItem()==null){
+				return;
+			}
 			if (!makeAlertConfirm("Deleting" , "", "Are you sure you want to delete this album?")){
 				return;
 			}
@@ -267,7 +269,7 @@ public class UserAlbumViewController {
 			this.update();
 		}
 		else if(b == logOut){
-
+			User.write();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/LoginPage.fxml"));
 		

@@ -113,6 +113,9 @@ public class PhotoViewController {
      * @return void
      */
     public void update(){
+    	if(Album.getCurrentAlbum()==null){
+    		return;
+    	}
     	ArrayList<GridPane> nestedPanes=new ArrayList<GridPane>();
     	for(Photo photo: Album.getCurrentAlbum().getPhotosInAlbum()){
     		ImageView pic= new ImageView();
@@ -489,7 +492,6 @@ public class PhotoViewController {
     }//end of handle
     
     /**
-     * Handles button and action events that occur on this screen
      * 
      * @param String title
      * @param String header
