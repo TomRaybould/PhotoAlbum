@@ -31,7 +31,6 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="copyPhoto" mnemonicParsing="false" onAction="#handle" prefWidth="90.0" text="Copy Photo" />
             <Button fx:id="createNewAlbum" mnemonicParsing="false" onAction="#handle" text="Create New Album" GridPane.rowIndex="1" />
          </children>
       </GridPane>
