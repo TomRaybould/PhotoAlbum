@@ -143,7 +143,17 @@ public class EditTagTypeController {
     	}
 
     }
-    
+    /**
+     * 
+     * @param String alertTitle
+     * @param String alertHeader
+     * @param String alertContent
+     * 
+     * Takes in three strings and produces a simply alert for the user to see,
+     * return true only if the user presses ok, otherwise returns false
+     * 
+     * @return boolean true if the user pressed ok
+     */
     private boolean makeAlertConfirm(String alertTitle, String alertHeader, String alertContent){
     	
     	Alert alert = new Alert(AlertType.CONFIRMATION);

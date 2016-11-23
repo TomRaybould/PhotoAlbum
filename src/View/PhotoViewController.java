@@ -104,6 +104,7 @@ public class PhotoViewController {
     public void start(Stage mainStage){
     		currentStage = mainStage;
     		Photo.setCurrentPhoto(null);
+    		photoTitle.setText("Photos in Album: " +Album.getCurrentAlbum().getName());
     		update();    	
 	}
     /**
@@ -487,6 +488,20 @@ public class PhotoViewController {
 
     }//end of handle
     
+    /**
+     * Handles button and action events that occur on this screen
+     * 
+     * @param String title
+     * @param String header
+     * @param String content
+     * @param String hint
+     * 
+     * Takes in four strings and produces a one line dialog that can be used to 
+     * prompt the user for a response
+     * 
+     * @return String , this is the string the user enter in the box
+     */
+    
     private String oneLineDialog(String title, String header, String content, String hint){
 		
 		TextInputDialog dialog = new TextInputDialog(hint);
@@ -505,6 +520,16 @@ public class PhotoViewController {
 		return str;
 	}
     
+    /**
+     * 
+     * @param String errorTitle
+     * @param String errorHeader
+     * @param String errorContent
+     * 
+     * Takes in three strings and produces a simply alert for the user to see
+     * 
+     * @return void
+     */
     private void makeAlertInfo(String errorTitle, String errorHeader, String errorContent) {    
 		
 		   Alert alert = new Alert(AlertType.INFORMATION);
@@ -515,6 +540,18 @@ public class PhotoViewController {
 		   alert.showAndWait();
 		   
 	}
+    
+    /**
+     * 
+     * @param String alertTitle
+     * @param String alertHeader
+     * @param String alertContent
+     * 
+     * Takes in three strings and produces a simply alert for the user to see,
+     * return true only if the user presses ok, otherwise returns false
+     * 
+     * @return boolean true if the user pressed ok
+     */
     
     private boolean makeAlertConfirm(String alertTitle, String alertHeader, String alertContent){
     	

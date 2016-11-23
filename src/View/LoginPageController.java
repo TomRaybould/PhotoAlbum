@@ -43,9 +43,7 @@ public class LoginPageController implements Serializable {
 	public void start(Stage mainStage) throws IOException{
 		currentStage = mainStage;
 		
-		//User dummy= new User("Dummy","dummy");
-		//User.addUser(dummy);
-		//User.write(dummy);
+	
 		
 	}
 	 /**
@@ -94,7 +92,7 @@ public class LoginPageController implements Serializable {
 					Scene scene = new Scene(root);
 					currentStage.setScene(scene);
 					currentStage.centerOnScreen();
-					
+					currentStage.setTitle("Photo Album");
 				}
 			
 				else{

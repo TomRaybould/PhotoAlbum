@@ -506,6 +506,17 @@ public class SearchResultsController {
 
     }//end of handle
     
+    /**
+     * 
+     * @param String alertTitle
+     * @param String alertHeader
+     * @param String alertContent
+     * 
+     * Takes in three strings and produces a simply alert for the user to see,
+     * return true only if the user presses ok, otherwise returns false
+     * 
+     * @return boolean true if the user pressed ok
+     */
     private String oneLineDialog(String title, String header, String content, String hint){
 		
 		TextInputDialog dialog = new TextInputDialog(hint);
@@ -524,6 +535,16 @@ public class SearchResultsController {
 		return str;
 	}
     
+    /**
+     * 
+     * @param String errorTitle
+     * @param String errorHeader
+     * @param String errorContent
+     * 
+     * Takes in three strings and produces a simply alert for the user to see
+     * 
+     * @return void
+     */
     
     private void makeAlertInfo(String errorTitle, String errorHeader, String errorContent) {    
 		

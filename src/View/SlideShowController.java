@@ -127,7 +127,7 @@ public class SlideShowController {
     		count++;
     		if(count > photoSlides.size() - 1){
     			//count too large, so block action
-    			count--;
+    			count=photoSlides.size()-1;
     		}
     		else{
     			Photo curr = photoSlides.get(count);
@@ -150,7 +150,7 @@ public class SlideShowController {
     		count--;
     		if(count < 0){
     			//count too small, so block action
-    			count++;
+    			count=0;
     		}
     		else{
     			Photo curr = photoSlides.get(count);

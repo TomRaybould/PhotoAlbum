@@ -97,6 +97,16 @@ public class CopyPhotoController {
     		}
     	}
 	}
+	 /**
+     * 
+     * @param String errorTitle
+     * @param String errorHeader
+     * @param String errorContent
+     * 
+     * Takes in three strings and produces a simply alert for the user to see
+     * 
+     * @return void
+     */
 	
 	private void makeAlertInfo(String errorTitle, String errorHeader, String errorContent) {    
 		

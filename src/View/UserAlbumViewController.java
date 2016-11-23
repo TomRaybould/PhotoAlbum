@@ -394,6 +394,19 @@ public class UserAlbumViewController {
 		
 	}//end of handle
 	
+	/**
+     * Handles button and action events that occur on this screen
+     * 
+     * @param String title
+     * @param String header
+     * @param String content
+     * @param String hint
+     * 
+     * Takes in four strings and produces a one line dialog that can be used to 
+     * prompt the user for a response
+     * 
+     * @return String , this is the string the user enter in the box
+     */
 
 	private String oneLineDialog(String title, String header, String content, String hint){
 		
@@ -414,6 +427,18 @@ public class UserAlbumViewController {
 		
 	}
 	
+	 /**
+     * Handles button and action events that occur on this screen
+     * 
+     * @param String errorTitle
+     * @param String errorHeader
+     * @param String errorContent
+     * 
+     * Takes in three strings and produces a simply alert for the user to see
+     * 
+     * @return void
+     */
+	
 	private void makeAlertInfo(String errorTitle, String errorHeader, String errorContent) {    
 		
 		   Alert alert = new Alert(AlertType.INFORMATION);
@@ -424,6 +449,19 @@ public class UserAlbumViewController {
 		   alert.showAndWait();
 		   
 	}
+	
+	 /**
+     * Handles button and action events that occur on this screen
+     * 
+     * @param String alertTitle
+     * @param String alertHeader
+     * @param String alertContent
+     * 
+     * Takes in three strings and produces a simply alert for the user to see,
+     * return true only if the user presses ok, otherwise returns false
+     * 
+     * @return boolean true if the user pressed ok
+     */
 	
 	private boolean makeAlertConfirm(String alertTitle, String alertHeader, String alertContent){
 	    	
@@ -441,6 +479,15 @@ public class UserAlbumViewController {
 	    		}
 	    	return false;
 	}
+	
+	
+	/**
+     *	Pulls the date range from the UI and searches for photos in that range 
+     *	It then returns an array of all of the photos in that range	
+     *
+     * 
+     * @return ArrayList<Photo> The photos in the date range
+     */
 	
 	private ArrayList<Photo> getPhotosInRange(){
 		ArrayList<Photo> results= new ArrayList<Photo>();
@@ -490,7 +537,13 @@ public class UserAlbumViewController {
 		}
 		return results;
 	}
-	//parse the input of text of hour and return 0 for anything not in the 0-23 range
+	/**
+	 * parses the input of String for an int and returns it if it is in the range 
+	 * of 0-23 , for the hours of search
+     *
+     * 
+     * @return int returns the int parsed if it was in the range of 0-23 otherwise returns 0
+     */
 	private static int convertHourInput(String str){
 		int i;
 		try{
@@ -506,7 +559,13 @@ public class UserAlbumViewController {
 		}
 	}
 	
-	//parse the input of text of hour and return 0 for anything not in the 0-59 range
+	/**
+	 * parses the input of String for an int and returns it if it is in the range 
+	 * of 0-59 , for the mins/secs of search
+     *
+     * 
+     * @return int returns the int parsed if it was in the range of 0-59 otherwise returns 0
+     */
 	private static int convertMinInput(String str){
 		int i;
 		try{
