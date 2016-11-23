@@ -221,6 +221,10 @@ public class SearchResultsController {
     	Button b= (Button)e.getSource();
     	
     	if(b == displayPicture){
+    		if(Photo.getCurrentPhoto()==null){
+				makeAlertInfo("No Photo Selected","","You must select a photo");
+				return;
+			}
     		
     		System.out.println("DisplayPicture");
 			FXMLLoader loader = new FXMLLoader();
@@ -240,6 +244,10 @@ public class SearchResultsController {
 			
 		}
 		else if(b == slideShow){
+			if(Photo.getCurrentPhoto()==null){
+				makeAlertInfo("No Photo Selected","","You must select a photo");
+				return;
+			}
 			System.out.println("slideShow");
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/SlideShow.fxml"));
@@ -247,7 +255,7 @@ public class SearchResultsController {
 			AnchorPane root = (AnchorPane)loader.load();
 			
 			SlideShowController SlideShow = loader.getController();
-			SlideShow.start(currentStage, Album.getSearchResults());
+			SlideShow.start(currentStage, Album.getSearchResults(),Photo.getCurrentPhoto());
 			Scene scene = new Scene(root);
 			Stage newStage =new Stage();
 			newStage.initModality(Modality.APPLICATION_MODAL);
@@ -270,102 +278,9 @@ public class SearchResultsController {
 			currentStage.setScene(scene);
 		
 		}
-		else if(b == addPhoto){
-			final FileChooser fileChooser = new FileChooser();
-    		File file = fileChooser.showOpenDialog(currentStage);
-    		if(file == null){
-				System.out.println("Bad");
-			}
-    		else if(file.isFile() &&
-    				(file.getName().contains(".jpg") || file.getName().contains(".png") || file.getName().contains(".gif")|| 
-    						file.getName().contains(".hmp") ||
-    						file.getName().contains(".JPG") ||
-    						file.getName().contains(".PNG") ||
-    						file.getName().contains(".GIF") ||
-    						file.getName().contains(".HMP") ||
-    						file.getName().contains(".jpeg") ||
-    						file.getName().contains(".JPEG") ||
-    						file.getName().contains(".ani") ||
-    						file.getName().contains(".ANI") ||
-    						file.getName().contains(".bmp") ||
-    						file.getName().contains(".BMP") ||
-    						file.getName().contains(".jpe") ||
-    						file.getName().contains(".JPE") ||
-    						file.getName().contains(".JBG") ||
-    						file.getName().contains(".jbg") ||
-    						file.getName().contains(".img") ||
-    						file.getName().contains(".IMG") ||
-    						file.getName().contains(".PSD") ||
-    						file.getName().contains(".psd") ||
-    						file.getName().contains(".gif"))){
-    			System.out.println("In file success");
-    			
-			String URL = file.toURI().toURL().toString();
-    		
-    		Calendar cal = Calendar.getInstance();
-    		Date date = new Date(0L);
-    		cal.set(Calendar.MILLISECOND, 0);
-    		date = cal.getTime();
-    		System.out.println("date is: " + date);
-    		
-    		Photo photo = new Photo(date, URL);
-    		System.out.println("Right after creation");
-    		System.out.println(photo);
-    		Photo.setCurrentPhoto(photo);
-    		Album a = Album.getCurrentAlbum();
-    		/*
-    		 * The count will be adjusted when the user actually presses add photo
-    		 * in the next view, because add photo now adjusts the count
-    		 */
-    		System.out.println("Photo count for album is: " + a.getNumOfPhotos());
 		
-			System.out.println("User main");
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/addPhoto.fxml"));
 		
-			AnchorPane root = (AnchorPane)loader.load();
-			
-			AddPhotoController addPhoto =loader.getController();
-			Scene scene = new Scene(root);
-			Stage newStage =new Stage();
-			addPhoto.start(newStage);
-			newStage.initModality(Modality.APPLICATION_MODAL);
-			newStage.setScene(scene);
-			newStage.showAndWait();
-			this.update();
-    		}
-			
-		}
-		else if(b == removePhoto){
-			//need an alert
-			if(Photo.getCurrentPhoto()!=null){
-			Album.getCurrentAlbum().removePhotoFromAlbum(Photo.getCurrentPhoto());
-			//remove method subtracts from count
-			System.out.println("Current count is " + Album.getCurrentAlbum().getNumOfPhotos());
-			Photo.setCurrentPhoto(null);
-			this.update();
-			}
-			
-			return;
-		}
-		else if(b == movePhoto){
-			if(Photo.getCurrentPhoto()==null){
-				return;
-			}
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/MovePhoto.fxml"));
 		
-			BorderPane root = (BorderPane)loader.load();
-			
-			MovePhotoController movePhoto =loader.getController();
-			Scene scene = new Scene(root);
-			Stage newStage =new Stage();
-			movePhoto.start(newStage);
-			newStage.initModality(Modality.APPLICATION_MODAL);
-			newStage.setScene(scene);
-			newStage.showAndWait();
-			this.update();
-		}
 		else if(b == copyPhoto){
 			if(Photo.getCurrentPhoto()==null){
 				return;
@@ -461,6 +376,7 @@ public class SearchResultsController {
 			currentStage.close();
 		}
 		else if(b == createNewAlbum){
+			
 			System.out.println("make new album");
 			//get the name of the album helper method below
 			String newAlbumName = oneLineDialog("Name New Album","","Enter name for new album","");

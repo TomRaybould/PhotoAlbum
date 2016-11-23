@@ -58,7 +58,7 @@ public class SlideShowController {
      * 
      * @return void
      */
-    public void start(Stage mainStage, ArrayList<Photo> slides){
+    public void start(Stage mainStage, ArrayList<Photo> slides,Photo selectedPhoto){
 		currentStage = mainStage;
 		if(slides==null){
 			currentStage.close();
@@ -70,8 +70,18 @@ public class SlideShowController {
 		}
 		
 		photoSlides= slides;
+		if(selectedPhoto!=null){
+			count= photoSlides.indexOf(selectedPhoto);
 		
-		Photo start = photoSlides.get(0);
+			if(count> photoSlides.size()-1||count<0){
+				count =0;
+			}
+		}
+		else{
+			count = 0;
+		}
+		
+		Photo start = photoSlides.get(count);
 		
 		System.out.println(start);
 		Image anImage = new Image(start.getSrc());
@@ -84,7 +94,7 @@ public class SlideShowController {
 		this.caption.setText(captionStr);
 		this.caption.setWrappingWidth(300);
 		date.setText(start.getCalDate().toString());
-		count = 0;
+		
 		
 		//listview of tags
 		this.update(start);
