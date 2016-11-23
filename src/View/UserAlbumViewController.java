@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -229,6 +230,10 @@ public class UserAlbumViewController {
 			}
 		}
 		else if(b == deleteAlbum){
+			
+			if (!makeAlertConfirm("Deleting" , "", "Are you sure you want to delete this album?")){
+				return;
+			}
 			Album album = (Album) tableView.getSelectionModel().getSelectedItem(); 
 			User.getCurrentUser().removeAlbum(album);
 			this.update();
@@ -418,6 +423,23 @@ public class UserAlbumViewController {
 		   alert.setContentText(errorContent);
 		   alert.showAndWait();
 		   
+	}
+	
+	private boolean makeAlertConfirm(String alertTitle, String alertHeader, String alertContent){
+	    	
+	    	Alert alert = new Alert(AlertType.CONFIRMATION);
+	    	alert.setTitle(alertTitle);
+	    	alert.setHeaderText(alertHeader);
+	    	alert.setContentText(alertContent);
+	    	
+	    	Optional<ButtonType> result = alert.showAndWait();
+	    		if(result.get()==ButtonType.OK){
+	    			return true;
+	    		}
+	    		if(result.get()==ButtonType.CANCEL){
+	    			return false;
+	    		}
+	    	return false;
 	}
 	
 	private ArrayList<Photo> getPhotosInRange(){

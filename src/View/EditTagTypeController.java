@@ -2,6 +2,7 @@ package View;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import Model.Album;
@@ -12,9 +13,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 /**
 * EditTagTypeController is the class associated with the screen for editing tag types that exist
@@ -90,7 +94,9 @@ public class EditTagTypeController {
     void handle(ActionEvent e) throws IOException {
     	Button b = (Button)e.getSource();
     	if(b == removeType){
-    		
+    		if(!makeAlertConfirm("Deleting Tag", "", "Are you sure you want to delete this tag type?")){
+    			return;
+    		}
     		String selected = selectedTagType;
     		User u = User.getCurrentUser();
     		u.getTagTypes().remove(selected);
@@ -137,5 +143,21 @@ public class EditTagTypeController {
     	}
 
     }
-
+    
+    private boolean makeAlertConfirm(String alertTitle, String alertHeader, String alertContent){
+    	
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle(alertTitle);
+    	alert.setHeaderText(alertHeader);
+    	alert.setContentText(alertContent);
+    	
+    	Optional<ButtonType> result = alert.showAndWait();
+    		if(result.get()==ButtonType.OK){
+    			return true;
+    		}
+    		if(result.get()==ButtonType.CANCEL){
+    			return false;
+    		}
+    	return false;
+    }
 }

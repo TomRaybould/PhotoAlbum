@@ -20,6 +20,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
@@ -341,7 +342,9 @@ public class PhotoViewController {
 			
 		}
 		else if(b == removePhoto){
-			//need an alert
+			if(!(makeAlertConfirm("Deleteing Photo", "", "Are you sure you want to delete"))){
+				return;
+			}
 			if(Photo.getCurrentPhoto()!=null){
 			Album.getCurrentAlbum().removePhotoFromAlbum(Photo.getCurrentPhoto());
 			//remove method subtracts from count
@@ -499,6 +502,23 @@ public class PhotoViewController {
 		   alert.showAndWait();
 		   
 	}
+    
+    private boolean makeAlertConfirm(String alertTitle, String alertHeader, String alertContent){
+    	
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle(alertTitle);
+    	alert.setHeaderText(alertHeader);
+    	alert.setContentText(alertContent);
+    	
+    	Optional<ButtonType> result = alert.showAndWait();
+    		if(result.get()==ButtonType.OK){
+    			return true;
+    		}
+    		if(result.get()==ButtonType.CANCEL){
+    			return false;
+    		}
+    	return false;
+    }
     
 }//end of class
 
