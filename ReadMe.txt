@@ -1,6 +1,8 @@
 Read Me
 
-This is a project done for Rutgers CS 213(Software Methodology), it is a destop app designed to organize the users photos with ablums and custom tags. This project is a an example of MVC(model, view, controller), using javaFX. All FXML files were generated using scene builder to make the screens.
+Full UML diagram and Java docs are under the docs folder in this project.
+
+This is a project done for Rutgers CS 213(Software Methodology), it is a destop app designed to organize the users photos with ablums and custom tags. This project is a an example of MVC(model, view, controller), using javaFX. All FXML files were generated using scene builder to make the screens. 
 
 Photo album has 3 packages. The model, which is the back end, view, which is controllers and fxml pages, and application, which holds a class called PhotoAlbum. PhotoAlbum, inside application package, is what is used to run the program. So use that to start.
 
