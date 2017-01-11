@@ -4,8 +4,7 @@ This is a project done for Rutgers CS 213(Software Methodology), it is a destop 
 
 Photo album has 3 packages. The model, which is the back end, view, which is controllers and fxml pages, and application, which holds a class called PhotoAlbum. PhotoAlbum, inside application package, is what is used to run the program. So use that to start.
 
-From there you will enter the login page. There will be no users. This is due to the fact that our program uses absolute paths for the source of the photo. If we hard coded paths, we would not be able to know whether or not the person testing this program was on a windows or a mac. If we hardcoded mac, it wouldn’t work on windows, and vice versa. 
-To get to the screen where you can create users, enter “admin” as username, and “admin” as password. Now you will get to the page where you can add, delete, and see all users.
+From there you will enter the login page. There will be no users, to create users, enter “admin” as username, and “admin” as password. Now you will get to the page where you can add, delete, and see all users.
 Add some users, and log in with them. 
 
 You will now go to the main album screen. This is where you will see all existing albums. You can rename, add, delete, and create new albums from this page. You can also search by tags or dates from this page.
